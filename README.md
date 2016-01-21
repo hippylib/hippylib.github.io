@@ -10,6 +10,9 @@ This repo contains the [MkDocs](http://mkdocs.org) source files of the hIPPYlib 
 * Install [bootstrap](http://getbootstrap.com/) and [bootswatch](https://bootswatch.com/) themes
     sudo pip install mkdocs-bootstrap
     sudo pip install mkdocs-bootswatch
+    
+* Install [MathJax](https://www.mathjax.org/) support using [python-markdown-math](https://github.com/mitya57/python-markdown-math)
+    sudo pip install python-markdown-math
 
 
 ## To make changes to the website
