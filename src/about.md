@@ -14,4 +14,5 @@
 
 ---
 
-Website built with [MkDocs](http://www.mkdocs.org/). Hosted on [GitHub](http://github.com/hippylib/). 
+Website built with [MkDocs](http://www.mkdocs.org/), [bootstrap](http://getbootstrap.com/), [bootswatch](https://bootswatch.com/), and [MathJax](https://www.mathjax.org/).
+Hosted on [GitHub](http://github.com/hippylib/). 
