@@ -18,5 +18,6 @@ pages:
 - 'About': about.md
 
 #theme_dir: template
+theme: spacelab
 
 include_next_prev: false  # turn of next/previous buttons
