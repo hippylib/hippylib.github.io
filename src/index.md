@@ -27,7 +27,7 @@ Developed by the [hIPPYlib team](about.md) at [UT Austin](http://ices.utexas.edu
 To ask question and find answers see [here](https://groups.google.com/forum/#!forum/hippylib-support).
 
 Please cite with 
-```
+```sh
 @article{VillaPetraGhattas2016,
 title = {"hIPPYlib: AN EXTENSIBLE SOFTWARE FRAMEWORK FOR LARGE-SCALE BAYESIAN INVERSION"},
 author = {Villa U., and Petra, N., and Ghattas, O.},
