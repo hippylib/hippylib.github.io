@@ -11,13 +11,14 @@ repo_url: https://github.com/hippylib/hippylib
 pages:
 - Home: index.md
 - Features: features.md
-- Documentation:
-  - 'Installing hIPPYlib': building.md
-  - 'Tutorial': tutorial.md
-  - 'Publications': publications.md
-  - 'Outreach': outreach.md
+- Tutorial:
+      - README: tutorial.md
+      - FEniCS101: Tutorial/1_FEniCS101/index.md
+- Publications: publications.md
+- Outreach: outreach.md
+- Installation: building.md
 - Download: download.md
-- 'About': about.md
+- About: about.md
 
 #theme_dir: template
 theme: spacelab

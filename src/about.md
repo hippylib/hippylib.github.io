@@ -5,7 +5,7 @@
 - [Noemi Petra](http://faculty.ucmerced.edu/npetra)
 - [Umberto Villa](http://users.ices.utexas.edu/~uvilla/)
 
-## Contributors
+<!---## Contributors-->
 
 ## Copyright
 &copy; 2016 The University of Texas at Austin, University of California Merced.

@@ -1,6 +1,6 @@
 # hIPPYlib - Inverse Problem PYthon library
 
-hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for PDE-based *deterministic and Bayesian inverse problems*. It builds on [FEniCS](www.fenicsproject.org) for the discretization of the PDE and on [PETSc](http://www.mcs.anl.gov/petsc/) for scalable and efficient linear algebra operations and solvers.
+hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for PDE-based *deterministic and Bayesian inverse problems*. It builds on <a href="http://www.fenicsproject.org" target="_blank">FEniCS</a> for the discretization of the PDE and on <a href="http://www.mcs.anl.gov/petsc/" target="_blank">PETSc</a> for scalable and efficient linear algebra operations and solvers.
 
 ## Features:
 
@@ -22,9 +22,9 @@ See also our [tutorial](tutorial.md) and list of related [publications](publicat
 
 ## Contact
 
-Developed by the [hIPPYlib team](about.md) at [UT Austin](http://ices.utexas.edu) and [UC Merced](http://naturalsciences.ucmerced.edu/).
+Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a> and <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>.
 
-To ask question and find answers see [here](https://groups.google.com/forum/#!forum/hippylib-support).
+To ask question and find answers see <a href="https://groups.google.com/forum/#!forum/hippylib-support" target="_blank">here</a>.
 
 Please cite with 
 ```sh
