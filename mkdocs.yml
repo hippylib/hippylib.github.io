@@ -18,10 +18,10 @@ pages:
       - Subsurface Bayesian: Tutorial/2_SubsurfaceBayesian/index.md
       - Advection-Diffusion Bayesian: Tutorial/3_AdvectionDiffusionBayesian/index.md
       - Hessian Spectrum: Tutorial/4_HessianSpectrum/index.md
-- Publications: publications.md
-- Outreach: outreach.md
 - Installation: building.md
 - Download: download.md
+- Publications: publications.md
+- Outreach: outreach.md
 - About: about.md
 
 #theme_dir: template
