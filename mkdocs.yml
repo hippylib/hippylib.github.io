@@ -4,7 +4,8 @@ docs_dir: 'src'
 markdown_extensions:
 - extra  # allow markdown in <div markdown="1">
 - fenced_code  # GitHub style code blocks, e.g. ```python, see http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html for a list of languages
-- mdx_math # MathJax extension. Use \(...\) for inline; \[ ...\] for standalone math
+- mdx_math: # MathJax extension. Use \(...\) for inline; \[ ...\] for standalone math
+    enable_dollar_delimiter: True # allows $...$ for inline math
 
 repo_url: https://github.com/hippylib/hippylib
 
@@ -14,6 +15,9 @@ pages:
 - Tutorial:
       - README: tutorial.md
       - FEniCS101: Tutorial/1_FEniCS101/index.md
+      - Subsurface Bayesian: Tutorial/2_SubsurfaceBayesian/index.md
+      - Advection-Diffusion Bayesian: Tutorial/3_AdvectionDiffusionBayesian/index.md
+      - Hessian Spectrum: Tutorial/4_HessianSpectrum/index.md
 - Publications: publications.md
 - Outreach: outreach.md
 - Installation: building.md

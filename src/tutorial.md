@@ -3,9 +3,9 @@
 These tutorials are the best place to learn about the basic features and the algorithms in `hIPPYlib`.
 
 1. [FEniCS101](Tutorial/1_FEniCS101/index.md) notebook illustrates the use of FEniCS for the solution of a linear boundary value problem.
-2. SubsurfaceBayesian notebook illustrates how to solve a non-linear parameter inversion for the Poisson equation in a Bayesian setting.
-3. AdvectionDiffusionBayesian notebook illustrates how to solve a time-dependent linear inverse problem in a Bayesian setting.
-4. HessianSpectrum notebook illustrates the spectral property of the Hessian operator for a linear source inversion problem.
+2. [Subsurface Bayesian](Tutorial/2_SubsurfaceBayesian/index.md) notebook illustrates how to solve a non-linear parameter inversion for the Poisson equation in a Bayesian setting.
+3. [Advection-Diffusion Bayesian](Tutorial/3_AdvectionDiffusionBayesian/index.md) notebook illustrates how to solve a time-dependent linear inverse problem in a Bayesian setting.
+4. [Hessian Spectrum](Tutorial/4_HessianSpectrum/index.md) notebook illustrates the spectral property of the Hessian operator for a linear source inversion problem.
 
 
 The interactive ipython notebooks are located in the `Tutorial` folder of the `hIPPYlib` release.
