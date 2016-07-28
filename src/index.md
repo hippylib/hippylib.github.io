@@ -15,10 +15,8 @@ See also our [tutorial](tutorial.md) and list of related [publications](publicat
 ## Latest Release:
 
 - ** Initial release coming soon **
-- [New features]()
 - [Development version](https://github.com/hippylib/hippylib)
 - [Download hippylib-1.0.0.tgz](https://github.com/hippylib/hippylib-releases)
-- For older releases see the [download](download.md) section
 
 ## Contact
 
@@ -29,7 +27,7 @@ To ask question and find answers see <a href="https://groups.google.com/forum/#!
 Please cite with 
 ```sh
 @article{VillaPetraGhattas2016,
-title = {"hIPPYlib: AN EXTENSIBLE SOFTWARE FRAMEWORK FOR LARGE-SCALE BAYESIAN INVERSION"},
+title = {"hIPPYlib: AN EXTENSIBLE SOFTWARE FRAMEWORK FOR LARGE-SCALE DETERMINISTIC AND LINEARIZED BAYESIAN INVERSION"},
 author = {Villa U., and Petra, N., and Ghattas, O.},
 year = {2016},
 url = {http://hippylib.github.io}
