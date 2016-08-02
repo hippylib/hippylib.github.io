@@ -1,6 +1,5 @@
 # Publications
 
-- P. Chen, U. Villa, O. Ghattas, *Hessian-based adaptive sparse quadrature for infinite-dimensional Bayesian inverse problems*, 2016
 - U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale deterministic and linearized Bayesian inverse problems*, 2016
 
 # Presentations
