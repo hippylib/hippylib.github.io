@@ -6,6 +6,11 @@
 
 - U. Villa, *An Analytical Technique for Forward and Inverse Propagation of Uncertainty*, SIAM Conference on Uncertainty Quantification, April 5-8, 2016, Lausanne, Switzerland
 
+# Workshops
+
+- N. Petra, [SAMSI Optimization Program Summer School](https://www.samsi.info/programs-and-activities/research-workshops/summer-2016-optimization-program-summer-school-august-8-12-2016/), Research Triangle Park, NC,  August 8-12, 2016.
+- N. Petra and O. Ghattas, [IDEALab: Inverse Problems and Uncertainty Quantification](https://icerm.brown.edu/idealab/2015/), Brown University, Providence, RD, July 6-10, 2015
+
 # Graduate level courses
 
 - T. Bui @UT Austin, *Computational PDE-Constrained Bayesian inverse problems*, Fall 2016
