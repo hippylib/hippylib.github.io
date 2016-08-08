@@ -1,0 +1,6 @@
+.project
+.pydevproject
+.DS_store
+index.html
+site/
+template/
