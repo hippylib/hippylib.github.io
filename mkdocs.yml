@@ -20,8 +20,7 @@ pages:
       - Hessian Spectrum: Tutorial/4_HessianSpectrum/index.md
 - Installation: building.md
 #- Download: download.md
-- Publications: publications.md
-#- Outreach: outreach.md
+- Outreach: outreach.md
 - About: about.md
 
 #theme_dir: template

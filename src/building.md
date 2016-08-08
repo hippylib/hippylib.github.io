@@ -1,6 +1,6 @@
 # Installing hIPPYlib
 
-The current version of hIPPYlib depends on [FEniCS](http://fenicsproject.org/) version 1.5.
+The current version of hIPPYlib depends on [FEniCS](http://fenicsproject.org/) version 1.6.
 Below you can find how to install the correct version of FEniCS on your system.
 
 - **MacOS 10.10 and 10.11 systems:**
