@@ -1,0 +1,32 @@
+site_name: hIPPYlib
+docs_dir: 'src'
+
+markdown_extensions:
+- extra  # allow markdown in <div markdown="1">
+- fenced_code  # GitHub style code blocks, e.g. ```python, see http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html for a list of languages
+- mdx_math: # MathJax extension. Use \(...\) for inline; \[ ...\] for standalone math
+    enable_dollar_delimiter: True # allows $...$ for inline math
+
+repo_url: https://github.com/hippylib/hippylib
+
+pages:
+- Home: index.md
+#- Features: features.md
+- Tutorial:
+      - README: tutorial.md
+      - FEniCS101: Tutorial/1_FEniCS101/index.md
+      - Subsurface Bayesian: Tutorial/2_SubsurfaceBayesian/index.md
+      - Advection-Diffusion Bayesian: Tutorial/3_AdvectionDiffusionBayesian/index.md
+      - Hessian Spectrum: Tutorial/4_HessianSpectrum/index.md
+- Installation: building.md
+#- Download: download.md
+- Outreach: outreach.md
+- About: about.md
+
+#theme_dir: template
+theme: spacelab
+
+include_next_prev: false  # turn of next/previous buttons
+
+extra_javascript: 
+    - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
