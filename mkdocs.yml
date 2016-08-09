@@ -14,11 +14,11 @@ pages:
 #- Features: features.md
 - Tutorial:
       - README: tutorial.md
-      - FEniCS101: Tutorial/1_FEniCS101/index.md
-      - Poisson Deterministic: Tutorial/2_PoissonDeterministic/index.md
-      - Subsurface Bayesian: Tutorial/3_SubsurfaceBayesian/index.md
-      - Advection-Diffusion Bayesian: Tutorial/4_AdvectionDiffusionBayesian/index.md
-      - Hessian Spectrum: Tutorial/5_HessianSpectrum/index.md
+      - FEniCS101: tutorials/1_FEniCS101/index.md
+      - Poisson Deterministic: tutorials/2_PoissonDeterministic/index.md
+      - Subsurface Bayesian: tutorials/3_SubsurfaceBayesian/index.md
+      - Advection-Diffusion Bayesian: tutorials/4_AdvectionDiffusionBayesian/index.md
+      - Hessian Spectrum: tutorials/5_HessianSpectrum/index.md
 - Installation: building.md
 #- Download: download.md
 - Outreach: outreach.md
