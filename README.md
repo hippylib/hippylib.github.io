@@ -25,4 +25,6 @@ This repo contains the [MkDocs](http://mkdocs.org) source files of the hIPPYlib 
 * Preview locally
     mkdocs serve
 * Publish on GitHub
+    git push origin master:master
     mkdocs gh-deploy --clean --remote-branch master --remote-name public
+    git reset --hard origin/master
