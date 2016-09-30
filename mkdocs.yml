@@ -27,6 +27,8 @@ pages:
 #theme_dir: template
 theme: spacelab
 
+google_analytics: ['UA-52448613-3', 'hippylib.github.io']
+
 include_next_prev: false  # turn of next/previous buttons
 
 extra_javascript: 
