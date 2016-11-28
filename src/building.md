@@ -2,8 +2,8 @@
 
 ## Download hippylib
 
-Release 1.0.0 of hIPPYlib is available for download [here](https://github.com/hippylib/hippylib-releases/raw/master/hippylib-1.0.0.tgz).
-Simply decompress the file hippylib-1.0.0.tgz in your working directory. There is no installation necessary.
+Release 1.1.0 of hIPPYlib is available for download [here](https://goo.gl/pDb10B).
+Simply decompress the file hippylib-1.1.0.tgz in your working directory. There is no installation necessary.
 You can directly run the examples from the *application* folder or view the notebooks from the *tutorial* folder. 
 
 To checkout the development version of hippylib use the command
@@ -13,7 +13,8 @@ git clone git@github.com:hippylib/hippylib.git
 ``` 
 
 The current version of hIPPYlib depends on [FEniCS](http://fenicsproject.org/) version 1.6.
-Below you can find how to install the correct version of FEniCS on your system.
+It also offers partial support for FEniCS 1.5 and 2016.1 (examples and tutorial).
+Below you can find how to install FEniCS 1.6 on your system.
 
 ## Install FEniCS
 

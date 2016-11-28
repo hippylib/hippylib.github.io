@@ -20,7 +20,7 @@ pages:
       - Advection-Diffusion Bayesian: tutorials/4_AdvectionDiffusionBayesian/index.md
       - Hessian Spectrum: tutorials/5_HessianSpectrum/index.md
 - Installation: building.md
-#- Download: download.md
+- Download: download.md
 - Outreach: outreach.md
 - About: about.md
 
