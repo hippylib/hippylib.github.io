@@ -5,7 +5,13 @@
 - [Noemi Petra](http://faculty.ucmerced.edu/npetra)
 - [Umberto Villa](http://users.ices.utexas.edu/~uvilla/)
 
-<!---## Contributors-->
+## Contributors
+- Amal Alghamdi
+- Joshua Chen
+- [Peng Chen](http://users.ices.utexas.edu/~peng/)
+- Ben Crestel
+- Tom O'Leary-Roseberry
+- Vishwas Rao
 
 ## Copyright
 &copy; 2016 The University of Texas at Austin, University of California Merced.
