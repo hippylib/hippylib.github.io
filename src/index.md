@@ -10,7 +10,7 @@ hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for P
 - Globalized Inexact Newton-CG method to solve the inverse problem
 - Low rank representation of the posterior covariace using randomized algorithms.
 
-See also our [tutorial](tutorial.md) and list of related [publications](outreach.md).
+See also our [tutorial](tutorial.md) and list of related [publications](research.md).
 
 ## Latest Release
 
