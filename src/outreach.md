@@ -9,9 +9,12 @@
 
 - P. Chen, *Taylor Approximation for PDE-Constrained Optimal Control Problems Under High-Dimensional Uncertainty: Application to a Turbulence Model*, SIAM Conference on Computer Science and Engineering, Feb 27-March 3, 2017, Atlanta, GA, US
 
-- J. Lee, *Scalable Methods for Optimal Experimental Design for Inverse Scattering*, SIAM Conference on Computer Science and Engineering, Feb 27-March 3, 2017, Atlanta, GA, US
+<!-- - J. Lee, *Scalable Methods for Optimal Experimental Design for Inverse Scattering*, SIAM Conference on Computer Science and Engineering, Feb 27-March 3, 2017, Atlanta, GA, US -->
 
 - B. Crestel, *Scalable Solvers for Joint Inversion with Several Structural Coupling Terms*, SIAM Conference on Computer Science and Engineering, Feb 27-March 3, 2017, Atlanta, GA, US
+
+- Amal Alghamdi, *Bayesian Inversion for Subsurface Properties from Poroelastic Forward Models and Surface Deformation Data*, SIAM Conference on Computer Science and Engineering, Feb 27-March 3, 2017, Atlanta, GA, US
+
 
 - U. Villa, *An Analytical Technique for Forward and Inverse Propagation of Uncertainty*, SIAM Conference on Uncertainty Quantification, April 5-8, 2016, Lausanne, Switzerland
 
