@@ -9,8 +9,8 @@ u = u_0 & \text{ on } \Gamma_D = \Gamma_{\rm left} \bigcup \Gamma_{\rm right},\\
 k \frac{\partial u}{\partial {\bf{n}}} = \sigma & \text{ on } \Gamma_N = \Gamma_{\rm top} \bigcup \Gamma_{\rm bottom},
 \end{eqnarray*}
 
-where \( \Omega = (0,1) \times (0,1) \), \( \Gamma_D \) and and \( \Gamma_N \) are the union of
-the left and right, and top and bottom boundaries of \( \Omega \),
+where $\Omega = (0,1) \times (0,1)$, $\Gamma_D$ and and $\Gamma_N$ are the union of
+the left and right, and top and bottom boundaries of $\Omega$,
 respectively.
 
 Here
@@ -27,11 +27,11 @@ $$ u_e(x,y) = \sin(2\pi x)\sin\left(\frac{\pi}{2}y\right). $$
 
 ## Weak formulation
 
-Let us define the Hilbert spaces \( V_{u_0}, V_0 \in \Omega \) as
+Let us define the Hilbert spaces $V_{u_0}, V_0 \in \Omega$ as
 $$ V_{u_0} := \left\{ v \in H^1(\Omega) \text{ s. t. } v = u_0 \text{ on } \Gamma_D \right\},$$
 $$ V_{0} := \left\{ v \in H^1(\Omega) \text{ s. t. } v = 0 \text{ on } \Gamma_D \right\}.$$
 
-To obtain the weak formulation, we multiply the PDE by an arbitrary function \( v \in V_0 \) and integrate over the domain \(\Omega \) leading to
+To obtain the weak formulation, we multiply the PDE by an arbitrary function $v \in V_0$ and integrate over the domain $\Omega$ leading to
 
 $$ -\int_{\Omega} \nabla \cdot (k \nabla u) v \, dx = \int_\Omega f v \, dx\quad \forall \; v \in V_0. $$
 
@@ -39,9 +39,9 @@ Then, integration by parts the non-conforming term gives
 
 $$ \int_{\Omega} k \nabla u \cdot \nabla v \, dx - \int_{\partial \Omega} k \frac{\partial u}{\partial {\bf n} } v \, ds = \int_\Omega f v \, dx \quad \forall \; v \in V_0. $$
 
-Finally by recalling that \( v = 0 \) on \( \Gamma_D \) and that \( k \frac{\partial u}{\partial {\bf n} } = \sigma \) on \(\Gamma_N \), we find the weak formulation:
+Finally by recalling that $ v = 0 $ on $\Gamma_D$ and that $k \frac{\partial u}{\partial {\bf n} } = \sigma $ on $\Gamma_N$, we find the weak formulation:
 
-*Find* \( u \in V_{u_0}\) *such that*
+*Find * $u \in V_{u_0}$ *such that*
 $$ \int_{\Omega} k \nabla u \cdot \nabla v \, dx = \int_\Omega f v \, dx + \int_{\Gamma_N} \sigma v \, ds \quad \forall \; v \in V_0. $$
 
 ## 1. Load modules
@@ -57,7 +57,7 @@ To start we load the following modules:
 - [matplotlib](http://matplotlib.org/): a python package used for plotting the results
 
 
-```
+```python
 from dolfin import *
 
 import math
@@ -75,15 +75,15 @@ set_log_active(False)
 
 ## 2. Define the mesh and the finite element space
 
-We construct a triangulation (mesh) \( \mathcal{T}_h \) of the computational domain \( \Omega := [0, 1]^2 \) with `n` elements in each direction.
+We construct a triangulation (mesh) $\mathcal{T}_h$ of the computational domain $\Omega := [0, 1]^2$ with `n` elements in each direction.
 
-On the mesh \( \mathcal{T}_h \), we then define the finite element space \( V_h \subset H^1(\Omega) \) consisting of globally continuous piecewise polinomials functions. The `degree` variable defines the polinomial degree.
+On the mesh $\mathcal{T}_h$, we then define the finite element space $V_h \subset H^1(\Omega)$ consisting of globally continuous piecewise polinomials functions. The `degree` variable defines the polinomial degree.
 
 
-```
+```python
 n = 16
 degree = 1
-mesh = RectangleMesh(0, 0, 1, 1, n, n)
+mesh = UnitSquareMesh(n, n)
 nb.plot(mesh)
 
 Vh  = FunctionSpace(mesh, 'Lagrange', degree)
@@ -99,10 +99,10 @@ print "dim(Vh) = ", Vh.dim()
 
 ## 3. Define boundary labels
 
-To partition the boundary of \(\Omega\) in the subdomains \(\Gamma_{\rm top}\), \(\Gamma_{\rm bottom}\), \(\Gamma_{\rm left}\), \(\Gamma_{\rm right}\) we assign a unique label `boundary_parts` to each of part of \( \partial \Omega\).
+To partition the boundary of $\Omega$ in the subdomains $\Gamma_{\rm top}$, $\Gamma_{\rm bottom}$, $\Gamma_{\rm left}$, $\Gamma_{\rm right}$ we assign a unique label `boundary_parts` to each of part of $\partial \Omega$.
 
 
-```
+```python
 class TopBoundary(SubDomain):
     def inside(self, x, on_boundary):
         return on_boundary and abs(x[1] - 1) < DOLFIN_EPS
@@ -141,14 +141,14 @@ In the finite element method community, Dirichlet boundary conditions are also k
 On the other hand, Newman boundary conditions are also known as *natural* boundary conditions since they are weakly imposed as boundary integrals in the variational formulation (weak form). In FEniCS, we create a new boundary measure `ds[i]` to integrate over the portion of the boundary marked with label `i`.
 
 
-```
+```python
 u_L = Constant(0.)
 u_R = Constant(0.)
 
-sigma_bottom = Expression('-(pi/2.0)*sin(2*pi*x[0])')
-sigma_top    = Expression('0')
+sigma_bottom = Expression('-(pi/2.0)*sin(2*pi*x[0])', degree=5)
+sigma_top    = Constant(0.)
 
-f = Expression('(4.0*pi*pi+pi*pi/4.0)*(sin(2*pi*x[0])*sin((pi/2.0)*x[1]))')
+f = Expression('(4.0*pi*pi+pi*pi/4.0)*(sin(2*pi*x[0])*sin((pi/2.0)*x[1]))', degree=5)
 
 bcs = [DirichletBC(Vh, u_L, boundary_parts, 3),
        DirichletBC(Vh, u_R, boundary_parts, 4)]
@@ -160,36 +160,36 @@ ds = Measure("ds", subdomain_data=boundary_parts)
 
 We also define two special types of functions: the `TrialFunction` `u` and the `TestFunction` `v`. These special types of function are used by `FEniCS` to generate the finite element vectors and matrices which stem from the weak formulation of the PDE.
 
-More specifically, by denoting by \(\left[{\phi_i(x)}\right]_{i=1}^{{\rm dim}(V_h)}\) the finite element basis for the space \(V_h\), a function \( u_h \in V_h\) can be written as
+More specifically, by denoting by $\left[{\phi_i(x)}\right]_{i=1}^{{\rm dim}(V_h)}$ the finite element basis for the space $V_h$, a function $u_h \in V_h$ can be written as
 $$ u_h = \sum_{i=1}^{{\rm dim}(V_h)} {\rm u}_i \phi_i(x), $$
-where \({\rm u}_i\) represents the coefficients in the finite element expansion of \(u_h\).
+where ${\rm u}_i$ represents the coefficients in the finite element expansion of $u_h$.
 
 We then define
 
-- the bilinear form \( a(u_h, v_h) = \int_\Omega \nabla u_h \cdot \nabla v_h dx \);
+- the bilinear form $a(u_h, v_h) = \int_\Omega \nabla u_h \cdot \nabla v_h dx $;
 
-- the linear form \( L(v_h) = \int_\Omega f v_h dx + \int_{\Gamma_{\rm top}} \sigma_{\rm top} v_h ds + \int_{\Gamma_{\rm bottom}} \sigma_{\rm bottom} v_h ds\).
+- the linear form $L(v_h) = \int_\Omega f v_h dx + + \int_{\Gamma_{\rm top}} \sigma_{\rm top} v_h ds \int_{\Gamma_{\rm bottom}} \sigma_{\rm bottom} v_h ds $.
 
 
 We can then solve the variational problem
 
-*Find* \( u_h \in V_h\) *such that*
+*Find *$u_h \in V_h$* such that*
 $$ a(u_h, v_h) = L(v_h) \quad \forall\, v_h \in V_h $$
 
 using directly the built-in `solve` method in FEniCS.
 
-**NOTE:** As an alternative one can also assemble the finite element matrix \( A \) and the right hand side \( b \) that stems from the discretization of \( a \) and \( L \), and then solve the linear system
+**NOTE:** As an alternative one can also assemble the finite element matrix $A$ and the right hand side $b$ that stems from the discretization of $a$ and $L$, and then solve the linear system
 $$ A {\rm u} = {\rm b}, $$
 where
 
-- \( {\rm u} \) is the vector collecting the coefficient of the finite element expasion of \( u_h \),
+- ${\rm u}$ is the vector collecting the coefficient of the finite element expasion of $u_h$,
 
-- the entries of the matrix A are such that \( A_{ij} = a(\phi_j, \phi_i) \),
+- the entries of the matrix A are such that $A_{ij} = a(\phi_j, \phi_i)$,
 
-- the entries of the right hand side b are such that \( b_i = L(\phi_i) \).
+- the entries of the right hand side b are such that $b_i = L(\phi_i)$.
 
 
-```
+```python
 u = TrialFunction(Vh)
 v = TestFunction(Vh)
 a = inner(nabla_grad(u), nabla_grad(v))*dx
@@ -212,21 +212,22 @@ nb.plot(uh)
 
 
 
-![png](output_10_1.png)
+
+![png](output_10_2.png)
 
 
 ## 6. Compute the discretization error
 
 For this problem, the exact solution is known.
-We can therefore compute the following norms of the discretization error (i.e. the of the difference between the finite element solution \( u_h \) and the exact solution \( u_{\rm ex} \))
+We can therefore compute the following norms of the discretization error (i.e. the of the difference between the finite element solution $u_h$ and the exact solution $u_{\rm ex}$)
 $$ \| u_{\rm ex} - u_h \|_{L^2{\Omega}} := \sqrt{ \int_{\Omega} (u_{\rm ex} - u_h)^2 \, dx }, $$ 
 and
 $$ \| u_{\rm ex} - u_h \|_{H^1{\Omega}} := \sqrt{ \int_{\Omega} (u_{\rm ex} - u_h)^2 \, dx + \int_{\Omega} |\nabla u_{\rm ex} - \nabla u_h|^2 \, dx}. $$
 
 
-```
-u_e = Expression('sin(2*pi*x[0])*sin((pi/2.0)*x[1])')
-grad_u_e = Expression( ('2*pi*cos(2*pi*x[0])*sin((pi/2.0)*x[1])', 'pi/2.0*sin(2*pi*x[0])*cos((pi/2.0)*x[1])'))
+```python
+u_e = Expression('sin(2*pi*x[0])*sin((pi/2.0)*x[1])', degree=5)
+grad_u_e = Expression( ('2*pi*cos(2*pi*x[0])*sin((pi/2.0)*x[1])', 'pi/2.0*sin(2*pi*x[0])*cos((pi/2.0)*x[1])'), degree=5)
 
 err_L2 = sqrt( assemble( (uh-u_e)**2*dx ) )
 err_grad = sqrt( assemble( inner(nabla_grad(uh) - grad_u_e, nabla_grad(uh) - grad_u_e)*dx ) )
@@ -236,29 +237,29 @@ print "|| u_h - u_e ||_L2 = ", err_L2
 print "|| u_h - u_e ||_H1 = ", err_H1
 ```
 
-    || u_h - u_e ||_L2 =  0.00842388144799
-    || u_h - u_e ||_H1 =  0.394127114471
+    || u_h - u_e ||_L2 =  0.00880525372208
+    || u_h - u_e ||_H1 =  0.396718952514
 
 
 ## 7. Convergence of the finite element method
 
 We now verify numerically a well-known convergence result for the finite element method.
 
-Let denote with \( s \) the polynomial degree of the finite element space, and assume that the solution \( u_{\rm ex}\) is at least in \( H^{s+1}(\Omega) \). Then we have
+Let denote with $s$ the polynomial degree of the finite element space, and assume that the solution $u_{\rm ex}$ is at least in $H^{s+1}(\Omega)$. Then we have
 $$ \| u_{\rm ex} - u_h \|_{H^1} \leq C h^{s}, \quad \| u_{\rm ex} - u_h \|_{L^2} \leq C h^{s+1}. $$
 
 In the code below, the function `compute(n, degree)` solves the PDE using a mesh with `n` elements in each direction and finite element spaces of polinomial order `degree`.
 
-The figure below shows the discretization errors in the \( H^1 \) and \( L^2 \) as a function of the mesh size \( h \) ( \( h = \frac{1}{n}\) ) for piecewise linear (P1, \( s=1 \) ) and piecewise quadratic (P2, \(s=2\) ) finite elements. We observe that numerical results are consistent with the finite element convergence theory. In particular:
+The figure below shows the discretization errors in the $H^1$ and $L^2$ as a function of the mesh size $h$ ($h = \frac{1}{n}$) for piecewise linear (P1, $s=1$) and piecewise quadratic (P2, $s=2$) finite elements. We observe that numerical results are consistent with the finite element convergence theory. In particular:
 
-- for piecewise linear finite element P1 we observe first order convergence in the \( H^1\)-norm and second order convergence in the \( L^2\)-norm;
+- for piecewise linear finite element P1 we observe first order convergence in the $H^1$-norm and second order convergence in the $L^2$-norm;
 
-- for piecewise quadratic finite element P2 we observe second order convergence in the \( H^1\)-norm and third order convergence in the \( L^2\)-norm.
+- for piecewise quadratic finite element P2 we observe second order convergence in the $H^1$-norm and third order convergence in the $L^2$-norm.
 
 
-```
+```python
 def compute(n, degree):
-    mesh = RectangleMesh(0, 0, 1, 1, n, n)
+    mesh = UnitSquareMesh(n, n)
     Vh  = FunctionSpace(mesh, 'Lagrange', degree)
     boundary_parts = FacetFunction("size_t", mesh)
     boundary_parts.set_all(0)
@@ -327,7 +328,9 @@ plt.show()
 ```
 
 
-![png](output_14_0.png)
+
+
+![png](output_14_1.png)
 
 
 Copyright (c) 2016, The University of Texas at Austin & University of California, Merced.
