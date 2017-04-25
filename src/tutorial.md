@@ -17,11 +17,11 @@ To run the notebooks follow these instructions.
 
 ```ssh
 $ cd tutorial
-$ ipython notebook
+$ jupyter notebook
 ```
 
 2. A new tab will open in your web-brower showing the notebooks.
 3. Click on the notebook you would like to use.
 4. To run all the code in the notebook simply click on Cell --> Run All.
 
-For more information on installing ipython and using notebooks see <a href="http://ipython.org/notebook.html" target="_blank">here</a>.
+For more information on installing ipython and using notebooks see <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank">here</a>.
