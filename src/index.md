@@ -27,8 +27,8 @@ To ask question and find answers see <a href="https://groups.google.com/forum/#!
 Please cite with 
 ```sh
 @article{VillaPetraGhattas2016,
-title = {"hIPPYlib: AN EXTENSIBLE SOFTWARE FRAMEWORK FOR LARGE-SCALE DETERMINISTIC AND LINEARIZED BAYESIAN INVERSION"},
-author = {Villa U., and Petra, N., and Ghattas, O.},
+title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Linearized Bayesian Inversion}",
+author = {Villa, U. and Petra, N. and Ghattas, O.},
 year = {2016},
 url = {http://hippylib.github.io}
 }

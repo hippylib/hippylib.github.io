@@ -11,7 +11,7 @@ You can directly run the examples from the `application` folder or view the note
 To checkout the development version of hippylib use the command
 
 ```sh
-git clone git@github.com:hippylib/hippylib.git 
+git clone https://github.com/hippylib/hippylib.git 
 ``` 
 
 hIPPYlib depends on [FEniCS](http://fenicsproject.org/) version 1.6 or
