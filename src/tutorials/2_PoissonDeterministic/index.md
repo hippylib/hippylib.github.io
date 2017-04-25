@@ -188,7 +188,7 @@ By the end of this notebook, you should be able to:
 ### Import dependencies
 
 
-```
+```python
 from dolfin import *
 
 import sys
@@ -217,7 +217,7 @@ np.random.seed(seed=1)
 As in the introduction, the first thing we need to do is set up the numerical model.  In this cell, we set the mesh, the finite element functions $u, p, g$ corresponding to state, adjoint and coefficient/gradient variables, and the corresponding test functions and the parameters for the optimization.
 
 
-```
+```python
 # create mesh and define function spaces
 nx = 64
 ny = 64
@@ -226,8 +226,8 @@ Va = FunctionSpace(mesh, 'Lagrange', 1)
 Vu = FunctionSpace(mesh, 'Lagrange', 2)
 
 # The true and inverted parameter
-atrue = interpolate(Expression('log(2 + 7*(pow(pow(x[0] - 0.5,2) + pow(x[1] - 0.5,2),0.5) > 0.2))'),Va)
-a = interpolate(Expression("log(2.0)"),Va)
+atrue = interpolate(Expression('log(2 + 7*(pow(pow(x[0] - 0.5,2) + pow(x[1] - 0.5,2),0.5) > 0.2))', degree=5),Va)
+a = interpolate(Expression("log(2.0)", degree=1),Va)
 
 # define function for state and adjoint
 u = Function(Vu)
@@ -249,11 +249,13 @@ plt.show()
 ```
 
 
-![png](output_4_0.png)
+
+
+![png](output_4_1.png)
 
 
 
-```
+```python
 # set up dirichlet boundary conditions
 def boundary(x,on_boundary):
     return on_boundary
@@ -271,7 +273,7 @@ bc_adj = DirichletBC(Vu, Constant(0.), boundary)
 - Perturb the solution: $u = u + \eta$, where $\eta \sim \mathcal{N}(0, \sigma)$
 
 
-```
+```python
 # noise level
 noise_level = 0.05
 
@@ -316,7 +318,7 @@ $$
 In the code below, $W$ and $R$ are symmetric positive definite matrices that stem from finite element discretization of the misfit and regularization component of the cost functional, respectively.
 
 
-```
+```python
 # regularization parameter
 gamma = 1e-8
 
@@ -355,7 +357,7 @@ $$
 
 
 
-```
+```python
 # weak form for setting up the state equation
 a_state = inner(exp(a) * nabla_grad(u_trial), nabla_grad(u_test)) * dx
 L_state = f * u_test * dx
@@ -379,7 +381,7 @@ M = assemble(M_equ)
 We solve the state equation and compute the cost functional for the initial guess of the parameter ``a_ini``
 
 
-```
+```python
 # solve state equation
 state_A, state_b = assemble_system (a_state, L_state, bc_state)
 solve (state_A, u.vector(), state_b)
@@ -426,7 +428,7 @@ $$
 
 
 
-```
+```python
 # Class HessianOperator to perform Hessian apply to a vector
 class HessianOperator():
     cgiter = 0
@@ -527,7 +529,7 @@ More specifically, we use backtracking to find $\alpha$ such that:
 $$J( a + \alpha \delta a ) \leq J(a) + \alpha c_{\rm armijo} (\delta a,g). $$
 
 
-```
+```python
 # define parameters for the optimization
 tol = 1e-8
 c = 1e-4
@@ -645,21 +647,21 @@ print "Time elapsed: ", time.clock()-start
 ```
 
     Nit   CGit   cost          misfit        reg           sqrt(-G*D)    ||grad||       alpha  tolcg
-     1     1     1.12708e-05   1.12708e-05   1.33977e-11   1.56540e-02   3.79427e-04    1.00   5.000e-01
-     2     1     7.79734e-07   7.79697e-07   3.67729e-11   4.68278e-03   5.35002e-05    1.00   3.755e-01
-     3     1     3.10622e-07   3.10573e-07   4.91248e-11   9.71634e-04   7.13895e-06    1.00   1.372e-01
-     4     5     1.92178e-07   1.62400e-07   2.97779e-08   4.51700e-04   1.00276e-06    1.00   5.141e-02
-     5     1     1.86913e-07   1.57119e-07   2.97939e-08   1.02621e-04   6.12503e-07    1.00   4.018e-02
-     6    12     1.80408e-07   1.37719e-07   4.26888e-08   1.15979e-04   2.24116e-07    1.00   2.430e-02
-     7     5     1.80331e-07   1.38935e-07   4.13965e-08   1.23333e-05   4.18204e-08    1.00   1.050e-02
-     8    16     1.80330e-07   1.39057e-07   4.12728e-08   1.74660e-06   3.43687e-09    1.00   3.010e-03
+     1     1     1.12708e-05   1.12708e-05   1.33979e-11   1.56540e-02   3.79427e-04    1.00   5.000e-01
+     2     1     7.79732e-07   7.79695e-07   3.67737e-11   4.68278e-03   5.35002e-05    1.00   3.755e-01
+     3     1     3.10620e-07   3.10571e-07   4.91259e-11   9.71633e-04   7.13895e-06    1.00   1.372e-01
+     4     5     1.92183e-07   1.62405e-07   2.97780e-08   4.51694e-04   1.00276e-06    1.00   5.141e-02
+     5     1     1.86913e-07   1.57119e-07   2.97941e-08   1.02668e-04   6.12750e-07    1.00   4.019e-02
+     6    12     1.80408e-07   1.37719e-07   4.26890e-08   1.15975e-04   2.24111e-07    1.00   2.430e-02
+     7     5     1.80331e-07   1.38935e-07   4.13963e-08   1.23223e-05   4.17399e-08    1.00   1.049e-02
+     8    15     1.80330e-07   1.39056e-07   4.12734e-08   1.74451e-06   3.43216e-09    1.00   3.008e-03
     Newton's method converged in  8   iterations
-    Total number of CG iterations:  42
-    Time elapsed:  13.809115
+    Total number of CG iterations:  41
+    Time elapsed:  9.28313
 
 
 
-```
+```python
 nb.multi1_plot([atrue, a], ["atrue", "a"])
 nb.multi1_plot([u,p], ["u","p"], same_colorbar=False)
 plt.show()
