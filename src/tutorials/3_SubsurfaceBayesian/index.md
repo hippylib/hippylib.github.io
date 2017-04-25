@@ -204,7 +204,7 @@ By the end of this notebook, you should be able to:
 ## 1. Load modules
 
 
-```
+```python
 import dolfin as dl
 import math
 import numpy as np
@@ -229,7 +229,7 @@ np.random.seed(seed=1)
 This function generates a random field with a prescribed anysotropic covariance function.
 
 
-```
+```python
 def true_model(Vh, gamma, delta, anis_diff):
     prior = BiLaplacianPrior(Vh, gamma, delta, anis_diff )
     noise = dl.Vector()
@@ -248,7 +248,7 @@ We compute a two dimensional mesh of a unit square with nx by ny elements.
 We define a P2 finite element space for the *state* and *adjoint* variable and P1 for the *parameter*.
 
 
-```
+```python
 ndim = 2
 nx = 64
 ny = 64
@@ -274,21 +274,21 @@ The `PDEVariationalProblem` class offer the following functionality:
 - evaluate first and second partial derivative of the forward problem with respect to the state, parameter, and adojnt variables.
 
 
-```
+```python
 def u_boundary(x, on_boundary):
     return on_boundary and ( x[1] < dl.DOLFIN_EPS or x[1] > 1.0 - dl.DOLFIN_EPS)
 
-u_bdr = dl.Expression("x[1]")
-u_bdr0 = dl.Expression("0.0")
+u_bdr = dl.Expression("x[1]", degree=1)
+u_bdr0 = dl.Constant(0.0)
 bc = dl.DirichletBC(Vh[STATE], u_bdr, u_boundary)
 bc0 = dl.DirichletBC(Vh[STATE], u_bdr0, u_boundary)
 
-f = dl.Expression("0.0")
+f = dl.Constant(0.0)
     
 def pde_varf(u,a,p):
     return dl.exp(a)*dl.inner(dl.nabla_grad(u), dl.nabla_grad(p))*dl.dx - f*p*dl.dx
     
-pde = PDEVariationalProblem(Vh, pde_varf, bc, bc0)
+pde = PDEVariationalProblem(Vh, pde_varf, bc, bc0, is_fwd_linear=True)
 ```
 
 ## 4. Set up the prior
@@ -318,11 +318,11 @@ $$
 Finally the prior distribution is $\mathcal{N}(a_{\rm pr}, \mathcal{C}_{\rm prior})$, with $\mathcal{C}_{\rm prior} = \mathcal{A}^{-2}$.
 
 
-```
+```python
 gamma = .1
 delta = .5
     
-anis_diff = dl.Expression(code_AnisTensor2D)
+anis_diff = dl.Expression(code_AnisTensor2D, degree=1)
 anis_diff.theta0 = 2.
 anis_diff.theta1 = .5
 anis_diff.alpha = math.pi/4
@@ -346,7 +346,9 @@ model = Model(pde,prior, misfit)
 
 
 
-![png](output_10_1.png)
+
+
+![png](output_10_2.png)
 
 
 ## 5. Set up the misfit functional and generate synthetic observations
@@ -357,7 +359,7 @@ To generate the synthetic observation, we first solve the forward problem using 
 *rel_noise* is the signal to noise ratio.
 
 
-```
+```python
 ntargets = 300
 rel_noise = 0.01
 
@@ -401,14 +403,14 @@ The model is defined by three component:
 To test gradient and the Hessian of the model we use forward finite differences.
 
 
-```
+```python
 model = Model(pde, prior, misfit)
 
-a0 = dl.interpolate(dl.Expression("sin(x[0])"), Vh[PARAMETER])
+a0 = dl.interpolate(dl.Expression("sin(x[0])", degree=5), Vh[PARAMETER])
 modelVerify(model, a0.vector(), 1e-12)
 ```
 
-    (yy, H xx) - (xx, H yy) =  9.09491932242e-15
+    (yy, H xx) - (xx, H yy) =  7.4275188982e-15
 
 
 
@@ -420,7 +422,7 @@ modelVerify(model, a0.vector(), 1e-12)
 We used the globalized Newtown-CG method to compute the MAP point.
 
 
-```
+```python
 a0 = prior.mean.copy()
 solver = ReducedSpaceNewtonCG(model)
 solver.parameters["rel_tolerance"] = 1e-9
@@ -448,24 +450,24 @@ plt.show()
 ```
 
     
-    It  cg_it cost            misfit          reg             (g,da)          ||g||L2        alpha          tolcg         
-      1   1    1.205749e+03    1.205435e+03    3.147595e-01   -1.569088e+04   1.041993e+05   1.000000e+00   5.000000e-01
-      2   3    3.456819e+02    3.444282e+02    1.253761e+00   -1.845351e+03   1.430874e+04   1.000000e+00   3.705684e-01
-      3   1    2.745939e+02    2.732846e+02    1.309355e+00   -1.421202e+02   1.002730e+04   1.000000e+00   3.102127e-01
-      4   7    1.691715e+02    1.647563e+02    4.415191e+00   -2.126866e+02   3.868977e+03   1.000000e+00   1.926929e-01
-      5   6    1.573196e+02    1.522914e+02    5.028129e+00   -2.345175e+01   1.820008e+03   1.000000e+00   1.321613e-01
-      6  14    1.424898e+02    1.297463e+02    1.274356e+01   -2.988290e+01   1.157435e+03   1.000000e+00   1.053940e-01
-      7   2    1.421591e+02    1.294122e+02    1.274692e+01   -6.608825e-01   7.299626e+02   1.000000e+00   8.369856e-02
-      8  22    1.407910e+02    1.253199e+02    1.547109e+01   -2.732846e+00   4.407936e+02   1.000000e+00   6.504072e-02
-      9  16    1.407819e+02    1.253760e+02    1.540587e+01   -1.827524e-02   5.039967e+01   1.000000e+00   2.199285e-02
-     10  29    1.407814e+02    1.253304e+02    1.545101e+01   -9.452146e-04   1.061811e+01   1.000000e+00   1.009465e-02
-     11  36    1.407814e+02    1.253304e+02    1.545106e+01   -8.147549e-08   9.003262e-02   1.000000e+00   9.295390e-04
-     12  62    1.407814e+02    1.253304e+02    1.545106e+01   -2.063794e-12   3.281322e-04   1.000000e+00   5.611670e-05
+    It  cg_it  cost          misfit        reg           (g,da)       ||g||L2      alpha     tolcg         
+      1   1    1.2065e+03    1.2062e+03    3.1473e-01   -1.5705e+04   1.0425e+05   1.0e+00   5.0000e-01
+      2   3    3.4593e+02    3.4468e+02    1.2536e+00   -1.8467e+03   1.4314e+04   1.0e+00   3.7054e-01
+      3   1    2.7467e+02    2.7336e+02    1.3092e+00   -1.4246e+02   1.0037e+04   1.0e+00   3.1028e-01
+      4   7    1.6917e+02    1.6476e+02    4.4157e+00   -2.1284e+02   3.8710e+03   1.0e+00   1.9269e-01
+      5   6    1.5732e+02    1.5229e+02    5.0283e+00   -2.3456e+01   1.8211e+03   1.0e+00   1.3216e-01
+      6  14    1.4249e+02    1.2974e+02    1.2743e+01   -2.9882e+01   1.1574e+03   1.0e+00   1.0536e-01
+      7   2    1.4216e+02    1.2941e+02    1.2746e+01   -6.6442e-01   7.3260e+02   1.0e+00   8.3827e-02
+      8  22    1.4079e+02    1.2532e+02    1.5471e+01   -2.7344e+00   4.4098e+02   1.0e+00   6.5037e-02
+      9  14    1.4078e+02    1.2537e+02    1.5404e+01   -1.7445e-02   5.0571e+01   1.0e+00   2.2024e-02
+     10  29    1.4078e+02    1.2533e+02    1.5451e+01   -1.8196e-03   1.5024e+01   1.0e+00   1.2004e-02
+     11  38    1.4078e+02    1.2533e+02    1.5451e+01   -2.5035e-07   1.3906e-01   1.0e+00   1.1549e-03
+     12  53    1.4078e+02    1.2533e+02    1.5451e+01   -1.3812e-12   2.6266e-04   1.0e+00   5.0194e-05
     
     Converged in  12  iterations.
     Termination reason:  Norm of the gradient less than tolerance
-    Final gradient norm:  1.27740754831e-08
-    Final cost:  140.781419038
+    Final gradient norm:  1.63019593759e-08
+    Final cost:  140.781736843
 
 
 
@@ -483,7 +485,7 @@ The effective rank of the Hessian misfit is the number of eigenvalues above the 
 The effective rank is independent of the mesh size.
 
 
-```
+```python
 model.setPointForHessianEvaluations(x)
 Hmisfit = ReducedHessian(model, solver.parameters["inner_rel_tolerance"], gauss_newton_approx=False, misfit_only=True)
 k = 50
@@ -517,7 +519,7 @@ nb.plot_eigenvectors(Vh[PARAMETER], U, mytitle="Eigenvector", which=[0,1,2,5,10,
 ## 9. Prior and posterior pointwise variance fields
 
 
-```
+```python
 compute_trace = True
 if compute_trace:
     post_tr, prior_tr, corr_tr = posterior.trace(method="Estimator", tol=5e-2, min_iter=20, max_iter=2000)
@@ -531,7 +533,7 @@ nb.multi1_plot(objs, mytitles, logscale=True)
 plt.show()
 ```
 
-    Posterior trace 1.144005e-01; Prior trace 4.031887e-01; Correction trace 2.887882e-01
+    Posterior trace 1.143368e-01; Prior trace 4.034355e-01; Correction trace 2.890987e-01
 
 
 
@@ -541,7 +543,7 @@ plt.show()
 ## 10. Generate samples from Prior and Posterior
 
 
-```
+```python
 nsamples = 5
 noise = dl.Vector()
 posterior.init_vector(noise,"noise")
@@ -549,16 +551,17 @@ noise_size = noise.array().shape[0]
 s_prior = dl.Function(Vh[PARAMETER], name="sample_prior")
 s_post = dl.Function(Vh[PARAMETER], name="sample_post")
 
-range_pr = 2*math.sqrt( pr_pw_variance.max() )
-ps_max   = 2*math.sqrt( post_pw_variance.max() ) + posterior.mean.max()
-ps_min   = -2*math.sqrt( post_pw_variance.max() ) + posterior.mean.min()
+pr_max   =  2.5*math.sqrt( pr_pw_variance.max() ) + prior.mean.max()
+pr_min   = -2.5*math.sqrt( pr_pw_variance.max() ) + prior.mean.min()
+ps_max   =  2.5*math.sqrt( post_pw_variance.max() ) + posterior.mean.max()
+ps_min   = -2.5*math.sqrt( post_pw_variance.max() ) + posterior.mean.min()
 
 for i in range(nsamples):
     noise.set_local( np.random.randn( noise_size ) )
     posterior.sample(noise, s_prior.vector(), s_post.vector())
     plt.figure(figsize=(15,5))
-    nb.plot(s_prior, subplot_loc=121,mytitle="Prior sample", vmin=-range_pr, vmax=range_pr)
-    nb.plot(s_post, subplot_loc=122,mytitle="Posterior sample", vmin=ps_min, vmax=ps_max)
+    nb.plot(s_prior, subplot_loc=121, mytitle="Prior sample",     vmin=pr_min, vmax=pr_max)
+    nb.plot(s_post,  subplot_loc=122, mytitle="Posterior sample", vmin=ps_min, vmax=ps_max)
     plt.show()
 ```
 
