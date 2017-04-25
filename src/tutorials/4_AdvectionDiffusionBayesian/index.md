@@ -18,7 +18,7 @@ $
 \def\iFFadj{\mathcal{F}^*}
 \def\ncov{\Gamma_{\mathrm{noise}}}
 $
-#Example: Bayesian initial condition inversion in an advection-diffusion problem 
+# Example: Bayesian initial condition inversion in an advection-diffusion problem 
 
 In this example we tackle the problem of quantifying the uncertainty in the solution of an inverse problem governed by a parabolic PDE via the Bayesian inference framework. The underlying PDE is a time-dependent advection-diffusion equation in which we seek to infer an unknown initial condition from spatio-temporal point measurements.
 
@@ -98,7 +98,7 @@ $$
 ## 1. Load modules
 
 
-```
+```python
 import dolfin as dl
 import math
 import numpy as np
@@ -123,7 +123,7 @@ np.random.seed(1)
 ## 2. Construct the velocity field
 
 
-```
+```python
 def v_boundary(x,on_boundary):
     return on_boundary
 
@@ -133,11 +133,15 @@ def q_boundary(x,on_boundary):
 def computeVelocityField(mesh):
     Xh = dl.VectorFunctionSpace(mesh,'Lagrange', 2)
     Wh = dl.FunctionSpace(mesh, 'Lagrange', 1)
-    XW = dl.MixedFunctionSpace([Xh, Wh])
+    if dlversion() <= (1,6,0):
+        XW = dl.MixedFunctionSpace([Xh, Wh])
+    else:
+        mixed_element = dl.MixedElement([Xh.ufl_element(), Wh.ufl_element()])
+        XW = dl.FunctionSpace(mesh, mixed_element)
 
     Re = 1e2
     
-    g = dl.Expression(('0.0','(x[0] < 1e-14) - (x[0] > 1 - 1e-14)'))
+    g = dl.Expression(('0.0','(x[0] < 1e-14) - (x[0] > 1 - 1e-14)'), degree=1)
     bc1 = dl.DirichletBC(XW.sub(0), g, v_boundary)
     bc2 = dl.DirichletBC(XW.sub(1), dl.Constant(0), q_boundary, 'pointwise')
     bcs = [bc1, bc2]
@@ -168,7 +172,7 @@ def computeVelocityField(mesh):
 ## 3. Set up the mesh and finite element spaces
 
 
-```
+```python
 mesh = dl.refine( dl.Mesh("ad_20.xml") )
 wind_velocity = computeVelocityField(mesh)
 Vh = dl.FunctionSpace(mesh, "Lagrange", 1)
@@ -176,7 +180,9 @@ print "Number of dofs: {0}".format( Vh.dim() )
 ```
 
 
-![png](output_6_0.png)
+
+
+![png](output_6_1.png)
 
 
     Number of dofs: 2023
@@ -185,7 +191,7 @@ print "Number of dofs: {0}".format( Vh.dim() )
 ## 4. Set up model (prior, true/proposed initial condition)
 
 
-```
+```python
 #gamma = 1
 #delta = 10
 #prior = LaplacianPrior(Vh, gamma, delta)
@@ -194,8 +200,8 @@ gamma = 1
 delta = 8
 prior = BiLaplacianPrior(Vh, gamma, delta)
 
-prior.mean = dl.interpolate(dl.Expression('0.5'), Vh).vector()
-true_initial_condition = dl.interpolate(dl.Expression('min(0.5,exp(-100*(pow(x[0]-0.35,2) +  pow(x[1]-0.7,2))))'), Vh).vector()
+prior.mean = dl.interpolate(dl.Constant(0.5), Vh).vector()
+true_initial_condition = dl.interpolate(dl.Expression('min(0.5,exp(-100*(pow(x[0]-0.35,2) +  pow(x[1]-0.7,2))))', degree=5), Vh).vector()
 problem = TimeDependentAD(mesh, [Vh,Vh,Vh], 0., 4., 1., .2, wind_velocity, True, prior)
 
 objs = [dl.Function(Vh,true_initial_condition),
@@ -212,7 +218,7 @@ plt.show()
 ## 5. Generate the synthetic observations
 
 
-```
+```python
 rel_noise = 0.001
 utrue = problem.generate_vector(STATE)
 x = [utrue, true_initial_condition, None]
@@ -233,12 +239,12 @@ nb.show_solution(Vh, true_initial_condition, utrue, "Solution")
 ## 6. Test the gradient and the Hessian of the cost (negative log posterior)
 
 
-```
+```python
 a0 = true_initial_condition.copy()
 modelVerify(problem, a0, 1e-12, is_quadratic=True)
 ```
 
-    (yy, H xx) - (xx, H yy) =  -2.66447204172e-14
+    (yy, H xx) - (xx, H yy) =  -4.75341826113e-14
 
 
 
@@ -248,7 +254,7 @@ modelVerify(problem, a0, 1e-12, is_quadratic=True)
 ## 7. Evaluate the gradient
 
 
-```
+```python
 [u,a,p] = problem.generate_vector()
 problem.solveFwd(u, [u,a,p], 1e-12)
 problem.solveAdj(p, [u,a,p], 1e-12)
@@ -258,13 +264,13 @@ grad_norm = problem.evalGradientParameter([u,a,p], mg)
 print "(g,g) = ", grad_norm
 ```
 
-    (g,g) =  1.67407425719e+12
+    (g,g) =  1.66716039169e+12
 
 
 ## 8. The Gaussian approximation of the posterior
 
 
-```
+```python
 H = ReducedHessian(problem, 1e-12, gauss_newton_approx=False, misfit_only=True) 
 
 k = 80
@@ -298,7 +304,7 @@ nb.plot_eigenvectors(Vh, U, mytitle="Eigenvector", which=[0,1,2,5,10,20,30,45,60
 ## 9. Compute the MAP point
 
 
-```
+```python
 H.misfit_only = False
         
 solver = CGSolverSteihaug()
@@ -321,13 +327,13 @@ plt.show()
 nb.show_solution(Vh, a, u, "Solution")
 ```
 
-     Iterartion :  0  (B r, r) =  30439.3327254
-     Iteration :  1  (B r, r) =  0.0608908617948
-     Iteration :  2  (B r, r) =  1.04124879143e-05
-     Iteration :  3  (B r, r) =  9.49494299284e-09
+     Iterartion :  0  (B r, r) =  30140.7469691
+     Iteration :  1  (B r, r) =  0.0653735328531
+     Iteration :  2  (B r, r) =  6.27997089018e-06
+     Iteration :  3  (B r, r) =  9.56996790758e-10
     Relative/Absolute residual less than tol
-    Converged in  3  iterations with final norm  9.74419980955e-05
-    Total cost 84.6353; Reg Cost 69.0841; Misfit 15.5513
+    Converged in  3  iterations with final norm  3.09353647264e-05
+    Total cost 84.2612; Reg Cost 68.8823; Misfit 15.3789
 
 
 
@@ -341,12 +347,12 @@ nb.show_solution(Vh, a, u, "Solution")
 ## 10. Prior and posterior pointwise variance fields
 
 
-```
+```python
 compute_trace = True
 if compute_trace:
     post_tr, prior_tr, corr_tr = posterior.trace(method="Estimator", tol=5e-2, min_iter=20, max_iter=2000)
     print "Posterior trace {0:5g}; Prior trace {1:5g}; Correction trace {2:5g}".format(post_tr, prior_tr, corr_tr)
-post_pw_variance, pr_pw_variance, corr_pw_variance = posterior.pointwise_variance()
+post_pw_variance, pr_pw_variance, corr_pw_variance = posterior.pointwise_variance("Exact")
 
 objs = [dl.Function(Vh, pr_pw_variance),
         dl.Function(Vh, post_pw_variance)]
@@ -355,7 +361,7 @@ nb.multi1_plot(objs, mytitles, logscale=True)
 plt.show()
 ```
 
-    Posterior trace 0.000563201; Prior trace 0.0285287; Correction trace 0.0279655
+    Posterior trace 0.000465642; Prior trace 0.0284301; Correction trace 0.0279644
 
 
 
@@ -365,7 +371,7 @@ plt.show()
 ## 11. Draw samples from the prior and posterior distributions
 
 
-```
+```python
 nsamples = 5
 noise = dl.Vector()
 posterior.init_vector(noise,"noise")
