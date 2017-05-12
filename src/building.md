@@ -93,7 +93,7 @@ command and to expose port `8888`.
 
 From a command line shell, go to the `hippylib` folder and type:
 ```sh
-docker run --name hippylib-nb -w /home/fenics/hippylib -v $(pwd):/home/fenics/hippylib -d -p 127.0.0.1:8888:8888 quay.io/fenicsproject/stable:2016.2.0.r2 'jupyter-notebook --ip=0.0.0.0'
+docker run --name hippylib-nb -w /home/fenics/hippylib -v $(pwd):/home/fenics/hippylib -d -p 127.0.0.1:8888:8888 quay.io/fenicsproject/stable:2016.2.0 'jupyter-notebook --ip=0.0.0.0'
 docker logs hippylib-nb
 ```
 The notebook will be available at
@@ -116,7 +116,7 @@ We first create a new Docker container to run the 'jupyter-notebook' command and
 
 From a command line shell, go to the `hippylib` folder and type:
 ```sh
-docker run --name hippylib-nb -w /home/fenics/hippylib -v $(pwd):/home/fenics/hippylib -d -p $(docker-machine ip $(docker-machine active)):8888:8888 quay.io/fenicsproject/stable:2016.2.0.r2 'jupyter-notebook --ip=0.0.0.0'
+docker run --name hippylib-nb -w /home/fenics/hippylib -v $(pwd):/home/fenics/hippylib -d -p $(docker-machine ip $(docker-machine active)):8888:8888 quay.io/fenicsproject/stable:2016.2.0 'jupyter-notebook --ip=0.0.0.0'
 docker logs hippylib-nb
 ```
 To find out the IP of the virtual machine we type:

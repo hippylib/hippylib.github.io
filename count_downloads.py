@@ -17,7 +17,11 @@ versions = [ ('v1.0.0', 'https://goo.gl/h7HUFJ'),
 request = 'https://www.googleapis.com/urlshortener/v1/url?shortUrl={0}&projection=FULL&key={1}'
 
 print '{0:7} {1:9}'.format('version', 'downloads')
+total_downloads = 0
 for v in versions:
     filehandle = urllib.urlopen(request.format(v[1], key))
     data = json.load(filehandle)
-    print '{0:7} {1:9}'.format(v[0], data['analytics']['allTime']['shortUrlClicks'])
+    total_downloads += int(data['analytics']['allTime']['shortUrlClicks'])
+    print '{0:7} {1:9}'.format(v[0], int(data['analytics']['allTime']['shortUrlClicks']))
+
+print '{0:7} {1:9}'.format('all', total_downloads)
