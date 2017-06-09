@@ -90,8 +90,8 @@ solving a deterministic inverse problem) with appropriately weighted norms,
 $
 \map := \underset{\m}{\arg \min} \; \mathcal{J}(\m) \;:=\;
 \Big( 
--\frac{1}{2} \| \bf f(\m) - \data \|^2_{\bf \Gamma_{\text{noise}}^{-1}} 
--\frac{1}{2} \| \m -\m_{\text prior} \|^2_{\bf \Gamma_{\text{prior}}^{-1}} 
+\frac{1}{2} \| \bf f(\m) - \data \|^2_{\bf \Gamma_{\text{noise}}^{-1}} 
++\frac{1}{2} \| \m -\m_{\text prior} \|^2_{\bf \Gamma_{\text{prior}}^{-1}} 
 \Big).
 $
 
