@@ -8,9 +8,13 @@ hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for P
 - Automatic generation of efficient code for the discretization of weak forms using FEniCS
 - Symbolic differentiation of weak forms to generate derivatives and adjoint information
 - Globalized Inexact Newton-CG method to solve the inverse problem
-- Low rank representation of the posterior covariace using randomized algorithms.
+- Low rank representation of the posterior covariace using randomized algorithms
 
 See also our [tutorial](tutorial.md) and list of related [publications](research.md).
+
+## Announcements
+
+- Open [postdoc position](postdoc_position.md) in Professor Noemi Petra's group
 
 ## Latest Release
 
