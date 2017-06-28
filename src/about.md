@@ -17,7 +17,8 @@
 &copy; 2016 The University of Texas at Austin, University of California Merced.
 
 ## License
-- [GNU General Public License version 3 (GPL)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
+- [GNU General Public License version 2 (GPL)](http://www.gnu.org/licenses/gpl-2.0-standalone.html)
+- Older Releases (1.2.0 or older): [GNU General Public License version 3 (GPL)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
 <br>
 
