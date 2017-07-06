@@ -14,7 +14,7 @@ See also our [tutorial](tutorial.md) and list of related [publications](research
 
 ## Announcements
 
-- Open [postdoc position](postdoc_position.md) in Professor Noemi Petra's group
+- Open [postdoc position](postdoc_position.md) in Professor Noemi Petra's group. Apply [here](https://aprecruit.ucmerced.edu/apply/JPF00505).
 
 ## Latest Release
 
