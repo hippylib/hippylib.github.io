@@ -16,6 +16,8 @@ See also our [tutorial](tutorial.md) and list of related [publications](research
 
 - Open [postdoc position](postdoc_position.md) in Professor Noemi Petra's group. Apply [here](https://aprecruit.ucmerced.edu/apply/JPF00505).
 
+-  June 2018: Gene Golub SIAM Summer School in Breckenridge, Colorado. [Early announement flyer](http://math.nyu.edu/~stadler/GGSS18); more details coming soon.
+
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)

@@ -21,6 +21,10 @@
 
 ## Oral Presentations
 
+- U. Villa, [*Taylor Approximation for PDE-constrained Optimal Control Problems under High-dimensional Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=87851), SIAM Control, July 10 - 12, 2017, Pittsburgh, Pa, US
+
+- U. Villa, [*Derivative-Informed MCMC for Bayesian Calibration of Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=62707), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
+
 - U. Villa, *Hessian-based sampling techniques for Bayesian inverse problems with stochastic PDE forward model*, Applied Inverse Problems, May 29 - June 2, 2017, Hangzhou, China
 
 - U. Villa, [*Bayesian Calibration of Inadequate Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_talk.cfm?p=82633), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
@@ -34,6 +38,8 @@
 - U. Villa, [*An Analytical Technique for Forward and Inverse Propagation of Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=74269), SIAM UQ, April 5-8, 2016, Lausanne, Switzerland
 
 ## Poster Presentations
+
+- K. Koval, G. Stadler, [*Computational Approaches for Linear Goal-Oriented Bayesian Inverse Problems*](http://meetings.siam.org/sess/dsp_talk.cfm?p=86488), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
 
 - J. Chen, A. Drach, U. Villa, R. Avazmohammadi, D. Li, O. Ghattas and M. Sacks, *Identification of Mechanical Properties of 3D Myocardial Tissue: An Inverse Modeling and Optimal Experimental Design Problem*, FEniCS'17, June 12-14, 2017, University of Luxembourg, Luxembourg
 
