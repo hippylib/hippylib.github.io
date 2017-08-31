@@ -10,6 +10,8 @@ Systematic Integration of Data with Models under Uncertainty*, Gene Golub SIAM S
 
 ## Graduate level courses
 
+- O. Ghattas @UT Austin, *Computational and Variational Inverse Problems*, Fall 2017
+
 - A. Alexanderian @NC State, *Inverse problems*, Fall 2016
 
 - G. Stadler @NYU, *Advanced Topics in Numerical Analysis: Computational and Variational Methods for Inverse Problems*, Spring 2016 [link](http://math.nyu.edu/~stadler/inv16/)
@@ -18,8 +20,5 @@ Systematic Integration of Data with Models under Uncertainty*, Gene Golub SIAM S
 
 - O. Ghattas @UT Austin, *Computational and Variational Inverse Problems*, Fall 2015 [link](http://users.ices.utexas.edu/~omar/inverse_problems/index.html)
 
-## Grants
 
-<!-- - PIs: G. Biros, O. Ghattas, M. Girolami, M. Heinkenschloss, R. Moser, A. Philpott, A. Stuart, and K. Willcox, *Inference, Simulation, and Optimization of Complex Systems Under Uncertainty: Theory, Algorithms, and Applications to Turbulent Combustion*, DARPA/ARO -->
-- PIs: O. Ghattas, M. Parno, N. Petra, Y. Marzouk, U. Villa, *Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*, NSF-SSI2
 

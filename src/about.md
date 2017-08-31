@@ -6,15 +6,24 @@
 - [Umberto Villa](http://users.ices.utexas.edu/~uvilla/)
 
 ## Contributors
-- Amal Alghamdi
-- Joshua Chen
-- [Peng Chen](http://users.ices.utexas.edu/~peng/)
-- Ben Crestel
-- Tom O'Leary-Roseberry
-- Vishwas Rao
+Amal Alghamdi,
+Joshua Chen,
+[Peng Chen](http://users.ices.utexas.edu/~peng/),
+Ben Crestel,
+Tom O'Leary-Roseberry,
+Vishwas Rao,
+Siddhant Wahal
 
 ## Copyright
-&copy; 2016 The University of Texas at Austin, University of California Merced.
+&copy; 2016-2017 The University of Texas at Austin, University of California Merced.
+
+## Support
+- O. Ghattas, N. Petra (PIs),  U. Villa (Co-PI), *Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*, NSF-SSI2, Grants No ACI-1550593, ACI-1550547 (2016-2019).
+
+- O. Ghattas (PI); G. Biros and Y. Marzouk (Co-PIs), *Bayesian Optimal Experimental Design for Inverse Scattering*,
+Air Force Office of Scientific Research, Computational Mathematics program, grant FA9550-12-1-81243 (2017–2020).
+
+- O. Ghattas (PI), G. Biros, M. Girolami, M. Heinkenschloss, R. Moser, A. Philpott, A. Stuart, and K. Willcox (Co-PIs), *Inference, Simulation, and Optimization of Complex Systems Under Uncertainty: Theory, Algorithms, and Applications to Turbulent Combustion*, DARPA/ARO, Grants No W911NF-15-2-0121 (2016-2017).
 
 ## License
 - [GNU General Public License version 2 (GPL)](http://www.gnu.org/licenses/gpl-2.0-standalone.html)
