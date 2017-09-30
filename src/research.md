@@ -21,6 +21,13 @@
 
 ## Oral Presentations
 
+- T. O’Leary-Roseberry, *A PDE Constrained Optimization Approach to the Solution
+of the Stefan Problem*, Texas Applied Mathematics
+and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
+
+- U. Villa, *hIPPYlib:  An Extensible Software Framework for Large-Scale Deterministic and Linearized Bayesian Inverse*, Texas Applied Mathematics
+and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
+
 - U. Villa, [*Taylor Approximation for PDE-constrained Optimal Control Problems under High-dimensional Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=87851), SIAM Control, July 10 - 12, 2017, Pittsburgh, Pa, US
 
 - U. Villa, [*Derivative-Informed MCMC for Bayesian Calibration of Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=62707), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
