@@ -5,9 +5,15 @@ Created on Dec 12, 2016
 '''
 import json
 import urllib
+import ssl
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
 #key = 'AIzaSyCnCjlxS5LUvP1jjXansnk1ymt-Liga2aQ'
-key = 'AIzaSyBLuHKVMU8kxU5R2ykwEgGTdhuINg-3HUE'
+#key = 'AIzaSyBLuHKVMU8kxU5R2ykwEgGTdhuINg-3HUE'
+key = ' AIzaSyBCcGtouSRX4uLUyzujx_DMRcLDmcKWGT0'
 versions = [('v1.3.0', 'https://goo.gl/NgJ887'),
             ('v1.2.0', 'https://goo.gl/OcvROZ'),
             ('v1.1.0', 'https://goo.gl/pDb10B'),
@@ -21,7 +27,7 @@ request = 'https://www.googleapis.com/urlshortener/v1/url?shortUrl={0}&projectio
 print '{0:7} {1:9}'.format('version', 'downloads')
 total_downloads = 0
 for v in versions:
-    filehandle = urllib.urlopen(request.format(v[1], key))
+    filehandle = urllib.urlopen(request.format(v[1], key), context=ctx)
     data = json.load(filehandle)
     total_downloads += int(data['analytics']['allTime']['shortUrlClicks'])
     print '{0:7} {1:9}'.format(v[0], int(data['analytics']['allTime']['shortUrlClicks']))
