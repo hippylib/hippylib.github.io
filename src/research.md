@@ -19,6 +19,9 @@
 
 - U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale deterministic and linearized Bayesian inverse problems*, 2017
 
+## Ph.D. Thesis
+- B. Crestel, *Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*, University of Texas at Austin, 2017. Adviser O. Ghattas
+
 ## Oral Presentations
 
 - T. O’Leary-Roseberry, *A PDE Constrained Optimization Approach to the Solution
