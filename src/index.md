@@ -16,12 +16,12 @@ See also our [tutorial](tutorial.md) and list of related [publications](research
 
 - Open [postdoc position](postdoc_position.md) in Professor Noemi Petra's group. Apply [here](https://aprecruit.ucmerced.edu/apply/JPF00505).
 
--  June 2018: Gene Golub SIAM Summer School in Breckenridge, Colorado. [Early announement flyer](http://math.nyu.edu/~stadler/GGSS18); more details coming soon.
+-  Applications are now open for the 2018 Gene Golub SIAM Summer School: [*Inverse Problems: Systematic Integration of Data with Models under Uncertainty*](https://g2s3.com), June 17-30, 2018 Breckenridge, Colorado, USA. [flyer](http://math.nyu.edu/~stadler/GGSS18).
 
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-1.3.0.tar.gz](https://goo.gl/NgJ887)
+- Download [hippylib-1.4.0.tar.gz](https://goo.gl/37bskk)
 - [Previous releases](download.md)
 
 ## Contact

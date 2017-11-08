@@ -14,7 +14,8 @@ ctx.verify_mode = ssl.CERT_NONE
 #key = 'AIzaSyCnCjlxS5LUvP1jjXansnk1ymt-Liga2aQ'
 #key = 'AIzaSyBLuHKVMU8kxU5R2ykwEgGTdhuINg-3HUE'
 key = ' AIzaSyBCcGtouSRX4uLUyzujx_DMRcLDmcKWGT0'
-versions = [('v1.3.0', 'https://goo.gl/NgJ887'),
+versions = [('v1.4.0', 'https://goo.gl/37bskk'),
+            ('v1.3.0', 'https://goo.gl/NgJ887'),
             ('v1.2.0', 'https://goo.gl/OcvROZ'),
             ('v1.1.0', 'https://goo.gl/pDb10B'),
             ('v1.0.2', 'https://goo.gl/wMb18C'),
@@ -29,7 +30,10 @@ total_downloads = 0
 for v in versions:
     filehandle = urllib.urlopen(request.format(v[1], key), context=ctx)
     data = json.load(filehandle)
-    total_downloads += int(data['analytics']['allTime']['shortUrlClicks'])
-    print '{0:7} {1:9}'.format(v[0], int(data['analytics']['allTime']['shortUrlClicks']))
+    try:
+    	total_downloads += int(data['analytics']['allTime']['shortUrlClicks'])
+    	print '{0:7} {1:9}'.format(v[0], int(data['analytics']['allTime']['shortUrlClicks']))
+    except KeyError:
+        print data
 
 print '{0:7} {1:9}'.format('all', total_downloads)
