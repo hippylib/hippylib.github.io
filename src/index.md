@@ -21,7 +21,7 @@ See also our [tutorial](tutorial.md) and list of related [publications](research
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-1.4.0.tar.gz](https://goo.gl/37bskk)
+- Download [hippylib-1.5.0.tar.gz](https://goo.gl/doJZRB)
 - [Previous releases](download.md)
 
 ## Contact

@@ -15,7 +15,7 @@ Vishwas Rao,
 Siddhant Wahal
 
 ## Copyright
-&copy; 2016-2017 The University of Texas at Austin, University of California Merced.
+&copy; 2016-2018 The University of Texas at Austin, University of California Merced.
 
 ## Support
 - O. Ghattas, N. Petra (PIs),  U. Villa (Co-PI), *Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*, NSF-SSI2, Grants No ACI-1550593, ACI-1550547 (2016-2019).

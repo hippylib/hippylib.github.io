@@ -2,8 +2,8 @@
 
 ## Download hippylib
 
-Release 1.4.0 of hIPPYlib is available for download [here](https://goo.gl/37bskk).
-Simply decompress the file `hippylib-1.4.0.tgz` in your working directory.
+Release 1.5.0 of hIPPYlib is available for download [here](https://goo.gl/doJZRB).
+Simply decompress the file `hippylib-1.5.0.tgz` in your working directory.
 
 There is no installation necessary.
 You can directly run the examples from the `application` folder or view the notebooks from the `tutorial` folder. 
