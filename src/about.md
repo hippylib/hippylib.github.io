@@ -1,9 +1,9 @@
 # About hIPPYlib
 
 ## Authors
-- [Omar Ghattas](http://users.ices.utexas.edu/~omar/)
-- [Noemi Petra](http://faculty.ucmerced.edu/npetra)
 - [Umberto Villa](http://users.ices.utexas.edu/~uvilla/)
+- [Noemi Petra](http://faculty.ucmerced.edu/npetra)
+- [Omar Ghattas](http://users.ices.utexas.edu/~omar/)
 
 ## Contributors
 Amal Alghamdi,

@@ -2,7 +2,7 @@
 
 ## Schools and workshops
 - O. Ghattas, Y. Marzouk, M. Parno, N. Petra, G. Stadler, U. Villa, *[Inverse Problems:
-Systematic Integration of Data with Models under Uncertainty](http://g2s3.com)*, 2018 Gene Golub SIAM Summer School, June 17-30, 2018. Breckenridge, Colorado, USA. See also [announcement flyer](http://math.nyu.edu/~stadler/GGSS18). [Applications](http://g2s3.com/applications) are now open!
+Systematic Integration of Data with Models under Uncertainty](http://g2s3.com)*, 2018 Gene Golub SIAM Summer School, June 17-30, 2018. Breckenridge, Colorado, USA. See also [announcement flyer](http://math.nyu.edu/~stadler/GGSS18)
 
 - N. Petra, [SAMSI Optimization Program Summer School](https://www.samsi.info/programs-and-activities/research-workshops/summer-2016-optimization-program-summer-school-august-8-12-2016/), Research Triangle Park, NC,  August 8-12, 2016
 

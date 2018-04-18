@@ -12,12 +12,6 @@ hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for P
 
 See also our [tutorial](tutorial.md) and list of related [publications](research.md).
 
-## Announcements
-
-- Open [postdoc position](postdoc_position.md) in Professor Noemi Petra's group. Apply [here](https://aprecruit.ucmerced.edu/apply/JPF00505).
-
--  Applications are now open for the 2018 Gene Golub SIAM Summer School: [*Inverse Problems: Systematic Integration of Data with Models under Uncertainty*](http://g2s3.com), June 17-30, 2018. Breckenridge, Colorado, USA. [Flyer](http://math.nyu.edu/~stadler/GGSS18).
-
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
