@@ -1,12 +1,13 @@
 # Download
 
 ## Latest release
-- Download [hippylib-1.5.0.tar.gz](https://goo.gl/doJZRB)
+- Download [hippylib-1.6.0.tar.gz](https://goo.gl/FsoZsG)
 
 ## All releases
 
 **Filename** | **Version** | **Release Date** | **Notes** |
  ----------- | ----------- | ---------------- | --------- |
+[hippylib-1.6.0.tar.gz](https://goo.gl/FsoZsG) | v1.6.0 | May 2018 | Bugfix |
 [hippylib-1.5.0.tar.gz](https://goo.gl/doJZRB) | v1.5.0 | Jan 2018 | Support for FEniCS 2017.2 |
 [hippylib-1.4.0.tar.gz](https://goo.gl/37bskk) | v1.4.0 | Nov 2017 | Support for Python 3 |
 [hippylib-1.3.0.tar.gz](https://goo.gl/NgJ887) | v1.3.0 | June 2017 | Support for FEniCS 2017.1; GLPv2 |

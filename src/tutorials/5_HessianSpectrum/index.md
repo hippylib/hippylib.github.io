@@ -30,6 +30,8 @@ Here:
 
 
 ```python
+from __future__ import absolute_import, division, print_function
+
 import dolfin as dl
 import numpy as np
 import matplotlib.pyplot as plt
@@ -37,7 +39,8 @@ import matplotlib.pyplot as plt
 import nb
 
 import sys
-sys.path.append("../")
+import os
+sys.path.append( os.environ.get('HIPPYLIB_BASE_DIR', "../") )
 from hippylib import *
 
 import logging
@@ -66,7 +69,8 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
     
     Vh = [Vh1, Vh1, Vh1]
     if verbose:
-        print "Number of dofs: STATE={0}, PARAMETER={1}, ADJOINT={2}".format(Vh[STATE].dim(), Vh[PARAMETER].dim(), Vh[ADJOINT].dim())
+        print("Number of dofs: STATE={0}, PARAMETER={1}, ADJOINT={2}".format(
+            Vh[STATE].dim(), Vh[PARAMETER].dim(), Vh[ADJOINT].dim()) )
 
 
     u_bdr = dl.Constant(0.0)
@@ -80,7 +84,7 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
     pde = PDEVariationalProblem(Vh, pde_varf, bc, bc0, is_fwd_linear=True)
  
     if verbose:
-        print "Number of observation points: {0}".format(targets.shape[0])
+        print("Number of observation points: {0}".format(targets.shape[0]))
         
     misfit = PointwiseStateObservation(Vh[STATE], targets)
     
@@ -125,9 +129,9 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
 
     if solver.converged:
         if verbose:
-            print "CG converged in ", solver.iter, " iterations."
+            print("CG converged in ", solver.iter, " iterations.")
     else:
-        print "CG did not converged."
+        print("CG did not converged.")
         raise
 
     model.solveFwd(u, x, 1e-12)
@@ -145,8 +149,8 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
     k_evec = 80
     p_evec = 5
     if verbose:
-        print "Double Pass Algorithm. Requested eigenvectors: {0}; Oversampling {1}.".format(k_evec,p_evec)
-    Omega = np.random.randn(a.array().shape[0], k_evec+p_evec)
+        print("Double Pass Algorithm. Requested eigenvectors: {0}; Oversampling {1}.".format(k_evec,p_evec))
+    Omega = np.random.randn(get_local_size(a), k_evec+p_evec)
     d, U = doublePassG(H, reg.R, reg.Rsolver, Omega, k_evec)
 
     if verbose:
@@ -186,28 +190,25 @@ d, U, Va, nit = solve(nx,ny, targets, rel_noise, gamma, delta)
     Number of observation points: 300
 
 
+![png](5_HessianSpectrum_files/5_HessianSpectrum_6_2.png)
+
+
+    CG converged in  74  iterations.
 
 
 
-![png](output_6_2.png)
-
-
-    CG converged in  75  iterations.
-
-
-
-![png](output_6_4.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_6_4.png)
 
 
     Double Pass Algorithm. Requested eigenvectors: 80; Oversampling 5.
 
 
 
-![png](output_6_6.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_6_6.png)
 
 
 
-![png](output_6_7.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_6_7.png)
 
 
 ## 4. Mesh independence of the spectrum of the preconditioned Hessian
@@ -226,7 +227,7 @@ d1, U1, Va1, niter1 = solve(n[0],n[0], targets, rel_noise, gamma, delta,verbose=
 d2, U2, Va2, niter2 = solve(n[1],n[1], targets, rel_noise, gamma, delta,verbose=False)
 d3, U3, Va3, niter3 = solve(n[2],n[2], targets, rel_noise, gamma, delta,verbose=False)
 
-print "Number of Iterations: ", niter1, niter2, niter3
+print("Number of Iterations: ", niter1, niter2, niter3)
 plt.figure(figsize=(18,4))
 nb.plot_eigenvalues(d1, mytitle="Eigenvalues Mesh {0} by {1}".format(n[0],n[0]), subplot_loc=131)
 nb.plot_eigenvalues(d2, mytitle="Eigenvalues Mesh {0} by {1}".format(n[1],n[1]), subplot_loc=132)
@@ -239,23 +240,23 @@ nb.plot_eigenvectors(Va3, U3, mytitle="Mesh {0} by {1} Eigen".format(n[2],n[2]),
 plt.show()
 ```
 
-    Number of Iterations:  62 73 78
+    Number of Iterations:  62 74 76
 
 
 
-![png](output_8_1.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_8_1.png)
 
 
 
-![png](output_8_2.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_8_2.png)
 
 
 
-![png](output_8_3.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_8_3.png)
 
 
 
-![png](output_8_4.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_8_4.png)
 
 
 ## 5. Dependence on the noise level
@@ -276,7 +277,7 @@ d1, U1, Va1, niter1 = solve(nx,ny, targets, rel_noise[0], gamma, delta,verbose=F
 d2, U2, Va2, niter2 = solve(nx,ny, targets, rel_noise[1], gamma, delta,verbose=False)
 d3, U3, Va3, niter3 = solve(nx,ny, targets, rel_noise[2], gamma, delta,verbose=False)
 
-print "Number of Iterations: ", niter1, niter2, niter3
+print("Number of Iterations: ", niter1, niter2, niter3)
 plt.figure(figsize=(18,4))
 nb.plot_eigenvalues(d1, mytitle="Eigenvalues rel_noise {0:g}".format(rel_noise[0]), subplot_loc=131)
 nb.plot_eigenvalues(d2, mytitle="Eigenvalues rel_noise {0:g}".format(rel_noise[1]), subplot_loc=132)
@@ -289,23 +290,23 @@ nb.plot_eigenvectors(Va3, U3, mytitle="rel_noise {0:g} Eigen".format(rel_noise[2
 plt.show()
 ```
 
-    Number of Iterations:  162 75 21
+    Number of Iterations:  161 74 21
 
 
 
-![png](output_10_1.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_10_1.png)
 
 
 
-![png](output_10_2.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_10_2.png)
 
 
 
-![png](output_10_3.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_10_3.png)
 
 
 
-![png](output_10_4.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_10_4.png)
 
 
 ## 6. Dependence on the PDE coefficients
@@ -328,7 +329,7 @@ d2, U2, Va2, niter2 = solve(nx,ny, targets, rel_noise, gamma, delta,verbose=Fals
 k = dl.Constant(0.01)
 d3, U3, Va3, niter3 = solve(nx,ny, targets, rel_noise, gamma, delta,verbose=False)
 
-print "Number of Iterations: ", niter1, niter2, niter3
+print("Number of Iterations: ", niter1, niter2, niter3)
 plt.figure(figsize=(18,4))
 nb.plot_eigenvalues(d1, mytitle="Eigenvalues k=1.0", subplot_loc=131)
 nb.plot_eigenvalues(d2, mytitle="Eigenvalues k=0.1", subplot_loc=132)
@@ -341,26 +342,26 @@ nb.plot_eigenvectors(Va3, U3, mytitle="k=0.01 Eigen", which=[0,1,5])
 plt.show()
 ```
 
-    Number of Iterations:  91 148 250
+    Number of Iterations:  88 147 256
 
 
 
-![png](output_12_1.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_12_1.png)
 
 
 
-![png](output_12_2.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_12_2.png)
 
 
 
-![png](output_12_3.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_12_3.png)
 
 
 
-![png](output_12_4.png)
+![png](5_HessianSpectrum_files/5_HessianSpectrum_12_4.png)
 
 
-Copyright (c) 2016, The University of Texas at Austin & University of California, Merced.
+Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.
 All Rights reserved.
 See file COPYRIGHT for details.
 

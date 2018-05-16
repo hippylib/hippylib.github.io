@@ -15,19 +15,17 @@ See also our [tutorial](tutorial.md) and list of related [publications](research
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-1.5.0.tar.gz](https://goo.gl/doJZRB)
+- Download [hippylib-1.6.0.tar.gz](https://goo.gl/FsoZsG)
 - [Previous releases](download.md)
 
 ## Contact
 
 Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a> and <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>.
 
-To ask question and find answers see <a href="https://groups.google.com/forum/#!forum/hippylib-support" target="_blank">here</a>.
-
 Please cite with 
 ```sh
 @article{VillaPetraGhattas2016,
-title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Linearized Bayesian Inversion}",
+title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inversion}",
 author = {Villa, U. and Petra, N. and Ghattas, O.},
 year = {2016},
 url = {http://hippylib.github.io}

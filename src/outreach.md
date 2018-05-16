@@ -10,7 +10,7 @@ Systematic Integration of Data with Models under Uncertainty](http://g2s3.com)*,
 
 ## Graduate level courses
 
-- O. Ghattas @UT Austin, *Computational and Variational Inverse Problems*, Fall 2017
+- O. Ghattas @UT Austin, *Computational and Variational Inverse Problems*, Fall 2017 [link](https://uvilla.github.io/inverse17/)
 
 - A. Alexanderian @NC State, *Inverse problems*, Fall 2016
 

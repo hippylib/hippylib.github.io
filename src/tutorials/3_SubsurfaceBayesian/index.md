@@ -205,13 +205,16 @@ By the end of this notebook, you should be able to:
 
 
 ```python
+from __future__ import absolute_import, division, print_function
+
 import dolfin as dl
 import math
 import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
 import sys
-sys.path.append( "../" )
+import os
+sys.path.append( os.environ.get('HIPPYLIB_BASE_DIR', "../") )
 from hippylib import *
 
 import nb
@@ -234,7 +237,7 @@ def true_model(Vh, gamma, delta, anis_diff):
     prior = BiLaplacianPrior(Vh, gamma, delta, anis_diff )
     noise = dl.Vector()
     prior.init_vector(noise,"noise")
-    noise_size = noise.array().shape[0]
+    noise_size = get_local_size(noise)
     noise.set_local( np.random.randn( noise_size ) )
     atrue = dl.Vector()
     prior.init_vector(atrue, 0)
@@ -256,7 +259,8 @@ mesh = dl.UnitSquareMesh(nx, ny)
 Vh2 = dl.FunctionSpace(mesh, 'Lagrange', 2)
 Vh1 = dl.FunctionSpace(mesh, 'Lagrange', 1)
 Vh = [Vh2, Vh1, Vh2]
-print "Number of dofs: STATE={0}, PARAMETER={1}, ADJOINT={2}".format(Vh[STATE].dim(), Vh[PARAMETER].dim(), Vh[ADJOINT].dim())
+print("Number of dofs: STATE={0}, PARAMETER={1}, ADJOINT={2}".format(
+    Vh[STATE].dim(), Vh[PARAMETER].dim(), Vh[ADJOINT].dim()) )
 ```
 
     Number of dofs: STATE=16641, PARAMETER=4225, ADJOINT=16641
@@ -332,7 +336,8 @@ locations = np.array([[0.1, 0.1], [0.1, 0.9], [.5,.5], [.9, .1], [.9, .9]])
 pen = 1e1
 prior = MollifiedBiLaplacianPrior(Vh[PARAMETER], gamma, delta, locations, atrue, anis_diff, pen)
       
-print "Prior regularization: (delta_x - gamma*Laplacian)^order: delta={0}, gamma={1}, order={2}".format(delta, gamma,2)    
+print("Prior regularization: (delta_x - gamma*Laplacian)^order: delta={0}, gamma={1}, order={2}".format(
+    delta, gamma,2) )   
             
 objs = [dl.Function(Vh[PARAMETER],atrue), dl.Function(Vh[PARAMETER],prior.mean)]
 mytitles = ["True Parameter", "Prior mean"]
@@ -344,11 +349,7 @@ model = Model(pde,prior, misfit)
 
     Prior regularization: (delta_x - gamma*Laplacian)^order: delta=0.5, gamma=0.1, order=2
 
-
-
-
-
-![png](output_10_2.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_10_2.png)
 
 
 ## 5. Set up the misfit functional and generate synthetic observations
@@ -365,7 +366,7 @@ rel_noise = 0.01
 
 
 targets = np.random.uniform(0.1,0.9, [ntargets, ndim] )
-print "Number of observation points: {0}".format(ntargets)
+print("Number of observation points: {0}".format(ntargets))
 misfit = PointwiseStateObservation(Vh[STATE], targets)
 
 utrue = pde.generate_state()
@@ -390,7 +391,7 @@ plt.show()
 
 
 
-![png](output_12_1.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_12_1.png)
 
 
 ## 6. Set up the model and test gradient and Hessian
@@ -410,11 +411,11 @@ a0 = dl.interpolate(dl.Expression("sin(x[0])", degree=5), Vh[PARAMETER])
 modelVerify(model, a0.vector(), 1e-12)
 ```
 
-    (yy, H xx) - (xx, H yy) =  7.4275188982e-15
+    (yy, H xx) - (xx, H yy) =  7.57910091653e-15
 
 
 
-![png](output_14_1.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_14_1.png)
 
 
 ## 7. Compute the MAP point
@@ -435,13 +436,13 @@ solver.parameters["GN_iter"] = 5
 x = solver.solve(a0)
     
 if solver.converged:
-    print "\nConverged in ", solver.it, " iterations."
+    print("\nConverged in ", solver.it, " iterations.")
 else:
-    print "\nNot Converged"
+    print("\nNot Converged")
 
-print "Termination reason: ", solver.termination_reasons[solver.reason]
-print "Final gradient norm: ", solver.final_grad_norm
-print "Final cost: ", solver.final_cost
+print("Termination reason: ", solver.termination_reasons[solver.reason])
+print("Final gradient norm: ", solver.final_grad_norm)
+print("Final cost: ", solver.final_cost)
 
 plt.figure(figsize=(15,5))
 nb.plot(dl.Function(Vh[STATE], x[STATE]), subplot_loc=121,mytitle="State")
@@ -450,28 +451,28 @@ plt.show()
 ```
 
     
-    It  cg_it  cost          misfit        reg           (g,da)       ||g||L2      alpha     tolcg         
-      1   1    1.2065e+03    1.2062e+03    3.1473e-01   -1.5705e+04   1.0425e+05   1.0e+00   5.0000e-01
-      2   3    3.4593e+02    3.4468e+02    1.2536e+00   -1.8467e+03   1.4314e+04   1.0e+00   3.7054e-01
-      3   1    2.7467e+02    2.7336e+02    1.3092e+00   -1.4246e+02   1.0037e+04   1.0e+00   3.1028e-01
-      4   7    1.6917e+02    1.6476e+02    4.4157e+00   -2.1284e+02   3.8710e+03   1.0e+00   1.9269e-01
-      5   6    1.5732e+02    1.5229e+02    5.0283e+00   -2.3456e+01   1.8211e+03   1.0e+00   1.3216e-01
-      6  14    1.4249e+02    1.2974e+02    1.2743e+01   -2.9882e+01   1.1574e+03   1.0e+00   1.0536e-01
-      7   2    1.4216e+02    1.2941e+02    1.2746e+01   -6.6442e-01   7.3260e+02   1.0e+00   8.3827e-02
-      8  22    1.4079e+02    1.2532e+02    1.5471e+01   -2.7344e+00   4.4098e+02   1.0e+00   6.5037e-02
-      9  14    1.4078e+02    1.2537e+02    1.5404e+01   -1.7445e-02   5.0571e+01   1.0e+00   2.2024e-02
-     10  29    1.4078e+02    1.2533e+02    1.5451e+01   -1.8196e-03   1.5024e+01   1.0e+00   1.2004e-02
-     11  38    1.4078e+02    1.2533e+02    1.5451e+01   -2.5035e-07   1.3906e-01   1.0e+00   1.1549e-03
-     12  53    1.4078e+02    1.2533e+02    1.5451e+01   -1.3812e-12   2.6266e-04   1.0e+00   5.0194e-05
+    It  cg_it cost            misfit          reg             (g,da)          ||g||L2        alpha          tolcg         
+      1   1    1.206547e+03    1.206233e+03    3.147385e-01   -1.570552e+04   1.042537e+05   1.000000e+00   5.000000e-01
+      2   3    3.459350e+02    3.446814e+02    1.253641e+00   -1.846772e+03   1.431429e+04   1.000000e+00   3.705435e-01
+      3   1    2.746765e+02    2.733672e+02    1.309257e+00   -1.424615e+02   1.003736e+04   1.000000e+00   3.102873e-01
+      4   7    1.691763e+02    1.647605e+02    4.415777e+00   -2.128491e+02   3.871034e+03   1.000000e+00   1.926938e-01
+      5   6    1.573210e+02    1.522926e+02    5.028367e+00   -2.345647e+01   1.821115e+03   1.000000e+00   1.321670e-01
+      6  14    1.424926e+02    1.297495e+02    1.274310e+01   -2.988285e+01   1.157426e+03   1.000000e+00   1.053661e-01
+      7   2    1.421601e+02    1.294134e+02    1.274672e+01   -6.643211e-01   7.325602e+02   1.000000e+00   8.382545e-02
+      8  22    1.407914e+02    1.253200e+02    1.547141e+01   -2.734442e+00   4.409802e+02   1.000000e+00   6.503749e-02
+      9  14    1.407826e+02    1.253781e+02    1.540453e+01   -1.744746e-02   5.057992e+01   1.000000e+00   2.202639e-02
+     10  29    1.407817e+02    1.253307e+02    1.545107e+01   -1.819642e-03   1.502434e+01   1.000000e+00   1.200472e-02
+     11  38    1.407817e+02    1.253304e+02    1.545139e+01   -2.502663e-07   1.390539e-01   1.000000e+00   1.154904e-03
+     12  54    1.407817e+02    1.253303e+02    1.545139e+01   -1.380451e-12   2.625467e-04   1.000000e+00   5.018311e-05
     
     Converged in  12  iterations.
     Termination reason:  Norm of the gradient less than tolerance
-    Final gradient norm:  1.63019593759e-08
+    Final gradient norm:  5.41022518768e-09
     Final cost:  140.781736843
 
 
 
-![png](output_16_1.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_16_1.png)
 
 
 ## 8. Compute the low rank Gaussian approximation of the posterior
@@ -490,8 +491,8 @@ model.setPointForHessianEvaluations(x)
 Hmisfit = ReducedHessian(model, solver.parameters["inner_rel_tolerance"], gauss_newton_approx=False, misfit_only=True)
 k = 50
 p = 20
-print "Single/Double Pass Algorithm. Requested eigenvectors: {0}; Oversampling {1}.".format(k,p)
-Omega = np.random.randn(x[PARAMETER].array().shape[0], k+p)
+print("Single/Double Pass Algorithm. Requested eigenvectors: {0}; Oversampling {1}.".format(k,p))
+Omega = np.random.randn(get_local_size(x[PARAMETER]), k+p)
 d, U = doublePassG(Hmisfit, prior.R, prior.Rsolver, Omega, k)
 
 posterior = GaussianLRPosterior(prior, d, U)
@@ -509,11 +510,11 @@ nb.plot_eigenvectors(Vh[PARAMETER], U, mytitle="Eigenvector", which=[0,1,2,5,10,
 
 
 
-![png](output_18_1.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_18_1.png)
 
 
 
-![png](output_18_2.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_18_2.png)
 
 
 ## 9. Prior and posterior pointwise variance fields
@@ -522,9 +523,9 @@ nb.plot_eigenvectors(Vh[PARAMETER], U, mytitle="Eigenvector", which=[0,1,2,5,10,
 ```python
 compute_trace = True
 if compute_trace:
-    post_tr, prior_tr, corr_tr = posterior.trace(method="Estimator", tol=5e-2, min_iter=20, max_iter=2000)
-    print "Posterior trace {0:5e}; Prior trace {1:5e}; Correction trace {2:5e}".format(post_tr, prior_tr, corr_tr)
-post_pw_variance, pr_pw_variance, corr_pw_variance = posterior.pointwise_variance("Exact")
+    post_tr, prior_tr, corr_tr = posterior.trace(method="Randomized", r=200)
+    print("Posterior trace {0:5e}; Prior trace {1:5e}; Correction trace {2:5e}".format(post_tr, prior_tr, corr_tr))
+post_pw_variance, pr_pw_variance, corr_pw_variance = posterior.pointwise_variance(method="Randomized", r=200)
 
 objs = [dl.Function(Vh[PARAMETER], pr_pw_variance),
         dl.Function(Vh[PARAMETER], post_pw_variance)]
@@ -533,11 +534,11 @@ nb.multi1_plot(objs, mytitles, logscale=True)
 plt.show()
 ```
 
-    Posterior trace 1.143368e-01; Prior trace 4.034355e-01; Correction trace 2.890987e-01
+    Posterior trace 1.058859e-01; Prior trace 3.949847e-01; Correction trace 2.890987e-01
 
 
 
-![png](output_20_1.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_20_1.png)
 
 
 ## 10. Generate samples from Prior and Posterior
@@ -547,7 +548,7 @@ plt.show()
 nsamples = 5
 noise = dl.Vector()
 posterior.init_vector(noise,"noise")
-noise_size = noise.array().shape[0]
+noise_size = get_local_size(noise)
 s_prior = dl.Function(Vh[PARAMETER], name="sample_prior")
 s_post = dl.Function(Vh[PARAMETER], name="sample_post")
 
@@ -566,26 +567,26 @@ for i in range(nsamples):
 ```
 
 
-![png](output_22_0.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_22_0.png)
 
 
 
-![png](output_22_1.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_22_1.png)
 
 
 
-![png](output_22_2.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_22_2.png)
 
 
 
-![png](output_22_3.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_22_3.png)
 
 
 
-![png](output_22_4.png)
+![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_22_4.png)
 
 
-Copyright (c) 2016, The University of Texas at Austin & University of California, Merced.
+Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.
 All Rights reserved.
 See file COPYRIGHT for details.
 

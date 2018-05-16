@@ -58,6 +58,8 @@ To start we load the following modules:
 
 
 ```python
+from __future__ import absolute_import, division, print_function
+
 from dolfin import *
 
 import math
@@ -87,14 +89,14 @@ mesh = UnitSquareMesh(n, n)
 nb.plot(mesh)
 
 Vh  = FunctionSpace(mesh, 'Lagrange', degree)
-print "dim(Vh) = ", Vh.dim()
+print("dim(Vh) = ", Vh.dim())
 ```
 
     dim(Vh) =  289
 
 
 
-![png](output_4_1.png)
+![png](1_FEniCS101_files/1_FEniCS101_4_1.png)
 
 
 ## 3. Define boundary labels
@@ -204,16 +206,7 @@ solve(A, uh.vector(), b, "cg")
 nb.plot(uh)
 ```
 
-
-
-
-
-
-
-
-
-
-![png](output_10_2.png)
+![png](1_FEniCS101_files/1_FEniCS101_10_2.png)
 
 
 ## 6. Compute the discretization error
@@ -233,8 +226,8 @@ err_L2 = sqrt( assemble( (uh-u_e)**2*dx ) )
 err_grad = sqrt( assemble( inner(nabla_grad(uh) - grad_u_e, nabla_grad(uh) - grad_u_e)*dx ) )
 err_H1 = sqrt( err_L2**2 + err_grad**2)
 
-print "|| u_h - u_e ||_L2 = ", err_L2
-print "|| u_h - u_e ||_H1 = ", err_H1
+print("|| u_h - u_e ||_L2 = ", err_L2)
+print("|| u_h - u_e ||_H1 = ", err_H1)
 ```
 
     || u_h - u_e ||_L2 =  0.00880525372208
@@ -304,36 +297,34 @@ for i in range(nref):
 plt.figure(figsize=(15,5))
 
 plt.subplot(121)
-plt.loglog(h, err_H1_P1, '-or')
-plt.loglog(h, err_L2_P1, '-*b')
-plt.loglog(h, h*.5*err_H1_P1[0]/h[0], '--g')
-plt.loglog(h, np.power(h,2)*.5*np.power( err_L2_P1[0]/h[0], 2), '-.k')
+plt.loglog(h, err_H1_P1, '-or', label="H1 error")
+plt.loglog(h, err_L2_P1, '-*b', label="L2 error")
+plt.loglog(h, h*.5*err_H1_P1[0]/h[0], '--g', label="First Order")
+plt.loglog(h, np.power(h,2)*.5*np.power( err_L2_P1[0]/h[0], 2), '-.k', label="Second Order")
 plt.xlabel("Mesh size h")
 plt.ylabel("Error")
 plt.title("P1 Finite Element")
-plt.legend(["H1 error", "L2 error", "First Order", "Second Order"], 'lower right')
+plt.legend(loc = 'lower right')
 
 
 plt.subplot(122)
-plt.loglog(h, err_H1_P2, '-or')
-plt.loglog(h, err_L2_P2, '-*b')
-plt.loglog(h, np.power(h/h[0],2)*.5*err_H1_P2[0], '--g')
-plt.loglog(h, np.power(h/h[0],3)*.5*err_L2_P2[0], '-.k')
+plt.loglog(h, err_H1_P2, '-or', label="H1 error")
+plt.loglog(h, err_L2_P2, '-*b', label="L2 error")
+plt.loglog(h, np.power(h/h[0],2)*.5*err_H1_P2[0], '--g', label="Second Order")
+plt.loglog(h, np.power(h/h[0],3)*.5*err_L2_P2[0], '-.k', label="Third Order")
 plt.xlabel("Mesh size h")
 plt.ylabel("Error")
 plt.title("P2 Finite Element")
-plt.legend(["H1 error", "L2 error", "Second Order", "Third Order"], 'lower right')
+plt.legend(loc='lower right')
 
 plt.show()
 ```
 
 
+![png](1_FEniCS101_files/1_FEniCS101_14_0.png)
 
 
-![png](output_14_1.png)
-
-
-Copyright (c) 2016, The University of Texas at Austin & University of California, Merced.
+Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.
 All Rights reserved.
 See file COPYRIGHT for details.
 

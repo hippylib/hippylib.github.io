@@ -19,7 +19,8 @@
 
 - P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301), ArXiv, 2018
 
-- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale deterministic and linearized Bayesian inverse problems*, in preparation, 2017
+- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems; Part I:
+Deterministic inversion and linearized Bayesian inference*, in preparation, 2018
 
 ## Ph.D. Thesis
 - B. Crestel, *Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*, University of Texas at Austin, 2017. Adviser O. Ghattas

@@ -14,7 +14,8 @@ ctx.verify_mode = ssl.CERT_NONE
 #key = 'AIzaSyCnCjlxS5LUvP1jjXansnk1ymt-Liga2aQ'
 #key = 'AIzaSyBLuHKVMU8kxU5R2ykwEgGTdhuINg-3HUE'
 key = ' AIzaSyBCcGtouSRX4uLUyzujx_DMRcLDmcKWGT0'
-versions = [('v1.5.0', 'https://goo.gl/doJZRB'),
+versions = [('v1.6.0', 'https://goo.gl/FsoZsG'),
+            ('v1.5.0', 'https://goo.gl/doJZRB'),
             ('v1.4.0', 'https://goo.gl/37bskk'),
             ('v1.3.0', 'https://goo.gl/NgJ887'),
             ('v1.2.0', 'https://goo.gl/OcvROZ'),

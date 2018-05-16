@@ -189,21 +189,22 @@ By the end of this notebook, you should be able to:
 
 
 ```python
+from __future__ import absolute_import, division, print_function
+
 from dolfin import *
 
 import sys
-sys.path.append( "../" )
+import os
+sys.path.append( os.environ.get('HIPPYLIB_BASE_DIR', "../") )
 from hippylib import *
 
 import numpy as np
-import time
 import logging
 
 import matplotlib.pyplot as plt
 %matplotlib inline
 import nb
 
-start = time.clock()
 
 logging.getLogger('FFC').setLevel(logging.WARNING)
 logging.getLogger('UFL').setLevel(logging.WARNING)
@@ -248,10 +249,7 @@ nb.plot(atrue,subplot_loc=122, mytitle="True parameter field")
 plt.show()
 ```
 
-
-
-
-![png](output_4_1.png)
+![png](2_PoissonDeterministic_files/2_PoissonDeterministic_4_1.png)
 
 
 
@@ -295,7 +293,7 @@ ud.assign(utrue)
 MAX = ud.vector().norm("linf")
 noise = Vector()
 goal_A.init_vector(noise,1)
-noise.set_local( noise_level * MAX * np.random.normal(0, 1, len(ud.vector().array())) )
+noise.set_local( noise_level * MAX * np.random.normal(0, 1, Vu.dim()))
 bc_adj.apply(noise)
 
 ud.vector().axpy(1., noise)
@@ -306,7 +304,7 @@ plt.show()
 ```
 
 
-![png](output_7_0.png)
+![png](2_PoissonDeterministic_files/2_PoissonDeterministic_7_0.png)
 
 
 ### The cost function evaluation:
@@ -397,7 +395,7 @@ plt.show()
 ```
 
 
-![png](output_13_0.png)
+![png](2_PoissonDeterministic_files/2_PoissonDeterministic_13_0.png)
 
 
 ### The reduced Hessian apply to a vector v:
@@ -548,7 +546,7 @@ R.init_vector(g,0)
 
 a_prev = Function(Va)
 
-print "Nit   CGit   cost          misfit        reg           sqrt(-G*D)    ||grad||       alpha  tolcg"
+print("Nit   CGit   cost          misfit        reg           sqrt(-G*D)    ||grad||       alpha  tolcg")
 
 while iter <  maxiter and not converged:
 
@@ -624,9 +622,9 @@ while iter <  maxiter and not converged:
     graddir = sqrt(- MG.inner(a_delta) )
 
     sp = ""
-    print "%2d %2s %2d %3s %8.5e %1s %8.5e %1s %8.5e %1s %8.5e %1s %8.5e %1s %5.2f %1s %5.3e" % \
+    print("%2d %2s %2d %3s %8.5e %1s %8.5e %1s %8.5e %1s %8.5e %1s %8.5e %1s %5.2f %1s %5.3e" % \
         (iter, sp, Hess_Apply.cgiter, sp, cost_new, sp, misfit_new, sp, reg_new, sp, \
-         graddir, sp, gradnorm, sp, alpha, sp, tolcg)
+         graddir, sp, gradnorm, sp, alpha, sp, tolcg) )
 
     if plot_on:
         nb.multi1_plot([a,u,p], ["a","u","p"], same_colorbar=False)
@@ -635,15 +633,13 @@ while iter <  maxiter and not converged:
     # check for convergence
     if gradnorm < tol and iter > 1:
         converged = True
-        print "Newton's method converged in ",iter,"  iterations"
-        print "Total number of CG iterations: ", total_cg_iter
+        print("Newton's method converged in ",iter,"  iterations")
+        print("Total number of CG iterations: ", total_cg_iter)
         
     iter += 1
     
 if not converged:
-    print "Newton's method did not converge in ", maxiter, " iterations"
-
-print "Time elapsed: ", time.clock()-start
+    print("Newton's method did not converge in ", maxiter, " iterations")
 ```
 
     Nit   CGit   cost          misfit        reg           sqrt(-G*D)    ||grad||       alpha  tolcg
@@ -657,7 +653,6 @@ print "Time elapsed: ", time.clock()-start
      8    15     1.80330e-07   1.39056e-07   4.12734e-08   1.74451e-06   3.43216e-09    1.00   3.008e-03
     Newton's method converged in  8   iterations
     Total number of CG iterations:  41
-    Time elapsed:  9.28313
 
 
 
@@ -668,13 +663,14 @@ plt.show()
 ```
 
 
-![png](output_18_0.png)
+![png](2_PoissonDeterministic_files/2_PoissonDeterministic_18_0.png)
 
 
 
-![png](output_18_1.png)
+![png](2_PoissonDeterministic_files/2_PoissonDeterministic_18_1.png)
 
-Copyright (c) 2016, The University of Texas at Austin & University of California, Merced.
+
+Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.
 All Rights reserved.
 See file COPYRIGHT for details.
 
@@ -682,4 +678,3 @@ This file is part of the hIPPYlib library. For more information and source code
 availability see https://hippylib.github.io.
 
 hIPPYlib is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License (as published by the Free Software Foundation) version 2.0 dated June 1991.
-
