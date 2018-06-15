@@ -11,11 +11,12 @@ hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for P
 - Low rank representation of the posterior covariace using randomized algorithms
 
 See also our [tutorial](tutorial.md) and list of related [publications](research.md).
+The complete API reference is available [here](http://hippylib.readthedocs.io/en/latest/index.html).
 
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-1.6.0.tar.gz](https://goo.gl/FsoZsG)
+- Download [hippylib-2.0.0.tar.gz](https://goo.gl/)
 - [Previous releases](download.md)
 
 ## Contact
@@ -28,7 +29,8 @@ Please cite with
 title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inversion}",
 author = {Villa, U. and Petra, N. and Ghattas, O.},
 year = {2016},
-url = {http://hippylib.github.io}
+url = {http://hippylib.github.io},
+doi = {10.5281/zenodo.596931}
 }
 ```
 

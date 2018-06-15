@@ -1,12 +1,15 @@
 # Tutorial
 
 These tutorials are the best place to learn about the basic features and the algorithms in `hIPPYlib`.
+For the complete API reference click [here](http://hippylib.readthedocs.io/en/latest/index.html).
 
-1. [FEniCS101](tutorials/1_FEniCS101/index.md) notebook illustrates the use of FEniCS for the solution of a linear boundary value problem.
-2. [Poisson Deterministic](tutorials/2_PoissonDeterministic/index.md) notebook illustrates how to compute gradient/Hessian information and solve a non-linear parameter inversion for the Poisson equation in a deterministic setting.
-3. [Subsurface Bayesian](tutorials/3_SubsurfaceBayesian/index.md) notebook illustrates how to solve a non-linear parameter inversion for the Poisson equation in a Bayesian setting.
-4. [Advection-Diffusion Bayesian](tutorials/4_AdvectionDiffusionBayesian/index.md) notebook illustrates how to solve a time-dependent linear inverse problem in a Bayesian setting.
-5. [Hessian Spectrum](tutorials/5_HessianSpectrum/index.md) notebook illustrates the spectral property of the Hessian operator for a linear source inversion problem.
+1. [FEniCS101](tutorials/1_FEniCS101.md) notebook illustrates the use of FEniCS for the solution of a linear boundary value problem.
+2. [Poisson Deterministic](tutorials/2_PoissonDeterministic.md) notebook illustrates how to compute gradient/Hessian information and solve a non-linear parameter inversion for the Poisson equation in a deterministic setting.
+3. [Subsurface Bayesian](tutorials/3_SubsurfaceBayesian.md) notebook illustrates how to solve a non-linear parameter inversion for the Poisson equation in a Bayesian setting.
+4. [Advection-Diffusion Bayesian](tutorials/4_AdvectionDiffusionBayesian.md) notebook illustrates how to solve a time-dependent linear inverse problem in a Bayesian setting.
+5. [Hessian Spectrum](tutorials/5_HessianSpectrum.md) notebook illustrates the spectral property of the Hessian operator for a linear source inversion problem.
+
+For `hIPPYlib` version 1.6.0 see [here](tutorial_v1.6.0.md)
 
 
 The interactive ipython notebooks are located in the `tutorial` folder of the `hIPPYlib` release.

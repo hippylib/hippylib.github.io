@@ -1,15 +1,17 @@
 # About hIPPYlib
 
 ## Authors
-- [Umberto Villa](http://users.ices.utexas.edu/~uvilla/)
+- [Umberto Villa](http://uvilla.github.io)
 - [Noemi Petra](http://faculty.ucmerced.edu/npetra)
 - [Omar Ghattas](http://users.ices.utexas.edu/~omar/)
 
 ## Contributors
 Amal Alghamdi,
+[Ilona Ambartsumyan](http://ailona.github.io),
 Joshua Chen,
 [Peng Chen](http://users.ices.utexas.edu/~peng/),
 Ben Crestel,
+[Eldar Khattatov](http://eldarkh.github.io)
 Tom O'Leary-Roseberry,
 Vishwas Rao,
 Siddhant Wahal

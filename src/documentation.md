@@ -1,0 +1,22 @@
+# Documentation
+
+## Installation
+
+`hIPPYlib` depends on [FEniCS](http://fenicsproject.org/) version 1.6 or
+above.  The suggested version of `FEniCS` to use with `hIPPYlib` is
+2017.2.
+
+`FEniCS` needs to be built with the following dependecies:
+
+ - `numpy`, `scipy`, `matplotlib`
+ - `PETSc` and `petsc4py` (version 3.7.0 or above)
+ - `SLEPc` and `slepc4py` (version 3.7.0 or above)
+ - PETSc dependencies: `parmetis`, `scotch`, `suitesparse`, `superlu_dist`, `ml`
+ - (optional): `mshr`, `jupyter`
+
+For detailed installation instructions see [here](http://hippylib.readthedocs.io/en/latest/installation.html).
+
+## Documentation
+
+The complete API reference of `hIPPYlib` is available at [readthedocs](http://hippylib.readthedocs.io/en/latest/modules.html).
+
