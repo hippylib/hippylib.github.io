@@ -1,0 +1,7 @@
+v1.1.0 https://goo.gl/#analytics/goo.gl/pDb10B/all_time
+v1.0.2 https://goo.gl/#analytics/goo.gl/wMb18C/all_time
+v1.0.1 https://goo.gl/#analytics/goo.gl/srnvsc/all_time
+v1.0.0 https://goo.gl/#analytics/goo.gl/h7HUFJ/all_time
+
+
+curl 'https://www.googleapis.com/urlshortener/v1/url?shortUrl=https://goo.gl/pDb10B&projection=FULL&key=AIzaSyCnCjlxS5LUvP1jjXansnk1ymt-Liga2aQ'
