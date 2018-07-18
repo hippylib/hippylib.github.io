@@ -16,7 +16,7 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-2.0.0.tar.gz](https://goo.gl/hYazvu)
+- Download [hippylib-2.1.0.tar.gz](https://goo.gl/N7g6wU)
 - [Previous releases](download.md)
 
 ## Contact

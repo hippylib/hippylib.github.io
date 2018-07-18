@@ -2,9 +2,8 @@
 
 ## Installation
 
-`hIPPYlib` depends on [FEniCS](http://fenicsproject.org/) version 1.6 or
-above.  The suggested version of `FEniCS` to use with `hIPPYlib` is
-2017.2.
+`hIPPYlib` depends on [FEniCS](http://fenicsproject.org/) versions 1.6, 2016.1, 2016.2, 2017.1, 2017.2.
+The suggested version of `FEniCS` to use with `hIPPYlib` is 2017.2.
 
 `FEniCS` needs to be built with the following dependecies:
 
