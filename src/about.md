@@ -27,6 +27,11 @@ Air Force Office of Scientific Research, Computational Mathematics program, gran
 
 - O. Ghattas (PI), G. Biros, M. Girolami, M. Heinkenschloss, R. Moser, A. Philpott, A. Stuart, and K. Willcox (Co-PIs), *Inference, Simulation, and Optimization of Complex Systems Under Uncertainty: Theory, Algorithms, and Applications to Turbulent Combustion*, DARPA/ARO, Grants No W911NF-15-2-0121 (2016-2017).
 
+- O. Ghattas (PI), M. Hesse (Co-PI), *CDS&E: A Bayesian inference
+framework for management of CO2 sequestration*, National Science
+Foundation, Division Of Chemical, Bioengineering, Environmental, &
+Transport Systems, grant CBET-1508713 (2015-2017).
+
 ## License
 - [GNU General Public License version 2 (GPL)](http://www.gnu.org/licenses/gpl-2.0-standalone.html)
 - Older Releases (1.2.0 or older): [GNU General Public License version 3 (GPL)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
