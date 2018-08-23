@@ -15,6 +15,10 @@ The suggested version of `FEniCS` to use with `hIPPYlib` is 2017.2.
 
 For detailed installation instructions see [here](http://hippylib.readthedocs.io/en/latest/installation.html).
 
+## Docker
+
+A Docker image `hIPPYlib`, `FEniCS` and their dependencies preinstalled is available [here](https://hub.docker.com/r/mparno/muq-hippylib/). The username is `user1` and password `Breckenridge1_g2s3`.
+
 ## Documentation
 
 The complete API reference of `hIPPYlib` is available at [readthedocs](http://hippylib.readthedocs.io/en/latest/modules.html).

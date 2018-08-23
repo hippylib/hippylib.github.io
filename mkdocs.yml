@@ -38,7 +38,6 @@ theme: spacelab
 
 google_analytics: ['UA-52448613-3', 'hippylib.github.io']
 
-include_next_prev: false  # turn of next/previous buttons
 
 extra_javascript: 
     - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML

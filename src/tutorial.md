@@ -28,3 +28,6 @@ $ jupyter notebook
 4. To run all the code in the notebook simply click on Cell --> Run All.
 
 For more information on installing ipython and using notebooks see <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank">here</a>.
+
+For additional resources and tutorials please see the teaching material for the
+*2018 Gene Golub SIAM Summer School* on *Inverse Problems: Systematic Integration of Data with Models under Uncertainty* available [here](https://g2s3-2018.github.io/labs).
