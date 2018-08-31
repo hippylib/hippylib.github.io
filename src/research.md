@@ -1,9 +1,12 @@
 #Research
 
 ## Applications
-- Inference, prediction and optimization under uncertainty for turbulent combustion
+
+- Bayesian optimal experimental design for inverse problems in acoustic scattering
 
 - Inversion and control for CO<sub>2</sub> sequestration with poroelastic models
+
+- Goal-oriented inference for reservoir models with complex features including faults
 
 - Joint seismic-electromagnetic inversion
 
@@ -13,17 +16,23 @@
 
 - Inversion for material properties of cardiac tissue
 
+- Inference, prediction and optimization under uncertainty for turbulent combustion
+
 - Inference of constitutive laws in mechanics of nano-scale filaments
 
 ## Publications
 
 - P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301), ArXiv, 2018
 
-- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems; Part I:
-Deterministic inversion and linearized Bayesian inference*, in preparation, 2018
+- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*, in preparation, 2018
+
+- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems*, Journal of Open Source Software (JOSS), submitted, 2018
+
+- P. Chen, U. Villa, O. Ghattas, *Taylor approximation for PDE-constrained optimization under uncertainty: Application to turbulent jet flow*, Proceedings in Applied Mathematics and Mechanics - 89th GAMM Annual Meeting, accepted, 2018
 
 ## Ph.D. Thesis
-- B. Crestel, *Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*, University of Texas at Austin, 2017. Adviser O. Ghattas
+
+- B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), University of Texas at Austin, 2017. Adviser O. Ghattas
 
 ## Oral Presentations
 
@@ -53,6 +62,8 @@ and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 - U. Villa, [*An Analytical Technique for Forward and Inverse Propagation of Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=74269), SIAM UQ, April 5-8, 2016, Lausanne, Switzerland
 
 ## Poster Presentations
+
+- O. Ghattas, Y. Marzouk, M. Parno, N. Petra, U. Villa, [*Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*](https://doi.org/10.6084/m9.figshare.6172247.v1), NSF-SI2 PI meeting, Apr. 30- May 1, 2018, Washington, DC, US
 
 - K. Koval, G. Stadler, [*Computational Approaches for Linear Goal-Oriented Bayesian Inverse Problems*](http://meetings.siam.org/sess/dsp_talk.cfm?p=86488), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
 

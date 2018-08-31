@@ -1,11 +1,12 @@
 # About hIPPYlib
 
 ## Authors
+
 - [Umberto Villa](http://uvilla.github.io)
 - [Noemi Petra](http://faculty.ucmerced.edu/npetra)
 - [Omar Ghattas](http://users.ices.utexas.edu/~omar/)
 
-## Contributors
+## Current and past contributors
 Amal Alghamdi,
 [Ilona Ambartsumyan](http://ailona.github.io),
 Joshua Chen,
@@ -20,6 +21,7 @@ Siddhant Wahal
 &copy; 2016-2018 The University of Texas at Austin, University of California Merced.
 
 ## Support
+
 - O. Ghattas, N. Petra (PIs),  U. Villa (Co-PI), *Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*, NSF-SSI2, Grants No ACI-1550593, ACI-1550547 (2016-2019).
 
 - O. Ghattas (PI); G. Biros and Y. Marzouk (Co-PIs), *Bayesian Optimal Experimental Design for Inverse Scattering*,
@@ -33,6 +35,7 @@ Foundation, Division Of Chemical, Bioengineering, Environmental, &
 Transport Systems, grant CBET-1508713 (2015-2017).
 
 ## License
+
 - [GNU General Public License version 2 (GPL)](http://www.gnu.org/licenses/gpl-2.0-standalone.html)
 - Older Releases (1.2.0 or older): [GNU General Public License version 3 (GPL)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
