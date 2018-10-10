@@ -35,7 +35,7 @@ Or, if you have conda installed, simply type
 
 ```
 #!sh
-    git clone git@bitbucket.org:hippylibdev/hippylib-website.git
+    git clone git@github.com:hippylib/web.git
 ```
 
 * Edit or add some `.md` files in the src folder (you may also need to update the `mkdocs.yml` config); 
