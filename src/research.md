@@ -72,3 +72,5 @@ and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 - T. O’Leary-Roseberry, U. Villa, O. Ghattas, P. Heimbach, [*An Adjoint Capable Solver for the Stefan Problem: a Bilevel Optimization and Level Set Approach*](http://meetings.siam.org/sess/dsp_talk.cfm?p=83396), SIAM CSE, Feb. 27 - March 3, 2017, Atlanta, GA, US
 
 - O. Ghattas, Y. Marzouk, M. Parno, N. Petra, U. Villa, [*Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*](https://doi.org/10.6084/m9.figshare.4602481.v1), NSF-SI2 PI meeting, Feb. 21-22, 2017, Arlington, VA, US
+
+> Did **you** publish an article or give an oral/poster presentation using `hIPPYlib`? Please let us know by creating an [issue](https://github.com/hippylib/web/issues) and we will reference your work on this page.
