@@ -32,7 +32,7 @@ Please cite as
 
 ```sh
 @article{VillaPetraGhattas2016,
-title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inversion}",
+title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inverse Problems}",
 author = {Villa, U. and Petra, N. and Ghattas, O.},
 year = {2016},
 url = {http://hippylib.github.io},
@@ -40,7 +40,7 @@ doi = {10.5281/zenodo.596931}
 }
 
 @article{VillaPetraGhattas2018,
-title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inversion}",
+title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inverse Problems}",
 author = {Villa, U. and Petra, N. and Ghattas, O.},
 journal = {Journal of Open Source Software},
 volume = {submitted},
