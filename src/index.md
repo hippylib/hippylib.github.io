@@ -1,5 +1,9 @@
 # hIPPYlib - Inverse Problem PYthon library
 
+[![Build Status](https://travis-ci.org/hippylib/hippylib.svg?branch=master)](https://travis-ci.org/hippylib/hippylib)
+[![Doc Status](https://readthedocs.org/projects/hippylib/badge/?version=latest&style=flat)](https://hippylib.readthedocs.io/en/latest/)
+[![status](http://joss.theoj.org/papers/053e0d08a5e9755e7b78898cff6f6208/status.svg)](http://joss.theoj.org/papers/053e0d08a5e9755e7b78898cff6f6208) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.596931.svg)](https://doi.org/10.5281/zenodo.596931)
+
 hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for PDE-based *deterministic and Bayesian inverse problems*. It builds on <a href="http://www.fenicsproject.org" target="_blank">FEniCS</a> for the discretization of the PDE and on <a href="http://www.mcs.anl.gov/petsc/" target="_blank">PETSc</a> for scalable and efficient linear algebra operations and solvers.
 
 ## Features
