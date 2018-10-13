@@ -8,6 +8,7 @@ markdown_extensions:
     enable_dollar_delimiter: True # allows $...$ for inline math
 
 repo_url: https://github.com/hippylib/hippylib
+edit_uri: ""
 
 pages:
 - Home: index.md
