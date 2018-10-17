@@ -36,7 +36,7 @@
 
 ## Oral Presentations
 
-- N. Petra, [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems*] (https://appliedmath.ucmerced.edu/research/special-topics-meetings-and-seminars/optimization), Optimization Seminar, University of California, Merced, October 19, 2018, Merced, CA, US
+- N. Petra, [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems*](https://appliedmath.ucmerced.edu/research/special-topics-meetings-and-seminars/optimization), Optimization Seminar, University of California, Merced, October 19, 2018, Merced, CA, US
 
 - U. Villa, O. Ghattas, [*Maximize the Expected Information Gain in Bayesian Experimental Design Problems: A Fast Optimization Algorithm Based on Laplace Approximation and Randomized Eigensolvers*](http://meetings.siam.org/sess/dsp_talk.cfm?p=89969), SIAM UQ, April 16-19, 2018, Garden Grove, CA, US
 
