@@ -1,0 +1,14 @@
+services:
+    - docker
+
+before_install:
+    - docker pull continuumio/anaconda
+script:
+  - conda-env create --file mkdocs-env.txt
+  - source activate mkdocs-env.txt
+  - git clone git@github.com:hippylib/hippylib.github.io.git site
+  - mkdocs build
+after_success:
+  - cd site
+  - git add .
+  - git commit -m "travis build"
