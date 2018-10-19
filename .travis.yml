@@ -6,7 +6,7 @@ before_install:
 - git config --global user.name "U. Villa through Travis CI"
 - git clone https://${GH_TOKEN}@github.com/hippylib/hippylib.github.io.git site
 script:
-- docker run --rm -v $(pwd):/share -w /share continuumio/anaconda "source .travis/mkdocs-build.sh"
+- docker run --rm -v $(pwd):/share -w /share continuumio/anaconda source .travis/mkdocs-build.sh
 after_success:
 - cd site
 - git add .
