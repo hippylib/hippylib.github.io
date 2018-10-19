@@ -1,0 +1,17 @@
+services:
+- docker
+before_install:
+- docker pull continuumio/anaconda
+- git config --global user.email "uvilla@wustl.edu"
+- git config --global user.name "U. Villa through Travis CI"
+- git clone https://${GH_TOKEN}@github.com/hippylib/hippylib.github.io.git site
+script:
+- docker run --rm -v $(pwd):/share -w /share continuumio/anaconda "source .travis/mkdocs-build.sh"
+after_success:
+- cd site
+- git add .
+- git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
+- git push
+env:
+  global:
+  - secure: Otcsyq3ek5IFP1HJc/2zROpHkQJ2rddHfasxAx7HhNy8qV7bt6v6ToiXf4GOEEnlHRZq/fwAtNaZO+t2M4HfUIIcrK0v1luIW0XaXovOi4xaH+ssgizZXb1LBVbLGCZVj/qHFaeQw7/56HgTZGRJ66kxkMufkheDDrSQuvjSO9/cYrlsSPe4tMHKweiZ5O8sMpoL+Dp4T+JYmhzSyhUwaqH2M7ibAr4A3pIHH3cCa7ZBt/nHzafzWoi9y0FRZE1cfRz2//pvRwynuLrKI7cAFlWJku5VmKQjM9cO4OxXu07UVy2tERBVNsX3QpnS8Z6iQW0vk3KIT9VfniQ2MZSt0Opj7mPCa6+OuVcT7bh3sOVH41MhdHXkOqg5iD3lbvh1Wdatb4PE4hsfg2l2zMPNAs374Y3ufznAsMdZwpUugQXIuWvLG4gKUZfvmkTQhG1g2Y6LcranSgm2zScqxQqDxHM9UHncFzFegpySTAAnZeq4HXbkzxNp0HSDckouN6tczazR8WHc2NtgI6n/4RKpe/8MiZZLY0pJXxVutK2JlLHwAg0x7yM+sG/QYutCmfAdOpkIJ7Y4jTiAPSiV5jhdn7FijUVOPxjsSnmB6+s74OJsVIzXjO91KFTQvy/FnmXATizpUInMLprFyIKfbiAWkF72vYuVwBeQmv5Jaj/dUWg=
