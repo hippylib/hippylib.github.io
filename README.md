@@ -2,7 +2,17 @@
 
 This repo contains the [MkDocs](http://mkdocs.org) source files of the hIPPYlib website.
 
-## Prerequisites
+## Edit the website directly from GitHub
+
+The markdown sources for the hIPPYlib webpages are located in the `src` subfolder. Simply edit online the file you would like to update and commit. TravisCI will automatically build the html pages with `mkdocs` and push them to https://github.com/hippylib/hippylib.github.io.
+
+> **NOTE**: This workflow is the easiest, however it will not allow you to preview changes in the website.
+
+## Edit and preview the website locally
+
+This will require installing some software on your computer, but it has the advantage that you'll be able to see the final results before publishing it on the web.
+
+### Prerequisites
 
 * Install [MkDocs](http://mkdocs.org)   
 ```
@@ -29,7 +39,7 @@ Or, if you have conda installed, simply type
 
 
 
-## To make changes to the website
+### To make changes to the website
 
 * Clone this repository
 
@@ -38,17 +48,19 @@ Or, if you have conda installed, simply type
     git clone git@github.com:hippylib/web.git
 ```
 
-* Edit or add some `.md` files in the src folder (you may also need to update the `mkdocs.yml` config); 
+* Edit the `.md` files located in the `src` folder. Note, if you add a new `.md` file you'll also need to update the `mkdocs.yml` config); 
+
 * Preview locally
 ```
 #!sh
     mkdocs serve
 ```
-* Publish on GitHub
+
+* Commit your changes and push them on GitHub
 ```
 #!sh
+    git add <files I want to commit>
+    git commit -m "Explain changes"
     git push origin master:master
-    mkdocs build
-    cd site
-    # push this repository to github: https://github.com/hippylib/hippylib.github.io.git
 ```
+TravisCI integration will automatically call `mkdocs build` and push the freshly built *html pages* to https://github.com/hippylib/hippylib.github.io
