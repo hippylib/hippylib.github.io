@@ -32,6 +32,8 @@
 
 ## Ph.D. Thesis
 
+- K. A. McCormack, [*Earthquakes, groundwater and surface deformation: exploring the poroelastic response to megathrust earthquakes*](https://repositories.lib.utexas.edu/handle/2152/68892), University of Texas at Austin, 2018. Adviser M. Hesse
+
 - B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), University of Texas at Austin, 2017. Adviser O. Ghattas
 
 ## Oral Presentations
