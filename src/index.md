@@ -43,7 +43,10 @@ doi = {10.5281/zenodo.596931}
 title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inverse Problems}",
 author = {Villa, U. and Petra, N. and Ghattas, O.},
 journal = {Journal of Open Source Software},
-volume = {submitted},
+volume = {3},
+issue = {30},
+page = {940},
+doi  = {10.21105/joss.00940},
 year = {2018}
 }
 ```
