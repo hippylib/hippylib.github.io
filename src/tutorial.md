@@ -9,9 +9,6 @@ For the complete API reference click [here](http://hippylib.readthedocs.io/en/la
 4. [Advection-Diffusion Bayesian](tutorials/4_AdvectionDiffusionBayesian.md) notebook illustrates how to solve a time-dependent linear inverse problem in a Bayesian setting.
 5. [Hessian Spectrum](tutorials/5_HessianSpectrum.md) notebook illustrates the spectral property of the Hessian operator for a linear source inversion problem.
 
-For `hIPPYlib` version 1.6.0 see [here](tutorial_v1.6.0.md)
-
-
 The interactive ipython notebooks are located in the `tutorial` folder of the `hIPPYlib` release.
 
 To run the notebooks follow these instructions.
@@ -29,5 +26,11 @@ $ jupyter notebook
 
 For more information on installing ipython and using notebooks see <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank">here</a>.
 
+## Additional resources
+
 For additional resources and tutorials please see the teaching material for the
 *2018 Gene Golub SIAM Summer School* on *Inverse Problems: Systematic Integration of Data with Models under Uncertainty* available [here](https://g2s3-2018.github.io/labs).
+
+## Tutorial for `hIPPYlib` 1.x
+
+For `hIPPYlib` version 1.6.0 see [here](tutorial_v1.6.0.md)
