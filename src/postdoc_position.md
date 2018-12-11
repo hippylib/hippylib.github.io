@@ -1,4 +1,4 @@
-# Announcements
+# Openings
 
 ## Open Postdoc Position at UC Merced
 
