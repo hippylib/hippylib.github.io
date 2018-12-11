@@ -22,4 +22,4 @@ summer schools at local and international events.
 Interested candidates should contact Noemi Petra at
 [npetra@ucmerced.edu](npetra@ucmerced.edu).
 
-**Apply at [https://aprecruit.ucmerced.edu/apply/JPF00738](https://aprecruit.ucmerced.edu/apply/JPF00505).**
+**Apply at [https://aprecruit.ucmJPF00738erced.edu/apply/](https://aprecruit.ucmerced.edu/apply/JPF00738).**
