@@ -31,7 +31,7 @@ pages:
 - Download: download.md
 - Research: research.md
 - Outreach: outreach.md
-#- Announcements: postdoc_position.md
+- Openings: postdoc_position.md
 - About: about.md
 
 #theme_dir: template
