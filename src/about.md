@@ -12,7 +12,7 @@ Amal Alghamdi,
 Joshua Chen,
 [Peng Chen](http://users.ices.utexas.edu/~peng/),
 Ben Crestel,
-[Eldar Khattatov](http://eldarkh.github.io)
+[Eldar Khattatov](http://eldarkh.github.io),
 Tom O'Leary-Roseberry,
 Vishwas Rao,
 Siddhant Wahal
