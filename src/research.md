@@ -22,7 +22,7 @@
 
 ## Publications
 
-- E. M. Constantinescu, N. Petra, J. Bessac, C. G. Petra, *Statistical Treatment of Inverse Problems Constrained by Differential Equations-Based Models with Stochastic Terms* (https://arxiv.org/abs/1810.08557), arXiv, 2018
+- E. M. Constantinescu, N. Petra, J. Bessac, C. G. Petra, [*Statistical Treatment of Inverse Problems Constrained by Differential Equations-Based Models with Stochastic Terms*](https://arxiv.org/abs/1810.08557), arXiv, 2018
 
 - P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301), ArXiv, 2018
 
