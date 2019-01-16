@@ -2,6 +2,8 @@
 
 ## Applications
 
+- Inversion for optical properties of biological tissues in quantitative optoacoustic tomography
+
 - Bayesian optimal experimental design for inverse problems in acoustic scattering
 
 - Inversion and control for CO<sub>2</sub> sequestration with poroelastic models
@@ -28,7 +30,7 @@
 
 - U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*, in preparation, 2018
 
-- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems*, Journal of Open Source Software (JOSS), submitted, 2018
+- U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems*](http://dx.doi.org/10.21105/joss.00940), Journal of Open Source Software (JOSS), 3(30):940, 2018
 
 - P. Chen, U. Villa, O. Ghattas, *Taylor approximation for PDE-constrained optimization under uncertainty: Application to turbulent jet flow*, Proceedings in Applied Mathematics and Mechanics - 89th GAMM Annual Meeting, accepted, 2018
 
@@ -39,6 +41,10 @@
 - B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), University of Texas at Austin, 2017. Adviser O. Ghattas
 
 ## Oral Presentations
+
+- U. Villa, [*Learning from data through the lens of mathematical models*](https://math.wustl.edu/events/analysis-seminar-learning-data-through-lens-mathematical-models-gentle-introduction-bayesian?d=2019-01-28), Analysis Seminar, Dept. of Mathematics & Statistics, Washington University, January 28, 2019, St Louis, MO, US
+
+- U. Villa, [*Large Scale Inverse Problems and Uncertainty Quantification: Computational Tools and Imaging Applications*](https://engineering.wustl.edu/Events/Documents/Umberto%20Villa%20Seminar%201.24.19.pdf), Electrical & Systems Engineering Seminar, Washington University, January 24, 2019, St Louis, MO, US
 
 - N. Petra, [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems*](https://appliedmath.ucmerced.edu/research/special-topics-meetings-and-seminars/optimization), Optimization Seminar, University of California, Merced, October 19, 2018, Merced, CA, US
 
