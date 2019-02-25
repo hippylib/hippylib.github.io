@@ -75,6 +75,8 @@ and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 
 ## Poster Presentations
 
+- A. O. Babaniyi, O. Ghattas, N. Petra, U. Villa, [*hIPPYlib: An Extensible Software Framework for Large-scale Inverse Problems*](https://doi.org/10.6084/m9.figshare.7763063.v1), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
+
 - O. Ghattas, Y. Marzouk, M. Parno, N. Petra, U. Villa, [*Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*](https://doi.org/10.6084/m9.figshare.6172247.v1), NSF-SI2 PI meeting, Apr. 30- May 1, 2018, Washington, DC, US
 
 - K. Koval, G. Stadler, [*Computational Approaches for Linear Goal-Oriented Bayesian Inverse Problems*](http://meetings.siam.org/sess/dsp_talk.cfm?p=86488), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
