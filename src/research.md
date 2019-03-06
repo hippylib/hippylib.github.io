@@ -24,6 +24,8 @@
 
 ## Publications
 
+- P. Chen, K. Wu, J. Chen, T. O'Leary-Roseberry, O. Ghattas, [*Projected Stein Variational Newton: A Fast and Scalable Bayesian Inference Method in High Dimensions*](https://arxiv.org/abs/1901.08659), arXiv, 2018
+
 - E. M. Constantinescu, N. Petra, J. Bessac, C. G. Petra, [*Statistical Treatment of Inverse Problems Constrained by Differential Equations-Based Models with Stochastic Terms*](https://arxiv.org/abs/1810.08557), arXiv, 2018
 
 - P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301), ArXiv, 2018
@@ -41,6 +43,18 @@
 - B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), University of Texas at Austin, 2017. Adviser O. Ghattas
 
 ## Oral Presentations
+
+- N. Petra, G. Stadler, [*Inverse Problems: Integrating Data with Models under Uncertainty*](http://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=66044), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
+
+- K. Wu, P. Chen, O. Ghattas,[*A Stein Variational Newton Method for Optimal Experiment Design Problems*](http://meetings.siam.org/sess/dsp_talk.cfm?p=95929), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
+
+- P. Chen, O. Ghattas, U. Villa, [*Large-scale Optimal Experimental Design for Bayesian Nonlinear Inverse Problems*](http://meetings.siam.org/sess/dsp_talk.cfm?p=95353), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
+
+- T. O'Leary-Roseberry, J. Chen, P. Chen, U. Villa, O. Ghattas, [*Large-scale Optimization in Deep Learning for PDE Representation abstract*](http://meetings.siam.org/sess/dsp_talk.cfm?p=97302), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
+
+- J. J. Lee, O. Ghattas, T. Bui-Thanh, U. Villa, [*Derivative Informed MCMC Methods for Subsurface Models with Faults*](http://meetings.siam.org/sess/dsp_talk.cfm?p=95762), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
+
+- U. Villa, O. Ghattas, [*Scalable Methods for Bayesian Optimal Experimental Design Using Laplace Approximation*](http://meetings.siam.org/sess/dsp_talk.cfm?p=96535), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
 
 - U. Villa, [*Learning from data through the lens of mathematical models*](https://math.wustl.edu/events/analysis-seminar-learning-data-through-lens-mathematical-models-gentle-introduction-bayesian?d=2019-01-28), Analysis Seminar, Dept. of Mathematics & Statistics, Washington University, January 28, 2019, St Louis, MO, US
 
@@ -74,6 +88,10 @@ and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 - U. Villa, [*An Analytical Technique for Forward and Inverse Propagation of Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=74269), SIAM UQ, April 5-8, 2016, Lausanne, Switzerland
 
 ## Poster Presentations
+
+- I. Ambartsumyan, T. Bui-Thanh, O. Ghattas, E. Khattatov, [*An Edge-preserving Method for Joint Bayesian Inversion with Non-Gaussian Priors*](http://meetings.siam.org/sess/dsp_talk.cfm?p=97474), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
+
+- E. Khattatov, O. Ghattas, T. Bui-Thanh, and I. Ambartsumyan, U. Villa, [*Bayesian Inversion of Fault Properties in Two-phase Flow in Fractured Media*](http://meetings.siam.org/sess/dsp_talk.cfm?p=97471), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
 
 - A. O. Babaniyi, O. Ghattas, N. Petra, U. Villa, [*hIPPYlib: An Extensible Software Framework for Large-scale Inverse Problems*](https://doi.org/10.6084/m9.figshare.7763063.v1), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
 
