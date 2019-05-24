@@ -4,7 +4,7 @@
 
 `hIPPYlib` depends on [FEniCS](http://fenicsproject.org/) versions 1.6, 2016.1, 2016.2, 2017.1, 2017.2.
 
-We recommend using `FEniCS 2017.2` with `hIPPYlib`. **Note**: `FEniCS 2018.1` is not supported by `hIPPYlib`.
+We recommend using `FEniCS 2017.2` with `hIPPYlib`.
 
 `FEniCS` needs to be built with the following dependecies:
 
@@ -15,6 +15,10 @@ We recommend using `FEniCS 2017.2` with `hIPPYlib`. **Note**: `FEniCS 2018.1` is
  - (optional): `mshr`, `jupyter`
 
 > For detailed installation instructions see [here](http://hippylib.readthedocs.io/en/latest/installation.html).
+
+## FEniCS 2019.1.0
+
+`hIPPYlib` now offers experimental support for `FEniCS 2019.1.0`, although it requires a customized [FEniCS docker image](https://hub.docker.com/r/hippylib/fenics). See branch [2019.1-dev2](https://github.com/hippylib/hippylib/tree/2019.1-dev2) for details.
 
 ## hiPPYlib Docker container
 
