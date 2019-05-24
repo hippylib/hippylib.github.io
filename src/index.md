@@ -22,6 +22,7 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 
 - [Development version](https://github.com/hippylib/hippylib)
 - Download [hippylib-2.2.0.zip](https://zenodo.org/record/2229277/files/hippylib/hippylib-2.2.0.zip?download=1)
+- Experimental FEniCS-2019.1 support [2019.1-dev2](https://github.com/hippylib/hippylib/tree/2019.1-dev2)
 - [Previous releases](download.md)
 
 ## News
