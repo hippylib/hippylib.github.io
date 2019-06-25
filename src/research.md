@@ -64,30 +64,30 @@
 
 - **N. Petra**, [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems*](https://appliedmath.ucmerced.edu/research/special-topics-meetings-and-seminars/optimization), Optimization Seminar, University of California, Merced, October 19, 2018, Merced, CA, US
 
-- U. Villa, O. Ghattas, [*Maximize the Expected Information Gain in Bayesian Experimental Design Problems: A Fast Optimization Algorithm Based on Laplace Approximation and Randomized Eigensolvers*](http://meetings.siam.org/sess/dsp_talk.cfm?p=89969), SIAM UQ, April 16-19, 2018, Garden Grove, CA, US
+- **U. Villa**, O. Ghattas, [*Maximize the Expected Information Gain in Bayesian Experimental Design Problems: A Fast Optimization Algorithm Based on Laplace Approximation and Randomized Eigensolvers*](http://meetings.siam.org/sess/dsp_talk.cfm?p=89969), SIAM UQ, April 16-19, 2018, Garden Grove, CA, US
 
-- T. O’Leary-Roseberry, *A PDE Constrained Optimization Approach to the Solution
+- **T. O’Leary-Roseberry**, *A PDE Constrained Optimization Approach to the Solution
 of the Stefan Problem*, Texas Applied Mathematics
 and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 
-- U. Villa, *hIPPYlib:  An Extensible Software Framework for Large-Scale Deterministic and Linearized Bayesian Inverse*, Texas Applied Mathematics
+- **U. Villa**, *hIPPYlib:  An Extensible Software Framework for Large-Scale Deterministic and Linearized Bayesian Inverse*, Texas Applied Mathematics
 and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 
-- U. Villa, [*Taylor Approximation for PDE-constrained Optimal Control Problems under High-dimensional Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=87851), SIAM Control, July 10 - 12, 2017, Pittsburgh, Pa, US
+- **U. Villa**, [*Taylor Approximation for PDE-constrained Optimal Control Problems under High-dimensional Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=87851), SIAM Control, July 10 - 12, 2017, Pittsburgh, Pa, US
 
-- U. Villa, [*Derivative-Informed MCMC for Bayesian Calibration of Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=62707), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
+- **U. Villa**, [*Derivative-Informed MCMC for Bayesian Calibration of Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=62707), SIAM Annual, July 10 - 14, 2017, Pittsburgh, Pa, US
 
-- U. Villa, *Hessian-based sampling techniques for Bayesian inverse problems with stochastic PDE forward model*, Applied Inverse Problems, May 29 - June 2, 2017, Hangzhou, China
+- **U. Villa**, *Hessian-based sampling techniques for Bayesian inverse problems with stochastic PDE forward model*, Applied Inverse Problems, May 29 - June 2, 2017, Hangzhou, China
 
-- U. Villa, [*Bayesian Calibration of Inadequate Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_talk.cfm?p=82633), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
+- **U. Villa**, [*Bayesian Calibration of Inadequate Stochastic PDE Models*](http://meetings.siam.org/sess/dsp_talk.cfm?p=82633), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
 
-- P. Chen, [*Taylor Approximation for PDE-Constrained Optimal Control Problems Under High-Dimensional Uncertainty: Application to a Turbulence Model*](http://meetings.siam.org/sess/dsp_talk.cfm?p=81654), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
+- **P. Chen**, [*Taylor Approximation for PDE-Constrained Optimal Control Problems Under High-Dimensional Uncertainty: Application to a Turbulence Model*](http://meetings.siam.org/sess/dsp_talk.cfm?p=81654), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
 
-- B. Crestel, [*Scalable Solvers for Joint Inversion with Several Structural Coupling Terms*](http://meetings.siam.org/sess/dsp_talk.cfm?p=82125), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
+- **B. Crestel**, [*Scalable Solvers for Joint Inversion with Several Structural Coupling Terms*](http://meetings.siam.org/sess/dsp_talk.cfm?p=82125), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
 
-- Amal Alghamdi, [*Bayesian Inversion for Subsurface Properties from Poroelastic Forward Models and Surface Deformation Data*](http://meetings.siam.org/sess/dsp_talk.cfm?p=81792), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
+- **Amal Alghamdi**, [*Bayesian Inversion for Subsurface Properties from Poroelastic Forward Models and Surface Deformation Data*](http://meetings.siam.org/sess/dsp_talk.cfm?p=81792), SIAM CSE, Feb 27-March 3, 2017, Atlanta, GA, US
 
-- U. Villa, [*An Analytical Technique for Forward and Inverse Propagation of Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=74269), SIAM UQ, April 5-8, 2016, Lausanne, Switzerland
+- **U. Villa**, [*An Analytical Technique for Forward and Inverse Propagation of Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=74269), SIAM UQ, April 5-8, 2016, Lausanne, Switzerland
 
 ## Poster Presentations
 
