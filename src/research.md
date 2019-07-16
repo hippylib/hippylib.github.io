@@ -44,6 +44,10 @@
 
 ## Oral Presentations
 
+- I. Ambartsumyan, **O. Ghattas**, *Fast methods for Bayesian inverse problems governed by PDE forward models with random coefficient fields*, Applied Inverse Problems Conference, July 8-12, 2019, Grenoble, France
+
+- **U. Villa**, O. Ghattas, *Scalable optimal experimental design for large scale non-linear Bayesian inverse problems*, Applied Inverse Problems Conference, July 8-12, 2019, Grenoble, France
+
 - **O. Babaniyi**, O. Ghattas, N. Petra and U. Villa, [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems*](https://easychair.org/smart-program/FEniCS19/2019-06-13.html#talk:101256), 2019 FEniCS Conference, Carnegie Institution for Science Department of Terrestrial Magnetism (DTM), Washington DC,June 12-14, 2019. **Best postdoc presentation award**
 
 - N. Petra, **G. Stadler**, [*Inverse Problems: Integrating Data with Models under Uncertainty*](http://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=66044), SIAM CSE, Feb 25-March 1, 2019, Spokane, Wa, US
