@@ -1,10 +1,10 @@
 # Documentation
 
-## Installation
+## Installation of stable releases
 
-`hIPPYlib` depends on [FEniCS](http://fenicsproject.org/) versions 1.6, 2016.1, 2016.2, 2017.1, 2017.2.
+The latest `hIPPYlib` release depends on [FEniCS](http://fenicsproject.org/) versions 2016.1, 2016.2, 2017.1, 2017.2.
 
-We recommend using `FEniCS 2017.2` with `hIPPYlib`.
+We recommend using `FEniCS 2017.2` with the latest `hIPPYlib` release.
 
 `FEniCS` needs to be built with the following dependecies:
 
@@ -14,11 +14,13 @@ We recommend using `FEniCS 2017.2` with `hIPPYlib`.
  - PETSc dependencies: `parmetis`, `scotch`, `suitesparse`, `superlu_dist`, `ml`, `hypre`
  - (optional): `mshr`, `jupyter`
 
-> For detailed installation instructions see [here](http://hippylib.readthedocs.io/en/latest/installation.html).
+> For detailed installation instructions of the latest stable release see [here](https://hippylib.readthedocs.io/en/2.2.0/installation.html).
 
-## FEniCS 2019.1.0
+## Installation of developement version (with FEniCS 2019.1.0 support)
 
-`hIPPYlib` now offers experimental support for `FEniCS 2019.1.0`, although it requires a customized [FEniCS docker image](https://hub.docker.com/r/hippylib/fenics). See branch [2019.1-dev2](https://github.com/hippylib/hippylib/tree/2019.1-dev2) for details.
+The [development version](https://github.com/hippylib/hippylib) of `hIPPYlib` offers experimental support for `FEniCS 2019.1.0`. However, a customized [FEniCS docker image](https://hub.docker.com/r/hippylib/fenics) or customized [conda packages](https://anaconda.org/uvilla/fenics) is required at this time.
+
+> For detailed installation instructions of the development version see [here](https://hippylib.readthedocs.io/en/latest/installation.html).
 
 ## hiPPYlib Docker container
 
