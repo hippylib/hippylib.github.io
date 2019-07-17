@@ -1,12 +1,13 @@
 # Download
 
 ## Latest release
-- Download [hippylib-2.2.0.zip](https://zenodo.org/record/2229277/files/hippylib/hippylib-2.2.0.zip?download=1)
+- Download [hippylib-2.2.1.zip](https://zenodo.org/record/2614052/files/hippylib/hippylib-2.2.1.zip?download=1)
 
 ## All releases
 
 **Filename** | **Version** | **Release Date** | **Notes** |
  ----------- | ----------- | ---------------- | --------- |
+ [hippylib-2.2.1.zip](https://zenodo.org/record/2614052/files/hippylib/hippylib-2.2.1.zip?download=1) | 2.2.1 | March 2019 | Bugfixes |
  [hippylib-2.2.0.zip](https://zenodo.org/record/2229277/files/hippylib/hippylib-2.2.0.zip?download=1) | 2.2.0 | Dec 2018 | Enchantments and install |
 [hippylib-2.1.1.zip](https://zenodo.org/record/1469675/files/hippylib/hippylib-2.1.1.zip?download=1) | 2.1.1 | Oct 2018 | Publication to [JOSS](http://joss.theoj.org/papers/053e0d08a5e9755e7b78898cff6f6208) | 
 [hippylib-2.1.0.tar.gz](https://zenodo.org/record/1411029/files/hippylib/hippylib-2.1.0.zip?download=1) | 2.1.0 | July 2018 | Enchantments & Bugfixes |
