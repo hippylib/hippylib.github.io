@@ -24,6 +24,8 @@
 
 ## Publications
 
+- R. Nicholson, N. Petra and Jari P Kaipio. [*Estimation of the Robin coefficient field in a Poisson problem with uncertain conductivity field*](https://arxiv.org/abs/1801.03592), Inverse Problems, Volume 34, Number 11, 2018.
+
 - P. Chen, K. Wu, J. Chen, T. O'Leary-Roseberry, O. Ghattas, [*Projected Stein Variational Newton: A Fast and Scalable Bayesian Inference Method in High Dimensions*](https://arxiv.org/abs/1901.08659), arXiv, 2018
 
 - E. M. Constantinescu, N. Petra, J. Bessac, C. G. Petra, [*Statistical Treatment of Inverse Problems Constrained by Differential Equations-Based Models with Stochastic Terms*](https://arxiv.org/abs/1810.08557), arXiv, 2018
