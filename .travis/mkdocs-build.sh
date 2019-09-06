@@ -2,6 +2,6 @@
 
 set -ex
 
-conda env create --file mkdocs-env.yml
-source activate mkdocs
+/opt/conda/bin/conda env create --file mkdocs-env.yml
+source /opt/conda/bin/activate mkdocs
 mkdocs build
