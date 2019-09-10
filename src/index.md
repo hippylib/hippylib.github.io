@@ -30,7 +30,7 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 
 ## Contact
 
-Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a> and <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>.
+Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a>, <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>, and <a href="https://ese.wustl.edu/Pages/default.aspx" target="_blank">WUSTL</a>.
 
 Please cite as 
 
