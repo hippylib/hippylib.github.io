@@ -35,15 +35,16 @@ Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" t
 Please cite as 
 
 ```sh
-@article{VillaPetraGhattas2016,
-title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inverse Problems}",
-author = {Villa, U. and Petra, N. and Ghattas, O.},
-year = {2016},
-url = {http://hippylib.github.io},
-doi = {10.5281/zenodo.596931}
+@article{VillaPetraGhattas19,
+author = {{Villa}, Umberto and {Petra}, Noemi and {Ghattas}, Omar},
+title = "{hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems Governed by PDEs; Part I: Deterministic Inversion and Linearized Bayesian Inference}",
+journal = {arXiv e-prints},
+year = {2019},
+archivePrefix = {arXiv},
+eprint = {1909.03948}
 }
 
-@article{VillaPetraGhattas2018,
+@article{VillaPetraGhattas18,
 title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inverse Problems}",
 author = {Villa, U. and Petra, N. and Ghattas, O.},
 journal = {Journal of Open Source Software},
@@ -53,6 +54,12 @@ page = {940},
 doi  = {10.21105/joss.00940},
 year = {2018}
 }
+
+@article{VillaPetraGhattas16,
+title = "{hIPPYlib: an Extensible Software Framework for Large-scale Deterministic and Bayesian Inverse Problems}",
+author = {Villa, U. and Petra, N. and Ghattas, O.},
+year = {2016},
+url = {http://hippylib.github.io},
+doi = {10.5281/zenodo.596931}
+}
 ```
-
-
