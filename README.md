@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hippylib/web.svg?branch=master)](https://travis-ci.org/hippylib/web)
+
 # hIPPYlib / web
 
 This repo contains the [MkDocs](http://mkdocs.org) source files of the hIPPYlib website.
