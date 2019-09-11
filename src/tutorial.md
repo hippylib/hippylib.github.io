@@ -31,6 +31,10 @@ For more information on installing ipython and using notebooks see <a href="http
 For additional resources and tutorials please see the teaching material for the
 *2018 Gene Golub SIAM Summer School* on *Inverse Problems: Systematic Integration of Data with Models under Uncertainty* available [here](https://g2s3-2018.github.io/labs).
 
+## Tutorial for `hIPPYlib` 2.x
+
+For `hIPPYlib` version 2.3.0 see [here](tutorial_v2.3.0.md)
+
 ## Tutorial for `hIPPYlib` 1.x
 
 For `hIPPYlib` version 1.6.0 see [here](tutorial_v1.6.0.md)

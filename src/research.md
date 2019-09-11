@@ -24,19 +24,19 @@
 
 ## Publications
 
+- U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*](http://arxiv.org/abs/1909.03948), arXiv, 2019
+
+- P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301),  Journal of Computational Physics, 385:163--186, 2019.
+
 - R. Nicholson, N. Petra and Jari P Kaipio. [*Estimation of the Robin coefficient field in a Poisson problem with uncertain conductivity field*](https://arxiv.org/abs/1801.03592), Inverse Problems, Volume 34, Number 11, 2018.
 
 - P. Chen, K. Wu, J. Chen, T. O'Leary-Roseberry, O. Ghattas, [*Projected Stein Variational Newton: A Fast and Scalable Bayesian Inference Method in High Dimensions*](https://arxiv.org/abs/1901.08659), arXiv, 2018
 
 - E. M. Constantinescu, N. Petra, J. Bessac, C. G. Petra, [*Statistical Treatment of Inverse Problems Constrained by Differential Equations-Based Models with Stochastic Terms*](https://arxiv.org/abs/1810.08557), arXiv, 2018
 
-- P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301), ArXiv, 2018
-
-- U. Villa, N. Petra, O. Ghattas, *hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*, in preparation, 2018
-
 - U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems*](http://dx.doi.org/10.21105/joss.00940), Journal of Open Source Software (JOSS), 3(30):940, 2018
 
-- P. Chen, U. Villa, O. Ghattas, *Taylor approximation for PDE-constrained optimization under uncertainty: Application to turbulent jet flow*, Proceedings in Applied Mathematics and Mechanics - 89th GAMM Annual Meeting, accepted, 2018
+- P. Chen, U. Villa, O. Ghattas, *Taylor approximation for PDE-constrained optimization under uncertainty: Application to turbulent jet flow*, Proceedings in Applied Mathematics and Mechanics - 89th GAMM Annual Meeting, 18:e201800466, 2018
 
 ## Ph.D. Thesis
 
