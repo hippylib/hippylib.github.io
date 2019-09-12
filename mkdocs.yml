@@ -14,26 +14,27 @@ pages:
 - Home: index.md
 #- Features: features.md
 - Tutorial:
-      - README: tutorial.md
-      - FEniCS101: tutorials/1_FEniCS101.md
-      - Poisson Deterministic: tutorials/2_PoissonDeterministic.md
-      - Subsurface Bayesian: tutorials/3_SubsurfaceBayesian.md
-      - Advection-Diffusion Bayesian: tutorials/4_AdvectionDiffusionBayesian.md
-      - Hessian Spectrum: tutorials/5_HessianSpectrum.md
-      - Version 1.x:
-          - README: tutorial_v1.6.0.md
-          - FEniCS101: tutorials_v1.6.0/1_FEniCS101/index.md
-          - Poisson Deterministic: tutorials_v1.6.0/2_PoissonDeterministic/index.md
-          - Subsurface Bayesian: tutorials_v1.6.0/3_SubsurfaceBayesian/index.md
-          - Advection-Diffusion Bayesian: tutorials_v1.6.0/4_AdvectionDiffusionBayesian/index.md
-          - Hessian Spectrum: tutorials_v1.6.0/5_HessianSpectrum/index.md
-      - Version 2.x:
+#      - Development version:
+#          - README: tutorial_v3.0.0.md
+#          - FEniCS101: tutorials_v3.0.0/1_FEniCS101.md
+#          - Poisson Deterministic: tutorials_v3.0.0/2_PoissonDeterministic.md
+#          - Subsurface Bayesian: tutorials_v3.0.0/3_SubsurfaceBayesian.md
+#          - Advection-Diffusion Bayesian: tutorials_v3.0.0/4_AdvectionDiffusionBayesian.md
+#          - Hessian Spectrum: tutorials_v3.0.0/5_HessianSpectrum.md
+      - Version 2.3.0:
           - README: tutorial_v2.3.0.md
           - FEniCS101: tutorials_v2.3.0/1_FEniCS101/1_FEniCS101.md
           - Poisson Deterministic: tutorials_v2.3.0/2_PoissonDeterministic/2_PoissonDeterministic.md
           - Subsurface Bayesian: tutorials_v2.3.0/3_SubsurfaceBayesian/3_SubsurfaceBayesian.md
           - Advection-Diffusion Bayesian: tutorials_v2.3.0/4_AdvectionDiffusionBayesian/4_AdvectionDiffusionBayesian.md
           - Hessian Spectrum: tutorials_v2.3.0/5_HessianSpectrum/5_HessianSpectrum.md
+      - Version 1.6.0:
+          - README: tutorial_v1.6.0.md
+          - FEniCS101: tutorials_v1.6.0/1_FEniCS101/index.md
+          - Poisson Deterministic: tutorials_v1.6.0/2_PoissonDeterministic/index.md
+          - Subsurface Bayesian: tutorials_v1.6.0/3_SubsurfaceBayesian/index.md
+          - Advection-Diffusion Bayesian: tutorials_v1.6.0/4_AdvectionDiffusionBayesian/index.md
+          - Hessian Spectrum: tutorials_v1.6.0/5_HessianSpectrum/index.md
 - Documentation: documentation.md
 - Download: download.md
 - Research: research.md
