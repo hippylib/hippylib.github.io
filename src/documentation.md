@@ -1,5 +1,7 @@
 # Documentation
 
+The complete API reference of `hIPPYlib` is available at [readthedocs](http://hippylib.readthedocs.io/en/latest/modules.html).
+
 ## Installation of stable releases
 
 The latest `hIPPYlib` release depends on [FEniCS](http://fenicsproject.org/) versions 2016.1, 2016.2, 2017.1, 2017.2.
@@ -24,9 +26,5 @@ The [development version](https://github.com/hippylib/hippylib) of `hIPPYlib` of
 
 ## hiPPYlib Docker container
 
-A Docker image with a working installation of `hIPPYlib 2.3.0` and `FEniCS 2017.2` is available [here](https://hub.docker.com/r/hippylib/toms). 
-
-## Documentation
-
-The complete API reference of `hIPPYlib` is available at [readthedocs](http://hippylib.readthedocs.io/en/latest/modules.html).
+A Docker image with a working installation of `hIPPYlib 2.3.0` and `FEniCS 2017.2` is available [here](https://hub.docker.com/r/hippylib/toms). Numerical results presented in the manuscript [*hIPPYlib: A Software Framework for Large-Scale Inverse Problems Governed by PDEs: Part I: Deterministic Inversion and Linearized Bayesian Inference*](http://arxiv.org/abs/1909.03948) were obtained using the software in this image.
 
