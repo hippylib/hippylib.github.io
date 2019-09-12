@@ -14,7 +14,7 @@ We recommend using `FEniCS 2017.2` with the latest `hIPPYlib` release.
  - PETSc dependencies: `parmetis`, `scotch`, `suitesparse`, `superlu_dist`, `ml`, `hypre`
  - (optional): `mshr`, `jupyter`
 
-> For detailed installation instructions of the latest stable release see [here](https://hippylib.readthedocs.io/en/2.2.0/installation.html).
+> For detailed installation instructions of the latest stable release see [here](https://hippylib.readthedocs.io/en/2.3.0/installation.html).
 
 ## Installation of developement version (with FEniCS 2019.1.0 support)
 
@@ -24,7 +24,7 @@ The [development version](https://github.com/hippylib/hippylib) of `hIPPYlib` of
 
 ## hiPPYlib Docker container
 
-A Docker image `hIPPYlib`, `FEniCS` and their dependencies preinstalled is available [here](https://hub.docker.com/r/mparno/muq-hippylib/). The username is `user1` and password `Breckenridge1_g2s3`.
+A Docker image with a working installation of `hIPPYlib 2.3.0` and `FEniCS 2017.2` is available [here](https://hub.docker.com/r/hippylib/toms). 
 
 ## Documentation
 
