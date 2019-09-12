@@ -10,7 +10,7 @@ These tutorials are the best place to learn about the basic features and the alg
 4. [Advection-Diffusion Bayesian](tutorials_v2.3.0/4_AdvectionDiffusionBayesian/4_AdvectionDiffusionBayesian.md) notebook illustrates how to solve a time-dependent linear inverse problem in a Bayesian setting.
 5. [Hessian Spectrum](tutorials_v2.3.0/5_HessianSpectrum/5_HessianSpectrum.md) notebook illustrates the spectral property of the Hessian operator for a linear source inversion problem.
 
-> Tutorials 3 and 4 contains a line-by-line explanation of the model problems presented in [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems Governed by PDEs; Part I: Deterministic Inversion and Linearized Bayesian Inference*](http://arxiv.org/abs/1909.03948).
+> Tutorials 3 and 4 contain a line-by-line explanation of the model problems presented in [*hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems Governed by PDEs; Part I: Deterministic Inversion and Linearized Bayesian Inference*](http://arxiv.org/abs/1909.03948).
  
 ## Interactive tutorials
 
