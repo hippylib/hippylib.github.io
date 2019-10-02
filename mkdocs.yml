@@ -51,4 +51,4 @@ google_analytics: ['UA-52448613-3', 'hippylib.github.io']
 extra_javascript: 
     - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
     
-copyright: Copyright &copy; 2016-2018 The University of Texas at Austin, University of California Merced. <br> This material is based on work partially supported by the National Science Foundation under Grants No ACI-1550593, ACI-1550547. 
+copyright: Copyright &copy; 2016-2018 The University of Texas at Austin, University of California Merced. <br> Copyright &copy; 2018 The University of Texas at Austin, University of California Merced, Washington University in St. Louis. <br> This material is based on work partially supported by the National Science Foundation under Grants No ACI-1550593, ACI-1550547. 
