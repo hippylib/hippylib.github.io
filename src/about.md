@@ -9,6 +9,7 @@
 ## Current and past contributors
 Amal Alghamdi,
 [Ilona Ambartsumyan](http://ailona.github.io),
+Olalekan Babaniyi,
 Joshua Chen,
 [Peng Chen](http://users.ices.utexas.edu/~peng/),
 Ben Crestel,
@@ -19,6 +20,7 @@ Siddhant Wahal
 
 ## Copyright
 &copy; 2016-2018 The University of Texas at Austin, University of California Merced.
+&copy; 2019 The University of Texas at Austin, University of California Merced, Washington University in St. Louis.
 
 ## Support
 
