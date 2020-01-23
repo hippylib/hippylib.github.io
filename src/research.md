@@ -14,15 +14,15 @@
 
 - Inference of basal boundary conditions for ice sheet flow
 
-- Inversion for coupled ice-ocean interaction
-
 - Inversion for material properties of cardiac tissue
 
 - Inference, prediction and optimization under uncertainty for turbulent combustion
 
 - Inference of constitutive laws in mechanics of nano-scale filaments
 
-## Publications
+## Selected Publications
+
+- K. Koval, A. Alexanderian, G. Stadler, [*Optimal experimental design under irreducible uncertainty for inverse problems governed by PDEs*](https://arxiv.org/abs/1912.08915), arXiv, 2019
 
 - U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*](http://arxiv.org/abs/1909.03948), arXiv, 2019
 
@@ -38,13 +38,13 @@
 
 - P. Chen, U. Villa, O. Ghattas, *Taylor approximation for PDE-constrained optimization under uncertainty: Application to turbulent jet flow*, Proceedings in Applied Mathematics and Mechanics - 89th GAMM Annual Meeting, 18:e201800466, 2018
 
-## Ph.D. Thesis
+## Selected Ph.D. thesis
 
 - K. A. McCormack, [*Earthquakes, groundwater and surface deformation: exploring the poroelastic response to megathrust earthquakes*](https://repositories.lib.utexas.edu/handle/2152/68892), University of Texas at Austin, 2018. Adviser M. Hesse
 
 - B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), University of Texas at Austin, 2017. Adviser O. Ghattas
 
-## Oral Presentations
+## Selected oral presentations
 
 - I. Ambartsumyan, **O. Ghattas**, *Fast methods for Bayesian inverse problems governed by PDE forward models with random coefficient fields*, Applied Inverse Problems Conference, July 8-12, 2019, Grenoble, France
 
@@ -95,7 +95,7 @@ and Engineering Symposium, Sept. 21-23, 2017, Austin, TX, US
 
 - **U. Villa**, [*An Analytical Technique for Forward and Inverse Propagation of Uncertainty*](http://meetings.siam.org/sess/dsp_talk.cfm?p=74269), SIAM UQ, April 5-8, 2016, Lausanne, Switzerland
 
-## Poster Presentations
+## Selected poster presentations
 
 - I. Ambartsumyan, T. Bui-Thanh, O. Ghattas, E. Khattatov, [*An Edge-preserving Method for Joint Bayesian Inversion with Non-Gaussian Priors*](http://meetings.siam.org/sess/dsp_talk.cfm?p=97474), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
 
