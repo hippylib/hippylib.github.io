@@ -7,20 +7,25 @@
 - [Omar Ghattas](http://users.ices.utexas.edu/~omar/)
 
 ## Current and past contributors
-Amal Alghamdi,
+Amal Alghamdi (UT Austin),
+Olalekan Babaniyi (RIT),
+Joshua Chen (UT Austin),
+[Peng Chen](http://users.ices.utexas.edu/~peng/) (UT Austin),
+Argho Datta (WashU),
+Ki-Tae Kim (UC Merced),
+Tom O'Leary-Roseberry (UT Austin),
+Luke Lozenski (WashU),
+Siddhant Wahal (UT Austin)
+
+## Past contributors
 [Ilona Ambartsumyan](http://ailona.github.io),
-Olalekan Babaniyi,
-Joshua Chen,
-[Peng Chen](http://users.ices.utexas.edu/~peng/),
 Ben Crestel,
 [Eldar Khattatov](http://eldarkh.github.io),
-Tom O'Leary-Roseberry,
-Vishwas Rao,
-Siddhant Wahal
+Vishwas Rao
 
 ## Copyright
 &copy; 2016-2018 The University of Texas at Austin, University of California Merced.
-&copy; 2019 The University of Texas at Austin, University of California Merced, Washington University in St. Louis.
+&copy; 2019-2020 The University of Texas at Austin, University of California Merced, Washington University in St. Louis.
 
 ## Support
 
