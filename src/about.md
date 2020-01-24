@@ -6,7 +6,7 @@
 - [Noemi Petra](http://faculty.ucmerced.edu/npetra)
 - [Omar Ghattas](http://users.ices.utexas.edu/~omar/)
 
-## Current and past contributors
+## Current contributors
 Amal Alghamdi (UT Austin),
 Olalekan Babaniyi (RIT),
 Joshua Chen (UT Austin),
