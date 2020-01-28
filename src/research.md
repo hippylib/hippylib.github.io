@@ -20,9 +20,11 @@
 
 - Inference of constitutive laws in mechanics of nano-scale filaments
 
-## Selected Publications
+## Selected publications
 
 - K. Koval, A. Alexanderian, G. Stadler, [*Optimal experimental design under irreducible uncertainty for inverse problems governed by PDEs*](https://arxiv.org/abs/1912.08915), arXiv, 2019
+
+- S. Wahal, G. Biros, [*BIMC: The Bayesian Inverse Monte Carlo method for goal-oriented uncertainty quantification. Part I*](https://arxiv.org/abs/1911.00619), arXiv, 2019
 
 - U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*](http://arxiv.org/abs/1909.03948), arXiv, 2019
 
