@@ -24,10 +24,6 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 - Download [hippylib-2.3.0.zip](https://zenodo.org/record/3401577/files/hippylib/hippylib-2.3.0.zip?download=1)
 - [Previous releases](download.md)
 
-## News
-
-- [Post-Doctoral Scholar position](postdoc_position.md) opening in Prof. Petra group at UC Merced.
-
 ## Contact
 
 Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a>, <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>, and <a href="https://ese.wustl.edu/Pages/default.aspx" target="_blank">WUSTL</a>.
