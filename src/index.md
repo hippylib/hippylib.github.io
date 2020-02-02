@@ -8,11 +8,26 @@ hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for P
 
 ## Features
 
-- Friendly, compact, near-mathematical FEniCS notation to express the PDE and likelihood in weak form
-- Automatic generation of efficient code for the discretization of weak forms using FEniCS
-- Symbolic differentiation of weak forms to generate derivatives and adjoint information
-- Globalized Inexact Newton-CG method to solve the inverse problem
-- Low rank representation of the posterior covariace using randomized algorithms
+- Friendly, compact, near-mathematical FEniCS notation to
+express, differentiate, and discretize the PDE forward model and
+likelihood function
+
+- Large scale optimization algorithms, such as globalized inexact
+Newton-CG method, to solve the inverse problem
+
+- Randomized algorithms for trace estimation, eigenvalues and singular values decomposition.
+
+- Scalable sampling of Gaussian random fields
+
+- Linearized Bayesian inversion with low rank-based
+representation of the posterior covariance
+
+- Hessian informed MCMC algorithms to explore the posterior
+  distribution
+
+- Forward propagation of uncertainty capabilities using Monte
+  Carlo and Taylor expansion control variates
+
 
 See also our [tutorial](tutorial.md) and list of related [publications](research.md). For additional resources and tutorials please see the teaching material for the *2018 Gene Golub SIAM Summer School* on *Inverse Problems: Systematic Integration of Data with Models under Uncertainty* available [here](https://g2s3-2018.github.io/labs).
 
@@ -20,8 +35,8 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 
 ## Latest Release
 
-- [Development version](https://github.com/hippylib/hippylib) (supports FEniCS-2019.1)
-- Download [hippylib-2.3.0.zip](https://zenodo.org/record/3401577/files/hippylib/hippylib-2.3.0.zip?download=1)
+- [Development version](https://github.com/hippylib/hippylib)
+- Download [hippylib-3.0.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1)
 - [Previous releases](download.md)
 
 ## Contact
