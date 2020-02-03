@@ -1,4 +1,3 @@
-
 # Spectrum of the preconditioned Hessian misfit operator
 ## The linear source inversion problem
 
@@ -33,9 +32,8 @@ Here:
 
 
 ```python
-from __future__ import absolute_import, division, print_function
-
 import dolfin as dl
+import ufl
 import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -56,10 +54,10 @@ dl.set_log_active(False)
 
 ```python
 def pde_varf(u,m,p):
-    return k*dl.inner(dl.nabla_grad(u), dl.nabla_grad(p))*dl.dx \
-           + dl.inner(dl.nabla_grad(u), v*p)*dl.dx \
-           + c*u*p*dl.dx \
-           - m*p*dl.dx
+    return k*ufl.inner(ufl.grad(u), ufl.grad(p))*ufl.dx \
+           + ufl.inner(ufl.grad(u), v*p)*ufl.dx \
+           + c*u*p*ufl.dx \
+           - m*p*ufl.dx
 
 def u_boundary(x, on_boundary):
     return on_boundary and x[1] < dl.DOLFIN_EPS
@@ -79,7 +77,8 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
     bc = dl.DirichletBC(Vh[STATE], u_bdr, u_boundary)
     bc0 = dl.DirichletBC(Vh[STATE], u_bdr0, u_boundary)
 
-    mtrue = dl.interpolate( dl.Expression('min(0.5,exp(-100*(pow(x[0]-0.35,2) +  pow(x[1]-0.7,2))))',degree=5), Vh[PARAMETER]).vector()
+    mtrue_expr =  dl.Expression('min(0.5,exp(-100*(pow(x[0]-0.35,2) +  pow(x[1]-0.7,2))))',degree=5)
+    mtrue = dl.interpolate(mtrue_expr , Vh[PARAMETER]).vector()
     m0 = dl.interpolate(dl.Constant(0.0), Vh[PARAMETER]).vector()
     
     pde = PDEVariationalProblem(Vh, pde_varf, bc, bc0, is_fwd_linear=True)
@@ -94,7 +93,7 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
     #Generate synthetic observations
     utrue = pde.generate_state()
     x = [utrue, mtrue, None]
-    pde.solveFwd(x[STATE], x, 1e-9)
+    pde.solveFwd(x[STATE], x)
     misfit.B.mult(x[STATE], misfit.d)
     MAX = misfit.d.norm("linf")
     noise_std_dev = rel_noise * MAX
@@ -119,7 +118,7 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
     model.evalGradientParameter(x, mg)
     model.setPointForHessianEvaluations(x, gauss_newton_approx=False)
 
-    H = ReducedHessian(model, 1e-12)
+    H = ReducedHessian(model)
 
     solver = CGSolverSteihaug()
     solver.set_operator(H)
@@ -135,7 +134,7 @@ def solve(nx,ny, targets, rel_noise, gamma, delta, verbose=True):
         print( "CG did not converged." )
         raise
 
-    model.solveFwd(u, x, 1e-12)
+    model.solveFwd(u, x)
  
     total_cost, reg_cost, misfit_cost = model.cost(x)
 
@@ -196,7 +195,7 @@ lmbda, V, Vm, nit = solve(nx,ny, targets, rel_noise, gamma, delta)
 ![png](5_HessianSpectrum_files/5_HessianSpectrum_6_1.png)
 
 
-    CG converged in  67  iterations.
+    CG converged in  69  iterations.
 
 
 
@@ -243,7 +242,7 @@ nb.plot_eigenvectors(Vm3, V3, mytitle="Mesh {0} by {1} Eigen".format(n[2],n[2]),
 plt.show()
 ```
 
-    Number of Iterations:  61 67 72
+    Number of Iterations:  67 69 68
 
 
 
@@ -293,7 +292,7 @@ nb.plot_eigenvectors(Vm3, V3, mytitle="rel_noise {0:g} Eigen".format(rel_noise[2
 plt.show()
 ```
 
-    Number of Iterations:  164 67 23
+    Number of Iterations:  185 67 23
 
 
 
@@ -345,7 +344,7 @@ nb.plot_eigenvectors(Vm3, V3, mytitle="k=0.01 Eigen", which=[0,1,5])
 plt.show()
 ```
 
-    Number of Iterations:  79 143 244
+    Number of Iterations:  79 143 256
 
 
 
@@ -365,6 +364,7 @@ plt.show()
 
 
 Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.<br>
+Copyright (c) 2019-2020, The University of Texas at Austin, University of California--Merced, Washington University in St. Louis.<br>
 All Rights reserved.<br>
 See file COPYRIGHT for details.
 

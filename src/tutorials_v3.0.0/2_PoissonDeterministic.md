@@ -1,4 +1,3 @@
-
 # Coefficient field inversion in an elliptic partial differential equation
 
 We consider the estimation of a coefficient in an elliptic partial
@@ -63,7 +62,7 @@ $$ \mathscr{L}_u(u,m,p)(\tilde{u}) := (\exp(m)\nabla p, \nabla \tilde{u}) + (u-u
 
 ### Hessian action:
 
-To evaluate the action $\mathcal{H}(m)(\hat{m})$ of the Hessian is a given direction $\hat{m}$ , we consider variations of the meta-Lagrangian functional
+To evaluate the action $\mathcal{H}(m)(\hat{m})$ of the Hessian in a given direction $\hat{m}$ , we consider variations of the meta-Lagrangian functional
 
 $$
 \begin{aligned}
@@ -74,7 +73,7 @@ $$
 \end{aligned}
 $$
 
-Then action of the Hessian is a given direction $\hat{m}$ is
+Then the action of the Hessian in a given direction $\hat{m}$ is
 
 $$
 \begin{aligned}
@@ -120,7 +119,6 @@ $
 \def\hp{\hat p}
 \def\hm{\hat m}
 $
-
 $
 \def\bu{{\bf u}}
 \def\bm{{\bf m}}
@@ -133,7 +131,6 @@ $
 \def\bhp{{\bf \hat p}}
 \def\bg{{\bf g}}
 $
-
 $
 \def\bA{{\bf A}}
 \def\bC{{\bf C}}
@@ -207,7 +204,7 @@ By the end of this notebook, you should be able to:
 
 - Finite element method
 - Derivation of gradiant and Hessian via the adjoint method
-- inexact Newton-CG
+- Inexact Newton-CG
 - Armijo line search
 
 ### List of software used:
@@ -222,9 +219,8 @@ By the end of this notebook, you should be able to:
 
 
 ```python
-from __future__ import absolute_import, division, print_function
-
-from dolfin import *
+import dolfin as dl
+import ufl
 
 import sys
 import os
@@ -232,13 +228,14 @@ sys.path.append( os.environ.get('HIPPYLIB_BASE_DIR', "../") )
 from hippylib import *
 
 import logging
+import math
 
 import matplotlib.pyplot as plt
 %matplotlib inline
 
 logging.getLogger('FFC').setLevel(logging.WARNING)
 logging.getLogger('UFL').setLevel(logging.WARNING)
-set_log_active(False)
+dl.set_log_active(False)
 ```
 
 ### Model set up:
@@ -250,25 +247,28 @@ As in the introduction, the first thing we need to do is set up the numerical mo
 # create mesh and define function spaces
 nx = 64
 ny = 64
-mesh = UnitSquareMesh(nx, ny)
-Vm = FunctionSpace(mesh, 'Lagrange', 1)
-Vu = FunctionSpace(mesh, 'Lagrange', 2)
+mesh = dl.UnitSquareMesh(nx, ny)
+Vm = dl.FunctionSpace(mesh, 'Lagrange', 1)
+Vu = dl.FunctionSpace(mesh, 'Lagrange', 2)
 
 # The true and inverted parameter
-mtrue = interpolate(Expression('log(2 + 7*(pow(pow(x[0] - 0.5,2) + pow(x[1] - 0.5,2),0.5) > 0.2))', degree=5),Vm)
-m = interpolate(Expression("log(2.0)", degree=1),Vm)
+mtrue_expression = dl.Expression(
+    'std::log(2 + 7*(std::pow(std::pow(x[0] - 0.5,2) + std::pow(x[1] - 0.5,2),0.5) > 0.2))',
+    degree=5)
+mtrue = dl.interpolate(mtrue_expression,Vm)
+m = dl.interpolate(dl.Expression("std::log(2.0)", degree=1),Vm)
 
 # define function for state and adjoint
-u = Function(Vu)
-p = Function(Vu)
+u = dl.Function(Vu)
+p = dl.Function(Vu)
 
 # define Trial and Test Functions
-u_trial, p_trial, m_trial = TrialFunction(Vu), TrialFunction(Vu), TrialFunction(Vm)
-u_test, p_test, m_test = TestFunction(Vu), TestFunction(Vu), TestFunction(Vm)
+u_trial, p_trial, m_trial = dl.TrialFunction(Vu), dl.TrialFunction(Vu), dl.TrialFunction(Vm)
+u_test, p_test, m_test = dl.TestFunction(Vu), dl.TestFunction(Vu), dl.TestFunction(Vm)
 
 # initialize input functions
-f = Constant("1.0")
-u0 = Constant("0.0")
+f = dl.Constant(1.0)
+u0 = dl.Constant(0.0)
 
 # plot
 plt.figure(figsize=(15,5))
@@ -287,8 +287,8 @@ plt.show()
 def boundary(x,on_boundary):
     return on_boundary
 
-bc_state = DirichletBC(Vu, u0, boundary)
-bc_adj = DirichletBC(Vu, Constant(0.), boundary)
+bc_state = dl.DirichletBC(Vu, u0, boundary)
+bc_adj = dl.DirichletBC(Vu, dl.Constant(0.), boundary)
 ```
 
 ### Set up synthetic observations:
@@ -305,22 +305,22 @@ bc_adj = DirichletBC(Vu, Constant(0.), boundary)
 noise_level = 0.05
 
 # weak form for setting up the synthetic observations
-a_goal = inner(exp(mtrue) * nabla_grad(u_trial), nabla_grad(u_test)) * dx
-L_goal = f * u_test * dx
+a_goal = ufl.inner(ufl.exp(mtrue) * ufl.grad(u_trial), ufl.grad(u_test)) * ufl.dx
+L_goal = f * u_test * ufl.dx
 
 # solve the forward/state problem to generate synthetic observations
-goal_A, goal_b = assemble_system(a_goal, L_goal, bc_state)
+goal_A, goal_b = dl.assemble_system(a_goal, L_goal, bc_state)
 
-utrue = Function(Vu)
-solve(goal_A, utrue.vector(), goal_b)
+utrue = dl.Function(Vu)
+dl.solve(goal_A, utrue.vector(), goal_b)
 
-ud = Function(Vu)
+ud = dl.Function(Vu)
 ud.assign(utrue)
 
 # perturb state solution and create synthetic measurements ud
 # ud = u + ||u||/SNR * random.normal
 MAX = ud.vector().norm("linf")
-noise = Vector()
+noise = dl.Vector()
 goal_A.init_vector(noise,1)
 parRandom.normal(noise_level * MAX, noise)
 bc_adj.apply(noise)
@@ -350,11 +350,11 @@ In the code below, $\bW$ and $\bR$ are symmetric positive definite matrices that
 gamma = 1e-8
 
 # weak for for setting up the misfit and regularization compoment of the cost
-W_equ   = inner(u_trial, u_test) * dx
-R_equ   = gamma * inner(nabla_grad(m_trial), nabla_grad(m_test)) * dx
+W_equ   = ufl.inner(u_trial, u_test) * ufl.dx
+R_equ   = gamma * ufl.inner(ufl.grad(m_trial), ufl.grad(m_test)) * ufl.dx
 
-W = assemble(W_equ)
-R = assemble(R_equ)
+W = dl.assemble(W_equ)
+R = dl.assemble(R_equ)
 
 # refine cost function
 def cost(u, ud, m, W, R):
@@ -369,32 +369,32 @@ def cost(u, ud, m, W, R):
 
 ```python
 # weak form for setting up the state equation
-a_state = inner(exp(m) * nabla_grad(u_trial), nabla_grad(u_test)) * dx
-L_state = f * u_test * dx
+a_state = ufl.inner(ufl.exp(m) * ufl.grad(u_trial), ufl.grad(u_test)) * ufl.dx
+L_state = f * u_test * ufl.dx
 
 # weak form for setting up the adjoint equation
-a_adj = inner(exp(m) * nabla_grad(p_trial), nabla_grad(p_test)) * dx
-L_adj = -inner(u - ud, p_test) * dx
+a_adj = ufl.inner(ufl.exp(m) * ufl.grad(p_trial), ufl.grad(p_test)) * ufl.dx
+L_adj = -ufl.inner(u - ud, p_test) * ufl.dx
 
 # weak form for setting up matrices
-Wum_equ = inner(exp(m) * m_trial * nabla_grad(p_test), nabla_grad(p)) * dx
-C_equ   = inner(exp(m) * m_trial * nabla_grad(u), nabla_grad(u_test)) * dx
-Wmm_equ = inner(exp(m) * m_trial * m_test *  nabla_grad(u),  nabla_grad(p)) * dx
+Wum_equ = ufl.inner(ufl.exp(m) * m_trial * ufl.grad(p_test), ufl.grad(p)) * ufl.dx
+C_equ   = ufl.inner(ufl.exp(m) * m_trial * ufl.grad(u), ufl.grad(u_test)) * ufl.dx
+Wmm_equ = ufl.inner(ufl.exp(m) * m_trial * m_test *  ufl.grad(u),  ufl.grad(p)) * ufl.dx
 
-M_equ   = inner(m_trial, m_test) * dx
+M_equ   = ufl.inner(m_trial, m_test) * ufl.dx
 
 # assemble matrix M
-M = assemble(M_equ)
+M = dl.assemble(M_equ)
 ```
 
 ### Initial guess
-We solve the state equation and compute the cost functional for the initial guess of the parameter ``a_ini``
+We solve the state equation and compute the cost functional for the initial guess of the parameter ``m_ini``
 
 
 ```python
 # solve state equation
-state_A, state_b = assemble_system (a_state, L_state, bc_state)
-solve (state_A, u.vector(), state_b)
+state_A, state_b = dl.assemble_system (a_state, L_state, bc_state)
+dl.solve (state_A, u.vector(), state_b)
 
 # evaluate cost
 [cost_old, misfit_old, reg_old] = cost(u, ud, m, W, R)
@@ -453,17 +453,17 @@ class HessianOperator():
         self.gauss_newton_approx = gauss_newton_approx
         
         # incremental state
-        self.du = Vector()
+        self.du = dl.Vector()
         self.A.init_vector(self.du,0)
         
-        #incremental adjoint
-        self.dp = Vector()
+        # incremental adjoint
+        self.dp = dl.Vector()
         self.adj_A.init_vector(self.dp,0)
         
         # auxiliary vectors
-        self.CT_dp = Vector()
+        self.CT_dp = dl.Vector()
         self.C.init_vector(self.CT_dp, 1)
-        self.Wum_du = Vector()
+        self.Wum_du = dl.Vector()
         self.Wum.init_vector(self.Wum_du, 1)
         
     def init_vector(self, v, dim):
@@ -481,15 +481,15 @@ class HessianOperator():
     # define (Gauss-Newton) Hessian apply H * v
     def mult_GaussNewton(self, v, y):
         
-        #incremental forward
+        # incremental forward
         rhs = -(self.C * v)
         bc_adj.apply(rhs)
-        solve (self.A, self.du, rhs)
+        dl.solve (self.A, self.du, rhs)
         
-        #incremental adjoint
+        # incremental adjoint
         rhs = - (self.W * self.du)
         bc_adj.apply(rhs)
-        solve (self.adj_A, self.dp, rhs)
+        dl.solve (self.adj_A, self.dp, rhs)
         
         # Reg/Prior term
         self.R.mult(v,y)
@@ -501,21 +501,21 @@ class HessianOperator():
     # define (Newton) Hessian apply H * v
     def mult_Newton(self, v, y):
         
-        #incremental forward
+        # incremental forward
         rhs = -(self.C * v)
         bc_adj.apply(rhs)
-        solve (self.A, self.du, rhs)
+        dl.solve (self.A, self.du, rhs)
         
-        #incremental adjoint
+        # incremental adjoint
         rhs = -(self.W * self.du) -  self.Wum * v
         bc_adj.apply(rhs)
-        solve (self.adj_A, self.dp, rhs)
+        dl.solve (self.adj_A, self.dp, rhs)
         
-        #Reg/Prior term
+        # Reg/Prior term
         self.R.mult(v,y)
         y.axpy(1., self.Wmm*v)
         
-        #Misfit term
+        # Misfit term
         self.C.transpmult(self.dp, self.CT_dp)
         y.axpy(1., self.CT_dp)
         self.Wum.transpmult(self.du, self.Wum_du)
@@ -552,47 +552,47 @@ total_cg_iter = 0
 converged = False
 
 # initializations
-g, m_delta = Vector(), Vector()
+g, m_delta = dl.Vector(), dl.Vector()
 R.init_vector(m_delta,0)
 R.init_vector(g,0)
 
-m_prev = Function(Vm)
+m_prev = dl.Function(Vm)
 
 print ("Nit   CGit   cost          misfit        reg           sqrt(-G*D)    ||grad||       alpha  tolcg")
 
 while iter <  maxiter and not converged:
 
     # assemble matrix C
-    C =  assemble(C_equ)
+    C =  dl.assemble(C_equ)
 
     # solve the adoint problem
-    adjoint_A, adjoint_RHS = assemble_system(a_adj, L_adj, bc_adj)
-    solve(adjoint_A, p.vector(), adjoint_RHS)
+    adjoint_A, adjoint_RHS = dl.assemble_system(a_adj, L_adj, bc_adj)
+    dl.solve(adjoint_A, p.vector(), adjoint_RHS)
 
     # assemble W_ua and R
-    Wum = assemble (Wum_equ)
-    Wmm = assemble (Wmm_equ)
+    Wum = dl.assemble (Wum_equ)
+    Wmm = dl.assemble (Wmm_equ)
 
     # evaluate the  gradient
-    CT_p = Vector()
+    CT_p = dl.Vector()
     C.init_vector(CT_p,1)
     C.transpmult(p.vector(), CT_p)
     MG = CT_p + R * m.vector()
-    solve(M, g, MG)
+    dl.solve(M, g, MG)
 
     # calculate the norm of the gradient
     grad2 = g.inner(MG)
-    gradnorm = sqrt(grad2)
+    gradnorm = math.sqrt(grad2)
 
     # set the CG tolerance (use Eisenstat–Walker termination criterion)
     if iter == 1:
         gradnorm_ini = gradnorm
-    tolcg = min(0.5, sqrt(gradnorm/gradnorm_ini))
+    tolcg = min(0.5, math.sqrt(gradnorm/gradnorm_ini))
 
     # define the Hessian apply operator (with preconditioner)
     Hess_Apply = HessianOperator(R, Wmm, C, state_A, adjoint_A, W, Wum, gauss_newton_approx=(iter<6) )
     P = R + gamma * M
-    Psolver = PETScKrylovSolver("cg", amg_method())
+    Psolver = dl.PETScKrylovSolver("cg", amg_method())
     Psolver.set_operator(P)
     
     solver = CGSolverSteihaug()
@@ -615,8 +615,8 @@ while iter <  maxiter and not converged:
         m.vector().axpy(alpha, m_delta )
 
         # solve the state/forward problem
-        state_A, state_b = assemble_system(a_state, L_state, bc_state)
-        solve(state_A, u.vector(), state_b)
+        state_A, state_b = dl.assemble_system(a_state, L_state, bc_state)
+        dl.solve(state_A, u.vector(), state_b)
 
         # evaluate cost
         [cost_new, misfit_new, reg_new] = cost(u, ud, m, W, R)
@@ -631,7 +631,7 @@ while iter <  maxiter and not converged:
             m.assign(m_prev)  # reset a
 
     # calculate sqrt(-G * D)
-    graddir = sqrt(- MG.inner(m_delta) )
+    graddir = math.sqrt(- MG.inner(m_delta) )
 
     sp = ""
     print( "%2d %2s %2d %3s %8.5e %1s %8.5e %1s %8.5e %1s %8.5e %1s %8.5e %1s %5.2f %1s %5.3e" % \
@@ -655,16 +655,16 @@ if not converged:
 ```
 
     Nit   CGit   cost          misfit        reg           sqrt(-G*D)    ||grad||       alpha  tolcg
-     1     1     1.12816e-05   1.12816e-05   1.34063e-11   1.56576e-02   3.79516e-04    1.00   5.000e-01
-     2     1     7.82345e-07   7.82308e-07   3.68084e-11   4.68471e-03   5.35131e-05    1.00   3.755e-01
-     3     1     3.12377e-07   3.12328e-07   4.91890e-11   9.72528e-04   7.14277e-06    1.00   1.372e-01
-     4     6     1.91931e-07   1.61602e-07   3.03286e-08   4.54949e-04   1.00710e-06    1.00   5.151e-02
-     5     1     1.86508e-07   1.56163e-07   3.03445e-08   1.04154e-04   6.18455e-07    1.00   4.037e-02
-     6    12     1.80489e-07   1.37364e-07   4.31244e-08   1.11510e-04   2.15007e-07    1.00   2.380e-02
-     7     5     1.80421e-07   1.38523e-07   4.18984e-08   1.15380e-05   3.88978e-08    1.00   1.012e-02
-     8    15     1.80420e-07   1.38637e-07   4.17830e-08   1.64609e-06   3.27512e-09    1.00   2.938e-03
+     1     1     1.12916e-05   1.12916e-05   1.34150e-11   1.56616e-02   3.79614e-04    1.00   5.000e-01
+     2     1     7.83206e-07   7.83170e-07   3.68430e-11   4.68686e-03   5.35269e-05    1.00   3.755e-01
+     3     1     3.12292e-07   3.12243e-07   4.92462e-11   9.73515e-04   7.14570e-06    1.00   1.372e-01
+     4     6     1.91985e-07   1.61584e-07   3.04009e-08   4.54547e-04   1.00594e-06    1.00   5.148e-02
+     5     1     1.86421e-07   1.56004e-07   3.04171e-08   1.05501e-04   6.25400e-07    1.00   4.059e-02
+     6    13     1.80334e-07   1.36992e-07   4.33419e-08   1.12181e-04   2.14958e-07    1.00   2.380e-02
+     7     5     1.80267e-07   1.38198e-07   4.20693e-08   1.15139e-05   3.92325e-08    1.00   1.017e-02
+     8    15     1.80266e-07   1.38243e-07   4.20235e-08   1.48892e-06   3.20470e-09    1.00   2.906e-03
     Newton's method converged in  8   iterations
-    Total number of CG iterations:  42
+    Total number of CG iterations:  43
 
 
 
@@ -683,6 +683,7 @@ plt.show()
 
 
 Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.<br>
+Copyright (c) 2019-2020, The University of Texas at Austin, University of California--Merced, Washington University in St. Louis.<br>
 All Rights reserved.<br>
 See file COPYRIGHT for details.
 

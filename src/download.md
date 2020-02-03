@@ -7,7 +7,7 @@
 
 **Filename** | **Version** | **Release Date** | **Notes** | **Documentation** |
  ----------- | ----------- | ---------------- | --------- | ----------------- |
- [hippylib-2.3.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1) | 3.0.0 | Feb 2020 | Support for FEniCS 2019.1. New features and examples | [html](https://hippylib.readthedocs.io/en/3.0.0/)
+ [hippylib-3.0.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1) | 3.0.0 | Feb 2020 | Support for FEniCS 2019.1. New features and examples | [html](https://hippylib.readthedocs.io/en/3.0.0/)
 [hippylib-2.3.0.zip](https://zenodo.org/record/3401577/files/hippylib/hippylib-2.3.0.zip?download=1) | 2.3.0 | Sept 2019 | Updated examples | [html](https://hippylib.readthedocs.io/en/2.3.0/)
 [hippylib-2.2.1.zip](https://zenodo.org/record/2614052/files/hippylib/hippylib-2.2.1.zip?download=1) | 2.2.1 | March 2019 | Bugfixes | [html](https://hippylib.readthedocs.io/en/2.2.1/) |
 [hippylib-2.2.0.zip](https://zenodo.org/record/2229277/files/hippylib/hippylib-2.2.0.zip?download=1) | 2.2.0 | Dec 2018 | Enchantments and install | [html](https://hippylib.readthedocs.io/en/2.2.0/) |

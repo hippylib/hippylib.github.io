@@ -1,4 +1,3 @@
-
 $$\def\data{ {\bf d}_\rm{obs}}
 \def\vec{\bf}
 \def\m{ {\bf m}}
@@ -58,7 +57,7 @@ Note that infinite-dimensional analog of Bayes' formula requires the use Radon-N
 
 #### The prior:
 
-We consider a Gaussian prior with mean ${\vec m}_{\text prior}$ and covariance $\prcov$. The covariance is given by the discretization of the inverse of differential operator $\mathcal{A}^{-2} = (-\gamma \Delta + \delta I)^{-2}$, where $\gamma$, $\delta > 0$ control the correlation length and the variance of the prior operator. This choice of prior ensures that it is a trace-class operator, guaranteeing bounded pointwise variance and a well-posed infinite-dimensional Bayesian inverse problem
+We consider a Gaussian prior with mean ${\vec m}_{\text{prior}}$ and covariance $\prcov$. The covariance is given by the discretization of the inverse of differential operator $\mathcal{A}^{-2} = (-\gamma \Delta + \delta I)^{-2}$, where $\gamma$, $\delta > 0$ control the correlation length and the variance of the prior operator. This choice of prior ensures that it is a trace-class operator, guaranteeing bounded pointwise variance and a well-posed infinite-dimensional Bayesian inverse problem.
 
 #### The likelihood:
 
@@ -67,7 +66,7 @@ $$
 $$
 
 $$
-\pi_{\text like}(\data \; | \; \m)  = \exp \left( - \tfrac{1}{2} ({\bf f}(\m) - \data)^T {\bf \Gamma}_{\text{noise}}^{-1} ({\bf f}(\m) - \data)\right)
+\pi_{\text{like}}(\data \; | \; \m)  = \exp \left( - \tfrac{1}{2} ({\bf f}(\m) - \data)^T {\bf \Gamma}_{\text{noise}}^{-1} ({\bf f}(\m) - \data)\right)
 $$
 
 Here ${\bf f}$ is the parameter-to-observable map that takes a parameter vector $\m$ and maps
@@ -79,13 +78,13 @@ $$
 \pi_{\text{post}}(\m \; | \; \data)  \propto \exp \left( - \tfrac{1}{2} \parallel {\bf f}(\m) - \data \parallel^{2}_{{\bf \Gamma}_{\text{noise}}^{-1}} \! - \tfrac{1}{2}\parallel \m - \m_{\text prior} \parallel^{2}_{\prcov^{-1}} \right)
 $$
 
-### The Gaussian approximation of the posterior: $\mathcal{N}({\vec \map},\bf \postcov)$
+### The Laplace approximation to posterior: $\mathcal{N}({\vec \map},\bf \postcov)$
 
 The mean of this posterior distribution, ${\vec \map}$, is the
 parameter vector maximizing the posterior, and
 is known as the maximum a posteriori (MAP) point.  It can be found
 by minimizing the negative log of the posterior, which amounts to
-solving a deterministic inverse problem) with appropriately weighted norms,
+solving a deterministic inverse problem with appropriately weighted norms,
 
 $$
 \map := \underset{\m}{\arg \min} \; \mathcal{J}(\m) \;:=\;
@@ -136,7 +135,7 @@ Using the Sherman–Morrison–Woodbury formula, we write
 $$
 \begin{align}
   \notag \postcov = \left(\Hmisfit+ \prcov^{-1}\right)^{-1}
-  = \prcov^{-1}-\Vr {\matrix{D}}_r \Vr^T +
+  = \prcov-\Vr {\matrix{D}}_r \Vr^T +
   \mathcal{O}\left(\sum_{i=r+1}^{n} \frac{\lambda_i}{\lambda_i +
     1}\right),
 \end{align}
@@ -184,7 +183,7 @@ By the end of this notebook, you should be able to:
 ## Mathematical tools used:
 
 - Finite element method
-- Derivation of gradiant and Hessian via the adjoint method
+- Derivation of gradient and Hessian via the adjoint method
 - inexact Newton-CG
 - Armijo line search
 - Bayes' formula
@@ -201,9 +200,8 @@ By the end of this notebook, you should be able to:
 
 
 ```python
-from __future__ import absolute_import, division, print_function
-
 import dolfin as dl
+import ufl
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -227,8 +225,7 @@ This function generates a random field with a prescribed anysotropic covariance 
 
 
 ```python
-def true_model(Vh, gamma, delta, anis_diff):
-    prior = BiLaplacianPrior(Vh, gamma, delta, anis_diff )
+def true_model(prior):
     noise = dl.Vector()
     prior.init_vector(noise,"noise")
     parRandom.normal(1., noise)
@@ -283,63 +280,53 @@ bc0 = dl.DirichletBC(Vh[STATE], u_bdr0, u_boundary)
 f = dl.Constant(0.0)
     
 def pde_varf(u,m,p):
-    return dl.exp(m)*dl.inner(dl.nabla_grad(u), dl.nabla_grad(p))*dl.dx - f*p*dl.dx
+    return ufl.exp(m)*ufl.inner(ufl.grad(u), ufl.grad(p))*ufl.dx - f*p*ufl.dx
     
 pde = PDEVariationalProblem(Vh, pde_varf, bc, bc0, is_fwd_linear=True)
 ```
 
 ## 4. Set up the prior
 
-To obtain the synthetic true paramter $m_{\rm true}$ we generate a realization from the prior distribution. Here we assume a Gaussian prior with zero average and covariance matrix $\mathcal{C} = \mathcal{A}^{-2}$, where $\mathcal{A}$ is a differential operator of the form
+To obtain the synthetic true paramter $m_{\rm true}$ we generate a realization from the prior distribution. Here we assume a Gaussian prior with zero average and covariance matrix $\mathcal{C} = \mathcal{A}^{-2}$. The action of $\mathcal{A}$ on a field $m$ is given by
 
-$$ \mathcal{A} = \gamma {\rm div}\, \Theta\, {\rm grad} + \delta I. $$
-
+$$ \mathcal{A}m = 
+\left\{
+\begin{array}{rl}
+\gamma \nabla \cdot \left( \Theta\nabla m\right)+ \delta m & \text{in } \Omega\\
+\left( \Theta\, \nabla m\right) \cdot \boldsymbol{n} + \beta m & \text{on } \partial\Omega,
+\end{array}
+\right.
+$$
+where $\beta \propto \sqrt{\gamma\delta}$ is chosen to minimize boundary artifacts.
 Here $\Theta$ is an s.p.d. anisotropic tensor of the form
 
 $$ \Theta =
 \begin{bmatrix}
 \theta_1 \sin(\alpha)^2 & (\theta_1-\theta_2) \sin(\alpha) \cos{\alpha} \\
-(\theta_1-\theta_2) \sin(\alpha) \cos{\alpha} & \theta_2 \cos(\alpha)^2.
-\end{bmatrix} $$
-
-For the prior model, we assume that we can measure the log-permeability coefficient at $N$ locations, and we denote with $m^1_{\rm true}$, $\ldots$, $m^N_{\rm true}$ such measures.
-We also introduce the mollifier functions
-$$ \delta_i(x) = \exp\left( -\frac{\gamma^2}{\delta^2} \| x - x_i \|^2_{\Theta^{-1}}\right), \quad i = 1, \ldots, N,$$
-and we let
-$$ \mathcal{A} = \widetilde{\mathcal{A}} + p \sum_{i=1}^N \delta_i I = \widetilde{\mathcal{A}} + p \mathcal{M},$$
-where $p$ is a penalization constant (10 for this problem) and $ \mathcal{M} = \sum_{i=1}^N \delta_i I$.
-
-We then compute $m_{\rm pr}$, the  mean  of  the  prior  measure,  as  a  regularized
-least-squares fit of these point observations by solving
-$$
-m_{\rm pr} = arg\min_{m} \frac{1}{2}\langle m, \widetilde{\mathcal{A}} m\rangle + \frac{p}{2}\langle m_{\rm true} - m, \mathcal{M}(m_{\rm true}- m) \rangle.
-$$
-
-Finally the prior distribution is $\mathcal{N}(m_{\rm pr}, \mathcal{C}_{\rm prior})$, with $\mathcal{C}_{\rm prior} = \mathcal{A}^{-2}$.
+(\theta_1-\theta_2) \sin(\alpha) \cos{\alpha} & \theta_2 \cos(\alpha)^2
+\end{bmatrix}. $$
 
 
 ```python
 gamma = .1
 delta = .5
     
-anis_diff = dl.Expression(code_AnisTensor2D, degree=1)
-anis_diff.theta0 = 2.
-anis_diff.theta1 = .5
-anis_diff.alpha = math.pi/4
-mtrue = true_model(Vh[PARAMETER], gamma, delta,anis_diff)
-        
-locations = np.array([[0.1, 0.1], [0.1, 0.9], [.5,.5], [.9, .1], [.9, .9]])
-pen = 1e1
-prior = MollifiedBiLaplacianPrior(Vh[PARAMETER], gamma, delta, locations, mtrue, anis_diff, pen)
-      
+theta0 = 2.
+theta1 = .5
+alpha  = math.pi/4
+    
+anis_diff = dl.CompiledExpression(ExpressionModule.AnisTensor2D(), degree = 1)
+anis_diff.set(theta0, theta1, alpha)
+
+prior = BiLaplacianPrior(Vh[PARAMETER], gamma, delta, anis_diff, robin_bc=True)
+mtrue = true_model(prior)
+              
 print("Prior regularization: (delta_x - gamma*Laplacian)^order: delta={0}, gamma={1}, order={2}".format(delta, gamma,2))    
             
 objs = [dl.Function(Vh[PARAMETER],mtrue), dl.Function(Vh[PARAMETER],prior.mean)]
 mytitles = ["True Parameter", "Prior mean"]
 nb.multi1_plot(objs, mytitles)
 plt.show()
-
-model = Model(pde,prior, misfit)
 ```
 
     Prior regularization: (delta_x - gamma*Laplacian)^order: delta=0.5, gamma=0.1, order=2
@@ -351,24 +338,38 @@ model = Model(pde,prior, misfit)
 
 ## 5. Set up the misfit functional and generate synthetic observations
 
-To setup the observation operator, we generate *ntargets* random locations where to evaluate the value of the state.
+To setup the observation operator $\mathcal{B}: \mathcal{V} \mapsto \mathbb{R}^{n_t}$, we generate $n_t$ (`ntargets` in the code below) random locations where to evaluate the value of the state.
+
+Under the assumption of Gaussian additive noise, the likelihood function $\pi_{\rm like}$ has the form
+
+$$\pi_{\rm like}( \data \,| \, m ) \propto \exp\left( -\frac{1}{2}\|\mathcal{B}\,u(m) - \data \|^2_{\Gamma_{\rm noise}^{-1}}\right), $$
+
+where $u(m)$ denotes the solution of the forward model at a given parameter $m$.
+
+The class `PointwiseStateObservation` implements the evaluation of the log-likelihood function and of its partial derivatives w.r.t. the state $u$ and parameter $m$.
 
 To generate the synthetic observation, we first solve the forward problem using the true parameter $m_{\rm true}$. Synthetic observations are obtained by perturbing the state variable at the observation points with a random Gaussian noise.
-*rel_noise* is the signal to noise ratio.
+`rel_noise` is the signal to noise ratio.
 
 
 ```python
-ntargets = 300
+ntargets = 50
 rel_noise = 0.01
 
-
-targets = np.random.uniform(0.1,0.9, [ntargets, ndim] )
+#Targets only on the bottom
+targets_x = np.random.uniform(0.1,0.9, [ntargets] )
+targets_y = np.random.uniform(0.1,0.5, [ntargets] )
+targets = np.zeros([ntargets, ndim])
+targets[:,0] = targets_x
+targets[:,1] = targets_y
+#targets everywhere
+#targets = np.random.uniform(0.1,0.9, [ntargets, ndim] )
 print( "Number of observation points: {0}".format(ntargets) )
 misfit = PointwiseStateObservation(Vh[STATE], targets)
 
 utrue = pde.generate_state()
 x = [utrue, mtrue, None]
-pde.solveFwd(x[STATE], x, 1e-9)
+pde.solveFwd(x[STATE], x)
 misfit.B.mult(x[STATE], misfit.d)
 MAX = misfit.d.norm("linf")
 noise_std_dev = rel_noise * MAX
@@ -384,7 +385,7 @@ nb.plot_pts(targets, misfit.d, mytitle="Observations", subplot_loc=122, vmin=vmi
 plt.show()
 ```
 
-    Number of observation points: 300
+    Number of observation points: 50
 
 
 
@@ -405,10 +406,10 @@ To test gradient and the Hessian of the model we use forward finite differences.
 model = Model(pde, prior, misfit)
 
 m0 = dl.interpolate(dl.Expression("sin(x[0])", degree=5), Vh[PARAMETER])
-_ = modelVerify(model, m0.vector(), 1e-12)
+_ = modelVerify(model, m0.vector())
 ```
 
-    (yy, H xx) - (xx, H yy) =  -3.58137818086553e-13
+    (yy, H xx) - (xx, H yy) =  -2.7824662881775175e-14
 
 
 
@@ -426,7 +427,6 @@ solver = ReducedSpaceNewtonCG(model)
 solver.parameters["rel_tolerance"] = 1e-6
 solver.parameters["abs_tolerance"] = 1e-12
 solver.parameters["max_iter"]      = 25
-solver.parameters["inner_rel_tolerance"] = 1e-15
 solver.parameters["GN_iter"] = 5
 solver.parameters["globalization"] = "LS"
 solver.parameters["LS"]["c_armijo"] = 1e-4
@@ -451,42 +451,43 @@ plt.show()
 
     
     It  cg_it cost            misfit          reg             (g,dm)          ||g||L2        alpha          tolcg         
-      1   1    2.296924e+03    2.296798e+03    1.268357e-01   -2.687891e+03   3.512398e+04   1.000000e+00   5.000000e-01
-      2   2    7.562150e+02    7.533038e+02    2.911243e+00   -3.123660e+03   1.815603e+04   1.000000e+00   5.000000e-01
-      3   3    2.724829e+02    2.658439e+02    6.639027e+00   -9.803242e+02   6.759090e+03   1.000000e+00   4.386744e-01
-      4   2    2.310692e+02    2.237770e+02    7.292206e+00   -8.391690e+01   3.449868e+03   1.000000e+00   3.134003e-01
-      5   8    1.753607e+02    1.636311e+02    1.172959e+01   -1.160805e+02   1.959111e+03   1.000000e+00   2.361716e-01
-      6   2    1.735413e+02    1.617893e+02    1.175202e+01   -3.649454e+00   1.252445e+03   1.000000e+00   1.888328e-01
-      7  14    1.612523e+02    1.416618e+02    1.959055e+01   -2.462072e+01   8.785564e+02   1.000000e+00   1.581550e-01
-      8  11    1.607960e+02    1.409823e+02    1.981368e+01   -9.165649e-01   2.482466e+02   1.000000e+00   8.406976e-02
-      9  17    1.607155e+02    1.400093e+02    2.070616e+01   -1.612168e-01   1.142870e+02   1.000000e+00   5.704224e-02
-     10  21    1.607148e+02    1.400375e+02    2.067724e+01   -1.453391e-03   1.004748e+01   1.000000e+00   1.691323e-02
-     11  31    1.607148e+02    1.400344e+02    2.068038e+01   -2.926008e-06   4.809418e-01   1.000000e+00   3.700364e-03
+      1   2    5.676752e+02    5.665943e+02    1.080947e+00   -1.487693e+04   4.008143e+04   1.000000e+00   5.000000e-01
+      2   2    1.315109e+02    1.292859e+02    2.225043e+00   -8.730801e+02   7.040800e+03   1.000000e+00   4.191210e-01
+      3   4    5.827697e+01    5.504162e+01    3.235343e+00   -1.565905e+02   2.115036e+03   1.000000e+00   2.297139e-01
+      4   1    5.257433e+01    4.934371e+01    3.230622e+00   -1.142190e+01   1.827983e+03   1.000000e+00   2.135573e-01
+      5   6    3.958912e+01    3.507186e+01    4.517259e+00   -3.227629e+01   9.179935e+02   1.000000e+00   1.513381e-01
+      6   2    3.681315e+01    3.218885e+01    4.624305e+00   -5.500988e+00   7.541262e+02   1.000000e+00   1.371673e-01
+      7  11    3.276535e+01    2.530155e+01    7.463799e+00   -9.109597e+00   4.788040e+02   1.000000e+00   1.092968e-01
+      8   1    3.225221e+01    2.479005e+01    7.462158e+00   -1.027637e+00   4.891427e+02   1.000000e+00   1.104705e-01
+      9  10    3.216230e+01    2.445205e+01    7.710247e+00   -1.804897e-01   7.393553e+01   1.000000e+00   4.294919e-02
+     10  10    3.216015e+01    2.439780e+01    7.762350e+00   -4.285017e-03   1.308609e+01   1.000000e+00   1.806897e-02
+     11  18    3.215993e+01    2.438399e+01    7.775934e+00   -4.424839e-04   3.526254e+00   1.000000e+00   9.379620e-03
+     12  22    3.215993e+01    2.438428e+01    7.775651e+00   -1.835996e-07   7.735457e-02   1.000000e+00   1.389221e-03
     
-    Converged in  11  iterations.
+    Converged in  12  iterations.
     Termination reason:  Norm of the gradient less than tolerance
-    Final gradient norm:  0.0009161960275146831
-    Final cost:  160.714767866629
+    Final gradient norm:  0.00013206555177717097
+    Final cost:  32.15992905024544
 
 
 
 ![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_16_1.png)
 
 
-## 8. Compute the low rank Gaussian approximation of the posterior
+## 8. Compute the low rank-based Laplace approximation to posterior
 We used the *double pass* algorithm to compute a low-rank decomposition of the Hessian Misfit.
 In particular, we solve
 
 $$ \Hmisfit {\bf v}_i = \lambda_i \prcov^{-1} {\bf v}_i. $$
 
-The Figure shows the largest *k* generalized eigenvectors of the Hessian misfit.
+The figure shows the largest *k* generalized eigenvectors of the Hessian misfit.
 The effective rank of the Hessian misfit is the number of eigenvalues above the red line ($y=1$).
 The effective rank is independent of the mesh size.
 
 
 ```python
 model.setPointForHessianEvaluations(x, gauss_newton_approx=False)
-Hmisfit = ReducedHessian(model, solver.parameters["inner_rel_tolerance"], misfit_only=True)
+Hmisfit = ReducedHessian(model, misfit_only=True)
 k = 50
 p = 20
 print( "Single/Double Pass Algorithm. Requested eigenvectors: {0}; Oversampling {1}.".format(k,p) )
@@ -517,7 +518,7 @@ nb.plot_eigenvectors(Vh[PARAMETER], V, mytitle="Eigenvector", which=[0,1,2,5,10,
 ![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_18_2.png)
 
 
-## 9. Prior and posterior pointwise variance fields
+## 9. Prior and Laplace approximation to posterior pointwise variance fields
 
 
 ```python
@@ -530,18 +531,18 @@ post_pw_variance, pr_pw_variance, corr_pw_variance = posterior.pointwise_varianc
 objs = [dl.Function(Vh[PARAMETER], pr_pw_variance),
         dl.Function(Vh[PARAMETER], post_pw_variance)]
 mytitles = ["Prior variance", "Posterior variance"]
-nb.multi1_plot(objs, mytitles, logscale=True)
+nb.multi1_plot(objs, mytitles, logscale=False)
 plt.show()
 ```
 
-    Posterior trace 1.260892e-01; Prior trace 3.949821e-01; Correction trace 2.688929e-01
+    Posterior trace 1.014727e+00; Prior trace 1.797376e+00; Correction trace 7.826487e-01
 
 
 
 ![png](3_SubsurfaceBayesian_files/3_SubsurfaceBayesian_20_1.png)
 
 
-## 10. Generate samples from Prior and Posterior
+## 10. Generate samples from Prior and Laplace approximation to posterior
 
 
 ```python
@@ -586,6 +587,7 @@ for i in range(nsamples):
 
 
 Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.<br>
+Copyright (c) 2019-2020, The University of Texas at Austin, University of California--Merced, Washington University in St. Louis.<br>
 All Rights reserved.<br>
 See file COPYRIGHT for details.
 

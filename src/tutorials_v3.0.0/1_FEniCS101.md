@@ -1,15 +1,14 @@
-
 # FEniCS101 Tutorial
 
 In this tutorial we consider the boundary value problem (BVP)
 
 \begin{eqnarray*}
 - \nabla \cdot (k \nabla u) = f &      \text{ in } \Omega,\\
-u = u_0 & \text{ on } \Gamma_D = \Gamma_{\rm left} \bigcup \Gamma_{\rm right},\\
-k \frac{\partial u}{\partial {\bf{n}}} = \sigma & \text{ on } \Gamma_N = \Gamma_{\rm top} \bigcup \Gamma_{\rm bottom},
+u = u_0 & \text{ on } \Gamma_D = \Gamma_{\rm left} \cup \Gamma_{\rm right},\\
+k \frac{\partial u}{\partial {\bf{n}}} = \sigma & \text{ on } \Gamma_N = \Gamma_{\rm top} \cup \Gamma_{\rm bottom},
 \end{eqnarray*}
 
-where $\Omega = (0,1) \times (0,1)$, $\Gamma_D$ and and $\Gamma_N$ are the union of
+where $\Omega = (0,1) \times (0,1)$, $\Gamma_D$ and $\Gamma_N$ are the union of
 the left and right, and top and bottom boundaries of $\Omega$,
 respectively.
 
@@ -48,9 +47,9 @@ $$ \int_{\Omega} k \nabla u \cdot \nabla v \, dx = \int_\Omega f v \, dx + \int_
 
 To start we load the following modules:
 
-- dolfin: the python/C++ interface to FEniCS
+- dolfin and ufl: the python/C++ interface to FEniCS
 
-- [math](https://docs.python.org/2/library/math.html): the python module for mathematical functions
+- [math](https://docs.python.org/3/library/math.html): the python module for mathematical functions
 
 - [numpy](http://www.numpy.org/): a python package for linear algebra
 
@@ -58,9 +57,8 @@ To start we load the following modules:
 
 
 ```python
-from __future__ import absolute_import, division, print_function
-
-from dolfin import *
+import dolfin as dl
+import ufl
 
 import math
 import numpy as np
@@ -76,23 +74,23 @@ from hippylib import nb
 
 logging.getLogger('FFC').setLevel(logging.WARNING)
 logging.getLogger('UFL').setLevel(logging.WARNING)
-set_log_active(False)
+dl.set_log_active(False)
 ```
 
 ## 2. Define the mesh and the finite element space
 
 We construct a triangulation (mesh) $\mathcal{T}_h$ of the computational domain $\Omega := [0, 1]^2$ with `n` elements in each direction.
 
-On the mesh $\mathcal{T}_h$, we then define the finite element space $V_h \subset H^1(\Omega)$ consisting of globally continuous piecewise polinomials functions. The `degree` variable defines the polinomial degree.
+On the mesh $\mathcal{T}_h$, we then define the finite element space $V_h \subset H^1(\Omega)$ consisting of globally continuous piecewise polynomials. The `degree` variable defines the polynomial degree.
 
 
 ```python
 n = 16
 degree = 1
-mesh = UnitSquareMesh(n, n)
+mesh = dl.UnitSquareMesh(n, n)
 nb.plot(mesh)
 
-Vh  = FunctionSpace(mesh, 'Lagrange', degree)
+Vh  = dl.FunctionSpace(mesh, 'Lagrange', degree)
 print( "dim(Vh) = ", Vh.dim() )
 ```
 
@@ -109,23 +107,23 @@ To partition the boundary of $\Omega$ in the subdomains $\Gamma_{\rm top}$, $\Ga
 
 
 ```python
-class TopBoundary(SubDomain):
+class TopBoundary(dl.SubDomain):
     def inside(self, x, on_boundary):
-        return on_boundary and abs(x[1] - 1) < DOLFIN_EPS
+        return on_boundary and abs(x[1] - 1) < dl.DOLFIN_EPS
     
-class BottomBoundary(SubDomain):
+class BottomBoundary(dl.SubDomain):
     def inside(self, x, on_boundary):
-        return on_boundary and abs(x[1]) < DOLFIN_EPS
+        return on_boundary and abs(x[1]) < dl.DOLFIN_EPS
     
-class LeftBoundary(SubDomain):
+class LeftBoundary(dl.SubDomain):
     def inside(self, x, on_boundary):
-        return on_boundary and abs(x[0]) < DOLFIN_EPS
+        return on_boundary and abs(x[0]) < dl.DOLFIN_EPS
     
-class RightBoundary(SubDomain):
+class RightBoundary(dl.SubDomain):
     def inside(self, x, on_boundary):
-        return on_boundary and abs(x[0] - 1) < DOLFIN_EPS
+        return on_boundary and abs(x[0] - 1) < dl.DOLFIN_EPS
     
-boundary_parts = FacetFunction("size_t", mesh)
+boundary_parts = dl.MeshFunction("size_t", mesh, 1)
 boundary_parts.set_all(0)
 
 Gamma_top = TopBoundary()
@@ -140,31 +138,31 @@ Gamma_right.mark(boundary_parts, 4)
 
 ## 4. Define the coefficients of the PDE and the boundary conditions
 
-We first define the coefficients of the PDE using the `Constant` and `Expression` classes. `Constant` is used to define coefficients that do not depend on the space coordinates, `Expression` is used to define coefficients that are a known function of the space coordinates `x[0]` (x-axis direction) and `x[1]` (y-axis direction).
+We first define the coefficients of the PDE using the `dl.Constant` and `dl.Expression` classes. `dl.Constant` is used to define coefficients that do not depend on the space coordinates, `dl.Expression` is used to define coefficients that are a known function of the space coordinates `x[0]` (x-axis direction) and `x[1]` (y-axis direction).
 
-In the finite element method community, Dirichlet boundary conditions are also known as *essential* boundary conditions since they are imposed directly in the definition of the finite element space. In FEniCS, we use the class `DirichletBC` to indicate this type of condition.
+In the finite element method community, Dirichlet boundary conditions are also known as *essential* boundary conditions since they are imposed directly in the definition of the finite element space. In FEniCS, we use the class `dl.DirichletBC` to indicate this type of condition.
 
 On the other hand, Newman boundary conditions are also known as *natural* boundary conditions since they are weakly imposed as boundary integrals in the variational formulation (weak form). In FEniCS, we create a new boundary measure `ds[i]` to integrate over the portion of the boundary marked with label `i`.
 
 
 ```python
-u_L = Constant(0.)
-u_R = Constant(0.)
+u_L = dl.Constant(0.)
+u_R = dl.Constant(0.)
 
-sigma_bottom = Expression('-(pi/2.0)*sin(2*pi*x[0])', degree=5)
-sigma_top    = Constant(0.)
+sigma_bottom = dl.Expression('-(pi/2.0)*sin(2*pi*x[0])', degree=5)
+sigma_top    = dl.Constant(0.)
 
-f = Expression('(4.0*pi*pi+pi*pi/4.0)*(sin(2*pi*x[0])*sin((pi/2.0)*x[1]))', degree=5)
+f = dl.Expression('(4.0*pi*pi+pi*pi/4.0)*(sin(2*pi*x[0])*sin((pi/2.0)*x[1]))', degree=5)
 
-bcs = [DirichletBC(Vh, u_L, boundary_parts, 3),
-       DirichletBC(Vh, u_R, boundary_parts, 4)]
+bcs = [dl.DirichletBC(Vh, u_L, boundary_parts, 3),
+       dl.DirichletBC(Vh, u_R, boundary_parts, 4)]
 
-ds = Measure("ds", subdomain_data=boundary_parts)
+ds = dl.Measure("ds", subdomain_data=boundary_parts)
 ```
 
 ## 5. Define and solve the variational problem
 
-We also define two special types of functions: the `TrialFunction` `u` and the `TestFunction` `v`. These special types of function are used by `FEniCS` to generate the finite element vectors and matrices which stem from the weak formulation of the PDE.
+We also define two special types of functions: the `dl.TrialFunction` `u` and the `dl.TestFunction` `v`. These special types of function are used by `FEniCS` to generate the finite element vectors and matrices which stem from the weak formulation of the PDE.
 
 More specifically, by denoting by $\left[{\phi_i(x)}\right]_{i=1}^{{\rm dim}(V_h)}$ the finite element basis for the space $V_h$, a function $u_h \in V_h$ can be written as
 $$ u_h = \sum_{i=1}^{{\rm dim}(V_h)} {\rm u}_i \phi_i(x), $$
@@ -172,9 +170,9 @@ where ${\rm u}_i$ represents the coefficients in the finite element expansion of
 
 We then define
 
-- the bilinear form $a(u_h, v_h) = \int_\Omega \nabla u_h \cdot \nabla v_h dx $;
+- the bilinear form $a(u_h, v_h) = \int_\Omega \nabla u_h \cdot \nabla v_h \, dx $;
 
-- the linear form $L(v_h) = \int_\Omega f v_h dx + + \int_{\Gamma_{\rm top}} \sigma_{\rm top} v_h ds \int_{\Gamma_{\rm bottom}} \sigma_{\rm bottom} v_h ds $.
+- the linear form $L(v_h) = \int_\Omega f v_h \, dx + \int_{\Gamma_{\rm top}} \sigma_{\rm top} v_h \, ds + \int_{\Gamma_{\rm bottom}} \sigma_{\rm bottom} v_h \,ds $.
 
 
 We can then solve the variational problem
@@ -182,13 +180,13 @@ We can then solve the variational problem
 *Find *$u_h \in V_h$* such that*
 $$ a(u_h, v_h) = L(v_h) \quad \forall\, v_h \in V_h $$
 
-using directly the built-in `solve` method in FEniCS.
+using directly the built-in `dl.solve` method in FEniCS.
 
 **NOTE:** As an alternative one can also assemble the finite element matrix $A$ and the right hand side $b$ that stems from the discretization of $a$ and $L$, and then solve the linear system
 $$ A {\rm u} = {\rm b}, $$
 where
 
-- ${\rm u}$ is the vector collecting the coefficient of the finite element expasion of $u_h$,
+- ${\rm u}$ is the vector collecting the coefficients of the finite element expasion of $u_h$,
 
 - the entries of the matrix A are such that $A_{ij} = a(\phi_j, \phi_i)$,
 
@@ -196,16 +194,16 @@ where
 
 
 ```python
-u = TrialFunction(Vh)
-v = TestFunction(Vh)
-a = inner(nabla_grad(u), nabla_grad(v))*dx
-L = f*v*dx + sigma_top*v*ds(1) + sigma_bottom*v*ds(2)
+u = dl.TrialFunction(Vh)
+v = dl.TestFunction(Vh)
+a = ufl.inner(ufl.grad(u), ufl.grad(v))*ufl.dx
+L = f*v*ufl.dx + sigma_top*v*ds(1) + sigma_bottom*v*ds(2)
 
-uh = Function(Vh)
+uh = dl.Function(Vh)
 
-#solve(a == L, uh, bcs=bcs)
-A, b = assemble_system(a,L, bcs=bcs)
-solve(A, uh.vector(), b, "cg")
+#dl.solve(a == L, uh, bcs=bcs)
+A, b = dl.assemble_system(a,L, bcs=bcs)
+dl.solve(A, uh.vector(), b, "cg")
 
 nb.plot(uh)
 ```
@@ -213,7 +211,7 @@ nb.plot(uh)
 
 
 
-    <matplotlib.collections.TriMesh at 0x7f9ae232f630>
+    <matplotlib.collections.TriMesh at 0x11b389ac8>
 
 
 
@@ -224,36 +222,37 @@ nb.plot(uh)
 ## 6. Compute the discretization error
 
 For this problem, the exact solution is known.
-We can therefore compute the following norms of the discretization error (i.e. the of the difference between the finite element solution $u_h$ and the exact solution $u_{\rm ex}$)
+We can therefore compute the following norms of the discretization error (i.e. the difference between the finite element solution $u_h$ and the exact solution $u_{\rm ex}$)
 $$ \| u_{\rm ex} - u_h \|_{L^2{\Omega}} := \sqrt{ \int_{\Omega} (u_{\rm ex} - u_h)^2 \, dx }, $$ 
 and
 $$ \| u_{\rm ex} - u_h \|_{H^1{\Omega}} := \sqrt{ \int_{\Omega} (u_{\rm ex} - u_h)^2 \, dx + \int_{\Omega} |\nabla u_{\rm ex} - \nabla u_h|^2 \, dx}. $$
 
 
 ```python
-u_e = Expression('sin(2*pi*x[0])*sin((pi/2.0)*x[1])', degree=5)
-grad_u_e = Expression( ('2*pi*cos(2*pi*x[0])*sin((pi/2.0)*x[1])', 'pi/2.0*sin(2*pi*x[0])*cos((pi/2.0)*x[1])'), degree=5)
+u_e = dl.Expression('sin(2*pi*x[0])*sin((pi/2.0)*x[1])', degree=5)
+grad_u_e = dl.Expression( ('2*pi*cos(2*pi*x[0])*sin((pi/2.0)*x[1])',
+                           'pi/2.0*sin(2*pi*x[0])*cos((pi/2.0)*x[1])'), degree=5)
 
-err_L2 = sqrt( assemble( (uh-u_e)**2*dx ) )
-err_grad = sqrt( assemble( inner(nabla_grad(uh) - grad_u_e, nabla_grad(uh) - grad_u_e)*dx ) )
-err_H1 = sqrt( err_L2**2 + err_grad**2)
+err_L2 = math.sqrt( dl.assemble( (uh-u_e)**2*ufl.dx ) )
+err_grad = math.sqrt( dl.assemble( ufl.inner(ufl.grad(uh) - grad_u_e, ufl.grad(uh) - grad_u_e)*ufl.dx ) )
+err_H1 = math.sqrt( err_L2**2 + err_grad**2)
 
 print ("|| u_h - u_e ||_L2 = ", err_L2)
 print ("|| u_h - u_e ||_H1 = ", err_H1)
 ```
 
-    || u_h - u_e ||_L2 =  0.008805253722075487
-    || u_h - u_e ||_H1 =  0.3967189525141412
+    || u_h - u_e ||_L2 =  0.008805176703139152
+    || u_h - u_e ||_H1 =  0.3967189507839944
 
 
 ## 7. Convergence of the finite element method
 
 We now verify numerically a well-known convergence result for the finite element method.
 
-Let denote with $s$ the polynomial degree of the finite element space, and assume that the solution $u_{\rm ex}$ is at least in $H^{s+1}(\Omega)$. Then we have
+Let $s$ denote the polynomial degree of the finite element space, and assume that the solution $u_{\rm ex}$ is at least in $H^{s+1}(\Omega)$. Then we have
 $$ \| u_{\rm ex} - u_h \|_{H^1} \leq C h^{s}, \quad \| u_{\rm ex} - u_h \|_{L^2} \leq C h^{s+1}. $$
 
-In the code below, the function `compute(n, degree)` solves the PDE using a mesh with `n` elements in each direction and finite element spaces of polinomial order `degree`.
+In the code below, the function `compute(n, degree)` solves the PDE using a mesh with `n` elements in each direction and finite element spaces of polynomial order `degree`.
 
 The figure below shows the discretization errors in the $H^1$ and $L^2$ as a function of the mesh size $h$ ($h = \frac{1}{n}$) for piecewise linear (P1, $s=1$) and piecewise quadratic (P2, $s=2$) finite elements. We observe that numerical results are consistent with the finite element convergence theory. In particular:
 
@@ -264,9 +263,9 @@ The figure below shows the discretization errors in the $H^1$ and $L^2$ as a fun
 
 ```python
 def compute(n, degree):
-    mesh = UnitSquareMesh(n, n)
-    Vh  = FunctionSpace(mesh, 'Lagrange', degree)
-    boundary_parts = FacetFunction("size_t", mesh)
+    mesh = dl.UnitSquareMesh(n, n)
+    Vh  = dl.FunctionSpace(mesh, 'Lagrange', degree)
+    boundary_parts = dl.MeshFunction("size_t", mesh,1)
     boundary_parts.set_all(0)
     
     Gamma_top = TopBoundary()
@@ -278,18 +277,19 @@ def compute(n, degree):
     Gamma_right = RightBoundary()
     Gamma_right.mark(boundary_parts, 4)
     
-    bcs = [DirichletBC(Vh, u_L, boundary_parts, 3), DirichletBC(Vh, u_R, boundary_parts, 4)]
-    ds = Measure("ds", subdomain_data=boundary_parts)
+    bcs = [dl.DirichletBC(Vh, u_L, boundary_parts, 3), 
+           dl.DirichletBC(Vh, u_R, boundary_parts, 4)]
+    ds = dl.Measure("ds", subdomain_data=boundary_parts)
     
-    u = TrialFunction(Vh)
-    v = TestFunction(Vh)
-    a = inner(nabla_grad(u), nabla_grad(v))*dx
-    L = f*v*dx + sigma_top*v*ds(1) + sigma_bottom*v*ds(2)
-    uh = Function(Vh)
-    solve(a == L, uh, bcs=bcs)
-    err_L2 = sqrt( assemble( (uh-u_e)**2*dx ) )
-    err_grad = sqrt( assemble( inner(nabla_grad(uh) - grad_u_e, nabla_grad(uh) - grad_u_e)*dx ) )
-    err_H1 = sqrt( err_L2**2 + err_grad**2)
+    u = dl.TrialFunction(Vh)
+    v = dl.TestFunction(Vh)
+    a = ufl.inner(ufl.grad(u), ufl.grad(v))*ufl.dx
+    L = f*v*ufl.dx + sigma_top*v*ds(1) + sigma_bottom*v*ds(2)
+    uh = dl.Function(Vh)
+    dl.solve(a == L, uh, bcs=bcs)
+    err_L2 = math.sqrt( dl.assemble( (uh-u_e)**2*ufl.dx ) )
+    err_grad = math.sqrt( dl.assemble( ufl.inner(ufl.grad(uh) - grad_u_e, ufl.grad(uh) - grad_u_e)*ufl.dx ) )
+    err_H1 = math.sqrt( err_L2**2 + err_grad**2)
     
     return err_L2, err_H1
 
@@ -337,6 +337,7 @@ plt.show()
 
 
 Copyright (c) 2016-2018, The University of Texas at Austin & University of California, Merced.<br>
+Copyright (c) 2019-2020, The University of Texas at Austin, University of California--Merced, Washington University in St. Louis.<br>
 All Rights reserved.<br>
 See file COPYRIGHT for details.
 
