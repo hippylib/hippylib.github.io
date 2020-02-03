@@ -19,7 +19,7 @@ Newton-CG method, to solve the inverse problem
 
 - Scalable sampling of Gaussian random fields
 
-- Linearized Bayesian inversion with low rank-based
+- Linearized Bayesian inversion with low-rank based
 representation of the posterior covariance
 
 - Hessian informed MCMC algorithms to explore the posterior
