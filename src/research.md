@@ -4,6 +4,10 @@
 
 - Inversion for optical properties of biological tissues in quantitative optoacoustic tomography
 
+- Statistical treatment of inverse problems constrained by stochastic models
+
+- Accounting for model errors in inverse problems
+
 - Bayesian optimal experimental design for inverse problems in acoustic scattering
 
 - Inversion and control for CO<sub>2</sub> sequestration with poroelastic models
@@ -17,8 +21,6 @@
 - Inversion for material properties of cardiac tissue
 
 - Inference, prediction and optimization under uncertainty for turbulent combustion
-
-- Inference of constitutive laws in mechanics of nano-scale filaments
 
 ## Selected publications
 
@@ -60,9 +62,9 @@
 
 - B. Saleh, [*Scientific Machine Learning: A Neural Network-Based Estimator for Forward Uncertainty Quantification*](https://pdfs.semanticscholar.org/ab10/e3a8e734458a61598314ecd58546b501f2f7.pdf), The University of Texas at Austin, 2018. Adviser O. Ghattas
 
-- G. Gao, [*hIPPYLearn:  An inexact Newton-CG method fortraining neural networks with analysis of the Hessian*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62383/GAO-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
+- G. Gao, [*hIPPYLearn:  An inexact Newton-CG method for training neural networks with analysis of the Hessian*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62383/GAO-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
 
-- D. Liu, [*hIPPYLearn:  An inexact Stochastic Newton-CGmethod for training neural networks*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62386/LIU-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
+- D. Liu, [*hIPPYLearn:  An inexact stochastic Newton-CG method for training neural networks*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62386/LIU-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
 
 ## Selected oral presentations
 
