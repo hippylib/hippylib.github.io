@@ -26,9 +26,15 @@
 
 - S. Wahal, G. Biros, [*BIMC: The Bayesian Inverse Monte Carlo method for goal-oriented uncertainty quantification. Part I*](https://arxiv.org/abs/1911.00619), arXiv, 2019
 
+- S. Lan, [*Adaptive dimension reduction to accelerate infinite-dimensional geometric Markov Chain Monte Carlo*](https://doi.org/10.1016/j.jcp.2019.04.043), Journal of Computational Physics, 392:71-95, 2019
+
 - U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*](http://arxiv.org/abs/1909.03948), arXiv, 2019
 
-- P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301),  Journal of Computational Physics, 385:163--186, 2019.
+- P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301),  Journal of Computational Physics, 385:163--186, 2019
+
+- B. Crestel, G. Stadler and O. Ghattas, [*A comparative study of structural similarity and regularization for joint inverse problems governed by PDEs*](https://iopscience.iop.org/article/10.1088/1361-6420/aaf129/pdf), Inverse Problems, 35:024003, 2018
+
+- A. Attia, A. Alexanderian, A. K. Saibaba, [*Goal-oriented optimal design of experiments for large-scale Bayesian linear inverse problems*](https://doi.org/10.1088/1361-6420/aad210), Inverse Problems, 34:095009, 2018
 
 - R. Nicholson, N. Petra and Jari P Kaipio. [*Estimation of the Robin coefficient field in a Poisson problem with uncertain conductivity field*](https://arxiv.org/abs/1801.03592), Inverse Problems, Volume 34, Number 11, 2018.
 
@@ -40,11 +46,23 @@
 
 - P. Chen, U. Villa, O. Ghattas, *Taylor approximation for PDE-constrained optimization under uncertainty: Application to turbulent jet flow*, Proceedings in Applied Mathematics and Mechanics - 89th GAMM Annual Meeting, 18:e201800466, 2018
 
+- P. Chen, U. Villa, O. Ghattas, [*Hessian-based adaptive sparse quadrature for infinite-dimensional Bayesian inverse problems*](https://doi.org/10.1016/j.cma.2017.08.016), Computer Methods in Applied Mechanics and Engineering, 327:147-172, 2017
+
 ## Selected Ph.D. thesis
 
-- K. A. McCormack, [*Earthquakes, groundwater and surface deformation: exploring the poroelastic response to megathrust earthquakes*](https://repositories.lib.utexas.edu/handle/2152/68892), University of Texas at Austin, 2018. Adviser M. Hesse
+- S. Fatehiboroujeni, [*Inverse Approaches for Identification of Constitutive Laws of Slender Structures Motivated by Application to Biological Filaments*](https://search.proquest.com/openview/225197affb59769d505f84fe4c0fa55e/1?pq-origsite=gscholar&cbl=18750&diss=y), University of California, Merced, 2018. Adviser S. Goyal
 
-- B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), University of Texas at Austin, 2017. Adviser O. Ghattas
+- K. A. McCormack, [*Earthquakes, groundwater and surface deformation: exploring the poroelastic response to megathrust earthquakes*](https://repositories.lib.utexas.edu/handle/2152/68892), The University of Texas at Austin, 2018. Adviser M. Hesse
+
+- B. Crestel, [*Advanced techniques for multi-source, multi-parameter, and multi-physics inverse problems*](https://repositories.lib.utexas.edu/handle/2152/63471), The University of Texas at Austin, 2017. Adviser O. Ghattas
+
+## Selected Honor and Master thesis
+
+- B. Saleh, [*Scientific Machine Learning: A Neural Network-Based Estimator for Forward Uncertainty Quantification*](https://pdfs.semanticscholar.org/ab10/e3a8e734458a61598314ecd58546b501f2f7.pdf), The University of Texas at Austin, 2018. Adviser O. Ghattas
+
+- G. Gao, [*hIPPYLearn:  An inexact Newton-CG method fortraining neural networks with analysis of the Hessian*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62383/GAO-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
+
+- D. Liu, [*hIPPYLearn:  An inexact Stochastic Newton-CGmethod for training neural networks*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62386/LIU-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
 
 ## Selected oral presentations
 
