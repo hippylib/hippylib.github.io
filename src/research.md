@@ -50,6 +50,8 @@
 
 - P. Chen, U. Villa, O. Ghattas, [*Hessian-based adaptive sparse quadrature for infinite-dimensional Bayesian inverse problems*](https://doi.org/10.1016/j.cma.2017.08.016), Computer Methods in Applied Mechanics and Engineering, 327:147-172, 2017
 
+- S. Fatehiboroujeni, N. Petra and S. Goyal. [*Towards Adjoint-Based Inversion of the Lamé Parameter Field for Slender Structures With Cantilever Loading*](https://doi.org/10.1115/DETC2016-60130), ASME 2016 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference, Volume 8: 28th Conference on Mechanical Vibration and Noise Charlotte, North Carolina, USA, August 21–24, 2016.
+
 ## Selected Ph.D. thesis
 
 - S. Fatehiboroujeni, [*Inverse Approaches for Identification of Constitutive Laws of Slender Structures Motivated by Application to Biological Filaments*](https://search.proquest.com/openview/225197affb59769d505f84fe4c0fa55e/1?pq-origsite=gscholar&cbl=18750&diss=y), University of California, Merced, 2018. Adviser S. Goyal
@@ -67,6 +69,8 @@
 - D. Liu, [*hIPPYLearn:  An inexact stochastic Newton-CG method for training neural networks*](https://repositories.lib.utexas.edu/bitstream/handle/2152/62386/LIU-MASTERSREPORT-2017.pdf?sequence=1), The University of Texas at Austin, 2017. Supervisor O. Ghattas
 
 ## Selected oral presentations
+
+- N. Petra, [*Inferring the basal sliding coefficient for the Stokes ice sheet model under rheological uncertainty*](https://www.birs.ca/events/2020/5-day-workshops/20w5198/videos/watch/202001141017-Petra.html), Mathematical Modelling in Glaciology, Banff International Research Station, Banff, AB, Candada
 
 - I. Ambartsumyan, **O. Ghattas**, *Fast methods for Bayesian inverse problems governed by PDE forward models with random coefficient fields*, Applied Inverse Problems Conference, July 8-12, 2019, Grenoble, France
 
