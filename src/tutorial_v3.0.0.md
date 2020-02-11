@@ -1,4 +1,4 @@
-# Tutorial - Development version
+# Tutorial - Version 3.0.0
 
 These tutorials are the best place to learn about the basic features and the algorithms in `hIPPYlib`.
 
