@@ -43,6 +43,10 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 
 Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a>, <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>, and <a href="https://ese.wustl.edu/Pages/default.aspx" target="_blank">WUSTL</a>.
 
+## Slack channel
+
+The hIPPYlib slack channel is a good resource to request and receive help with using hIPPYlib. Everyone is invited to read and take part in discussions. Discussions about development of new features in hIPPYlib also take place here. You can join our Slack community by filling in [this form](https://forms.gle/w8B7uKSXxdVCmfZ99). 
+
 Please cite as 
 
 ```sh
