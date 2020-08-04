@@ -56,6 +56,8 @@
 
 ## Selected Ph.D. thesis
 
+- A. Alghamdi, *Bayesian Inverse Problems for Quasi-Static Poroelasticity with Application to Ground Water Aquifer Characterization from Geodetic Data*, The University of Texas at Austin, 2020. Adviser O. Ghattas & M. Hesse
+
 - S. Fatehiboroujeni, [*Inverse Approaches for Identification of Constitutive Laws of Slender Structures Motivated by Application to Biological Filaments*](https://search.proquest.com/openview/225197affb59769d505f84fe4c0fa55e/1?pq-origsite=gscholar&cbl=18750&diss=y), University of California, Merced, 2018. Adviser S. Goyal
 
 - K. A. McCormack, [*Earthquakes, groundwater and surface deformation: exploring the poroelastic response to megathrust earthquakes*](https://repositories.lib.utexas.edu/handle/2152/68892), The University of Texas at Austin, 2018. Adviser M. Hesse
