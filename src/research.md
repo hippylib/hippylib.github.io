@@ -74,6 +74,8 @@
 
 ## Selected poster presentations
 
+- O. Ghattas, K. Kim, Y. Marzouk, M. Parno, N. Petra, U. Villa, [*Integrating Data with Complex Predictive Models under Uncertainty: An Extensible Software Framework for Large-Scale Bayesian Inversion*](https://doi.org/10.6084/m9.figshare.11803602.v1), NSF-CSSI PI meeting, Feb. 13-14, Seattle, Wa, US
+
 - I. Ambartsumyan, T. Bui-Thanh, O. Ghattas, E. Khattatov, [*An Edge-preserving Method for Joint Bayesian Inversion with Non-Gaussian Priors*](http://meetings.siam.org/sess/dsp_talk.cfm?p=97474), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
 
 - E. Khattatov, O. Ghattas, T. Bui-Thanh, and I. Ambartsumyan, U. Villa, [*Bayesian Inversion of Fault Properties in Two-phase Flow in Fractured Media*](http://meetings.siam.org/sess/dsp_talk.cfm?p=97471), SIAM CSE, Feb 25- March 1, 2019, Spokane, Wa, US
