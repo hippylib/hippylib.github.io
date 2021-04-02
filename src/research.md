@@ -24,6 +24,10 @@
 
 ## Selected publications
 
+- O. Babaniyi, R. Nicholson, U. Villa, and N. Petra: [*Inferring the basal sliding coefficient field for the Stokes ice sheet model under rheological uncertainty*](https://doi.org/10.5194/tc-2020-229), The Cryosphere Discuss. [preprint], accepted, 2021. 
+
+- U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*](http://arxiv.org/abs/1909.03948), ACM Trans. Math. Softw. 47, 2, Article 16 (March 2021), 34 pages, 2021
+
 - A. Alghamdi, M.~A. Hesse, J. Chen, O. Ghattas, [*Bayesian Poroelastic Aquifer Characterization from InSAR Surface Deformation Data. Part I: Maximum A Posteriori Estimate*](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2020WR027391), Water Resources Research, e2020WR027391, 2020
 
 - K. Koval, A. Alexanderian, G. Stadler, [*Optimal experimental design under irreducible uncertainty for inverse problems governed by PDEs*](https://arxiv.org/abs/1912.08915), arXiv, 2019
@@ -31,8 +35,6 @@
 - S. Wahal, G. Biros, [*BIMC: The Bayesian Inverse Monte Carlo method for goal-oriented uncertainty quantification. Part I*](https://arxiv.org/abs/1911.00619), arXiv, 2019
 
 - S. Lan, [*Adaptive dimension reduction to accelerate infinite-dimensional geometric Markov Chain Monte Carlo*](https://doi.org/10.1016/j.jcp.2019.04.043), Journal of Computational Physics, 392:71-95, 2019
-
-- U. Villa, N. Petra, O. Ghattas, [*hIPPYlib: An extensible software framework for large-scale inverse problems; Part I: Deterministic inversion and linearized Bayesian inference*](http://arxiv.org/abs/1909.03948), arXiv, 2019
 
 - P. Chen, U. Villa, O. Ghattas, [*Taylor approximation and variance reduction for PDE-constrained optimal control under uncertainty*](https://arxiv.org/abs/1804.04301),  Journal of Computational Physics, 385:163--186, 2019
 
