@@ -50,6 +50,27 @@ The hIPPYlib slack channel is a good resource to request and receive help with u
 Please cite as 
 
 ```sh
+@article{10.1145/3428447,
+    author = {Villa, Umberto and Petra, Noemi and Ghattas, Omar},
+    title = "{HIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems Governed by PDEs: Part I: Deterministic Inversion and Linearized Bayesian Inference}",
+    year = {2021},
+    issue_date = {March 2021},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {47},
+    number = {2},
+    issn = {0098-3500},
+    url = {https://doi.org/10.1145/3428447},
+    doi = {10.1145/3428447},
+    journal = {ACM Trans. Math. Softw.},
+    month = apr,
+    articleno = {16},
+    numpages = {34}
+    }
+
+      
+
+
 @article{VillaPetraGhattas19,
 author = {{Villa}, Umberto and {Petra}, Noemi and {Ghattas}, Omar},
 title = "{hIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems Governed by PDEs; Part I: Deterministic Inversion and Linearized Bayesian Inference}",
