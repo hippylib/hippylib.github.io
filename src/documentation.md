@@ -2,6 +2,10 @@
 
 The complete API reference of `hIPPYlib` is available at [readthedocs](http://hippylib.readthedocs.io/en/latest/modules.html).
 
+Algorithms implemented in hIPPYlib are described in
+
+> Umberto Villa, Noemi Petra, and Omar Ghattas. 2021. [HIPPYlib: An Extensible Software Framework for Large-Scale Inverse Problems Governed by PDEs: Part I: Deterministic Inversion and Linearized Bayesian Inference](https://doi.org/10.1145/3428447). ACM Trans. Math. Softw. 47, 2, Article 16 (March 2021), 34 pages. [arXiv](https://arxiv.org/abs/1909.03948)
+
 ## Installation of stable releases
 
 The latest `hIPPYlib` release depends on [FEniCS](http://fenicsproject.org/) versions 2019.1.
