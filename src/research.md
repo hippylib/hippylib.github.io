@@ -23,6 +23,7 @@
 - Inference, prediction and optimization under uncertainty for turbulent combustion
 
 ## Selected publications
+- T. O'Leary-Roseberry, U. Villa, P. Chen, and O. Ghattas: [*Derivative-Informed Projected Neural Networks for High-Dimensional Parametric Maps Governed by PDEs*](https://arxiv.org/abs/2011.15110), Computer Methods in Applied Mechanics and Engineering, accepted, 2021
 
 - O. Babaniyi, R. Nicholson, U. Villa, and N. Petra: [*Inferring the basal sliding coefficient field for the Stokes ice sheet model under rheological uncertainty*](https://doi.org/10.5194/tc-2020-229), The Cryosphere Discuss. [preprint], accepted, 2021. 
 
@@ -57,6 +58,7 @@
 - S. Fatehiboroujeni, N. Petra and S. Goyal. [*Towards Adjoint-Based Inversion of the Lamé Parameter Field for Slender Structures With Cantilever Loading*](https://doi.org/10.1115/DETC2016-60130), ASME 2016 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference, Volume 8: 28th Conference on Mechanical Vibration and Noise Charlotte, North Carolina, USA, August 21–24, 2016.
 
 ## Selected Ph.D. thesis
+- T. O'Leary-Roseberry, [*Efficient and Dimension Independent Methods for Neural Network Surrogate Construction and Training*](https://repositories.lib.utexas.edu/handle/2152/83824), The University of Texas at Austin, 2020. Adviser O. Ghattas & P. Heimbach
 
 - A. Alghamdi, *Bayesian Inverse Problems for Quasi-Static Poroelasticity with Application to Ground Water Aquifer Characterization from Geodetic Data*, The University of Texas at Austin, 2020. Adviser O. Ghattas & M. Hesse
 
