@@ -1,12 +1,13 @@
 # Download
 
 ## Latest release
-- Download [hippylib-3.0.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1)
+- Download [hippylib-3.1.0.zip](https://zenodo.org/record/7471119/files/hippylib/hippylib-3.1.0.zip?download=1)
 
 ## All releases
 
 **Filename** | **Version** | **Release Date** | **Notes** | **Documentation** |
  ----------- | ----------- | ---------------- | --------- | ----------------- |
+  [hippylib-3.1.0.zip](https://zenodo.org/record/7471119/files/hippylib/hippylib-3.1.0.zip?download=1) | 3.1.0 | Dec 2022 | Non-Gaussian noise model and interpolation utilities | [html](https://hippylib.readthedocs.io/en/3.1.0/)
  [hippylib-3.0.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1) | 3.0.0 | Feb 2020 | Support for FEniCS 2019.1. New features and examples | [html](https://hippylib.readthedocs.io/en/3.0.0/)
 [hippylib-2.3.0.zip](https://zenodo.org/record/3401577/files/hippylib/hippylib-2.3.0.zip?download=1) | 2.3.0 | Sept 2019 | Updated examples | [html](https://hippylib.readthedocs.io/en/2.3.0/)
 [hippylib-2.2.1.zip](https://zenodo.org/record/2614052/files/hippylib/hippylib-2.2.1.zip?download=1) | 2.2.1 | March 2019 | Bugfixes | [html](https://hippylib.readthedocs.io/en/2.2.1/) |
