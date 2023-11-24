@@ -45,7 +45,7 @@ pages:
 #theme_dir: template
 theme: spacelab
 
-google_analytics: ['UA-52448613-3', 'hippylib.github.io']
+#google_analytics: ['UA-52448613-3', 'hippylib.github.io']
 
 analytics:
     gtag: G-24ZCR56GPX
