@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/hippylib/web.svg?branch=master)](https://travis-ci.org/hippylib/web)
+
+[![build](https://github.com/hippylib/web/actions/workflows/main.yaml/badge.svg)](https://github.com/hippylib/web/actions/workflows/main.yaml)
 
 # hIPPYlib / web
 
