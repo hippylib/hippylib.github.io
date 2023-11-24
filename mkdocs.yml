@@ -47,8 +47,9 @@ theme: spacelab
 
 #google_analytics: ['UA-52448613-3', 'hippylib.github.io']
 
-analytics:
-    gtag: G-24ZCR56GPX
+#analytics:
+gtag:
+    - G-24ZCR56GPX
 
 
 extra_javascript: 
