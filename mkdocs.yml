@@ -10,7 +10,7 @@ markdown_extensions:
 repo_url: https://github.com/hippylib/hippylib
 edit_uri: ""
 
-pages:
+nav:
 - Home: index.md
 #- Features: features.md
 - Tutorial:
@@ -43,7 +43,7 @@ pages:
 - About: about.md
 
 #theme_dir: template
-theme: spacelab
+theme: mkdocs
 
 #google_analytics: ['UA-52448613-3', 'hippylib.github.io']
 
