@@ -43,11 +43,10 @@ nav:
 - About: about.md
 
 #theme_dir: template
-theme: spacelab
-
-
-gtag:
-    - G-24ZCR56GPX
+theme:
+  name: spacelab
+  analytics:
+    gtag: G-24ZCR56GPX
 
 
 extra_javascript: 
