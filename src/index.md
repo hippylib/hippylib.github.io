@@ -39,13 +39,17 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 - Download [hippylib-3.0.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1)
 - [Previous releases](download.md)
 
+## Join us!
+
+Dr. Villa is searching for a **postdoctoral researcher** interested in computational imaging and predictive sciences to join his team at the Oden Institute, The University of Texas at Austin. See [here](https://uvilla.github.io/available_positions.html) for instructions on how to apply.
+
 ## Contact
 
-Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a>, <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>, and <a href="https://ese.wustl.edu/Pages/default.aspx" target="_blank">WUSTL</a>.
+Developed by the [hIPPYlib team](about.md) at <a href="http://ices.utexas.edu" target="_blank">UT Austin</a> and <a href="http://naturalsciences.ucmerced.edu/" target="_blank">UC Merced</a>.
 
 ## Slack channel
 
-The hIPPYlib slack channel is a good resource to request and receive help with using hIPPYlib. Everyone is invited to read and take part in discussions. Discussions about development of new features in hIPPYlib also take place here. You can join our Slack community by filling in [this form](https://forms.gle/w8B7uKSXxdVCmfZ99). 
+The hIPPYlib slack channel is a good resource to request and receive help with using hIPPYlib. Everyone is invited to read and take part in discussions. Discussions about the development of new features in hIPPYlib also take place here. You can join our Slack community by filling in [this form](https://forms.gle/w8B7uKSXxdVCmfZ99). 
 
 Please cite as 
 
