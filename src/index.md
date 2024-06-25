@@ -36,12 +36,12 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-3.0.0.zip](https://zenodo.org/record/3634136/files/hippylib/hippylib-3.0.0.zip?download=1)
+- Download [hippylib-3.1.0.zip](https://zenodo.org/record/7471119/files/hippylib/hippylib-3.1.0.zip?download=1)
 - [Previous releases](download.md)
 
 ## Join us!
 
-Dr. Villa is searching for a **postdoctoral researcher** interested in computational imaging and predictive sciences to join his team at the Oden Institute, The University of Texas at Austin. See [here](https://uvilla.github.io/available_positions.html) for instructions on how to apply.
+> Dr. Villa is searching for a **postdoctoral researcher** interested in computational imaging and predictive sciences to join his team at the Oden Institute, The University of Texas at Austin. See [here](https://uvilla.github.io/available_positions.html) for instructions on how to apply.
 
 ## Contact
 
