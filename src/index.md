@@ -29,7 +29,7 @@ representation of the posterior covariance
   Carlo and Taylor expansion control variates
 
 
-See also our [tutorial](tutorial.md) and list of related [publications](research.md). For additional resources and tutorials please see the teaching material for the *2018 Gene Golub SIAM Summer School* on *Inverse Problems: Systematic Integration of Data with Models under Uncertainty* available [here](https://g2s3-2018.github.io/labs).
+See also our [tutorial](tutorial_v3.0.0.md) and list of related [publications](research.md). For additional resources and tutorials please see the teaching material for the *2018 Gene Golub SIAM Summer School* on *Inverse Problems: Systematic Integration of Data with Models under Uncertainty* available [here](https://g2s3-2018.github.io/labs).
 
 The complete API reference is available [here](http://hippylib.readthedocs.io/en/latest/index.html).
 
