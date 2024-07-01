@@ -3,7 +3,7 @@
 These tutorials are the best place to learn about the basic features and the algorithms in `hIPPYlib`.
 
 > For the complete API reference click [here](http://hippylib.readthedocs.io/en/latest/index.html).
-> Other versions [2.3.0](tutorial_v2.3.0), [1.6.0](tutorial_v1.6.0)
+> Other versions [2.3.0](tutorial_v2.3.0.md), [1.6.0](tutorial_v1.6.0.md)
 
 1. [FEniCS101](tutorials_v3.0.0/1_FEniCS101.md) notebook illustrates the use of FEniCS for the solution of a linear boundary value problem.
 2. [Poisson Deterministic](tutorials_v3.0.0/2_PoissonDeterministic.md) notebook illustrates how to compute gradient/Hessian information and solve a non-linear parameter inversion for the Poisson equation in a deterministic setting.
