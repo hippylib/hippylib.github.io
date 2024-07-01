@@ -3,6 +3,7 @@
 These tutorials are the best place to learn about the basic features and the algorithms in `hIPPYlib`.
 
 > For the complete API reference click [here](http://hippylib.readthedocs.io/en/latest/index.html).
+> Other versions [2.3.0](tutorial_v2.3.0), [1.6.0](tutorial_v1.6.0)
 
 1. [FEniCS101](tutorials_v3.0.0/1_FEniCS101.md) notebook illustrates the use of FEniCS for the solution of a linear boundary value problem.
 2. [Poisson Deterministic](tutorials_v3.0.0/2_PoissonDeterministic.md) notebook illustrates how to compute gradient/Hessian information and solve a non-linear parameter inversion for the Poisson equation in a deterministic setting.
@@ -12,7 +13,7 @@ These tutorials are the best place to learn about the basic features and the alg
 
 ## Interactive tutorials
 
-The interactive ipython notebooks are located in the `tutorial` folder of the `hIPPYlib` repository.
+The interactive ipython notebooks are in the `tutorial` folder of the `hIPPYlib` repository.
 
 To run the notebooks follow these instructions.
 
@@ -23,9 +24,9 @@ $ cd tutorial
 $ jupyter notebook
 ```
 
-2. A new tab will open in your web-brower showing the notebooks.
+2. A new tab will open in your web-browser showing the notebooks.
 3. Click on the notebook you would like to use.
-4. To run all the code in the notebook simply click on Cell --> Run All.
+4. To run all the notebook code, simply click Cell --> Run All.
 
 For more information on installing ipython and using notebooks see <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank">here</a>.
 
