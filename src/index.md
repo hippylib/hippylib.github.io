@@ -38,7 +38,7 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-3.2.0.zip](https://zenodo.org/records/17914280/files/hippylib/hippylib-3.2.0.zip?download=1))
+- Download [hippylib-3.2.0.zip](https://zenodo.org/records/17914280/files/hippylib/hippylib-3.2.0.zip?download=1)
 - [Previous releases](download.md)
 
 ## Join us!
