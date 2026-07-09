@@ -8,7 +8,7 @@ hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for P
 
 !!! note ""
 
-    Experimental support for dolfinx: https://github.com/hippylib/hippylibx
+    [hIPPYlibX](https://github.com/hippylib/hippylibx) provides experimental support for dolfinx
 
 ## Features
 
@@ -43,9 +43,6 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 - Download [hippylib-3.2.0.zip](https://zenodo.org/records/17914280/files/hippylib/hippylib-3.2.0.zip?download=1)
 - [Previous releases](download.md)
 
-## Join us!
-
-> Dr. Villa is searching for a **postdoctoral researcher** interested in computational imaging and predictive sciences to join his team at the Oden Institute, The University of Texas at Austin. See [here](https://uvilla.github.io/available_positions.html) for instructions on how to apply.
 
 ## Contact
 
