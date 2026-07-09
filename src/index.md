@@ -6,7 +6,9 @@
 
 hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for PDE-based *deterministic and Bayesian inverse problems*. It builds on <a href="http://www.fenicsproject.org" target="_blank">FEniCS</a> for the discretization of the PDE and on <a href="http://www.mcs.anl.gov/petsc/" target="_blank">PETSc</a> for scalable and efficient linear algebra operations and solvers.
 
-> Experimental support for dolfinx: https://github.com/hippylib/hippylibx
+!!! note ""
+
+    Experimental support for dolfinx: https://github.com/hippylib/hippylibx
 
 ## Features
 
