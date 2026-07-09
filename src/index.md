@@ -1,10 +1,12 @@
 # hIPPYlib - Inverse Problem PYthon library
 
-[![CI](https://github.com/hippylib/hippylib/actions/workflows/ci.yaml/badge.svg)](https://github.com/hippylib/hippylib/actions/workflows/ci.yaml)
+[![Unit Tests](https://github.com/hippylib/hippylib/actions/workflows/test.yaml/badge.svg)](https://github.com/hippylib/hippylib/actions/workflows/test.yaml)
 [![Doc Status](https://readthedocs.org/projects/hippylib/badge/?version=latest&style=flat)](https://hippylib.readthedocs.io/en/latest/)
 [![status](http://joss.theoj.org/papers/053e0d08a5e9755e7b78898cff6f6208/status.svg)](http://joss.theoj.org/papers/053e0d08a5e9755e7b78898cff6f6208) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.596931.svg)](https://doi.org/10.5281/zenodo.596931)
 
 hIPPYlib implements state-of-the-art *scalable* *adjoint-based* algorithms for PDE-based *deterministic and Bayesian inverse problems*. It builds on <a href="http://www.fenicsproject.org" target="_blank">FEniCS</a> for the discretization of the PDE and on <a href="http://www.mcs.anl.gov/petsc/" target="_blank">PETSc</a> for scalable and efficient linear algebra operations and solvers.
+
+> Experimental support for dolfinx: https://github.com/hippylib/hippylibx
 
 ## Features
 
@@ -36,7 +38,7 @@ The complete API reference is available [here](http://hippylib.readthedocs.io/en
 ## Latest Release
 
 - [Development version](https://github.com/hippylib/hippylib)
-- Download [hippylib-3.1.0.zip](https://zenodo.org/record/7471119/files/hippylib/hippylib-3.1.0.zip?download=1)
+- Download [hippylib-3.2.0.zip](https://zenodo.org/record/7471119/files/hippylib/hippylib-3.1.0.zip?download=1)
 - [Previous releases](download.md)
 
 ## Join us!
