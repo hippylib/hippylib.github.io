@@ -2,6 +2,7 @@ site_name: hIPPYlib
 docs_dir: 'src'
 
 markdown_extensions:
+- admonition
 - extra  # allow markdown in <div markdown="1">
 - fenced_code  # GitHub style code blocks, e.g. ```python, see http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html for a list of languages
 - mdx_math: # MathJax extension. Use \(...\) for inline; \[ ...\] for standalone math
